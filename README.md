@@ -48,15 +48,15 @@
 <details>
   <summary>4. Security</summary>
 
-## TLS and Certificates
-## Kubeconfig , creating kubeconfig
-## Security context
-## Secrets and secret encryption: mounting secret on a pod, best practices
-## RBACs , Authorization and Authentication
-## Cluster roles and role bindings
-## Service Account
-## Image Security and context
-## Network Policies
+- TLS and Certificates
+- Kubeconfig , creating kubeconfig
+- Security context
+- Secrets and secret encryption: mounting secret on a pod, best practices
+- RBACs , Authorization and Authentication
+- Cluster roles and role bindings
+- Service Account
+- Image Security and context
+- Network Policies
 </details>
 
 <details>
