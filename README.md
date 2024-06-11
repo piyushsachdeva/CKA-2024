@@ -5,10 +5,15 @@ This is the GitHub repository to host all the notes, diagrams, assignments, and 
 ## 1. Cluster Architecture and core concepts
   
 **Day1 Video**: Docker Fundamentals
+
     -  What is Docker?
+    
     -  How is it different from Virtual Machines
+    
     -  Docker Architecture
+    
     -  Docker flow
+    
     -  Docker commands
     
 **Day 2 Video:** Dockerize an application
