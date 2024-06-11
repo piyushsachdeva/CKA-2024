@@ -8,11 +8,9 @@ Note: Expand each of the section to view the details.
 
   
 **Day1 Video**: Docker Fundamentals
-    -  What is Docker?
-    
-    -  How is it different from Virtual Machines
-    
-    -  Docker Architecture
+    1  What is Docker?
+    1  How is it different from Virtual Machines
+    1  Docker Architecture
     
     -  Docker flow
     
