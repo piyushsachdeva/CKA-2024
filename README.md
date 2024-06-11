@@ -2,19 +2,14 @@
 # Certified Kubernetes Administrator(CKA) 2024
 This is the GitHub repository to host all the notes, diagrams, assignments, and resources from the CKA course published on YouTube.
 
-## 1. Cluster Architecture and Core Concepts:
-  
-**Day1 Video**: Docker Fundamentals
+### Day 1: Docker Fundamentals
+**Status**: Yet to be published
 
-    *  What is Docker?
-    
-    *  How is it different from Virtual Machines
-    
-    -  Docker Architecture
-    
-    -  Docker flow
-    
-    -  Docker commands
+- What is Docker?
+- How is it different from Virtual Machines
+-  Docker Architecture
+-  Docker flow
+-  Docker commands
     
 **Day 2 Video:** Dockerize an application
     - What is Dockerfile, and how do you write it?
