@@ -1,6 +1,8 @@
 
-# Certified Kubernetes Administrator 2024
+# Certified Kubernetes Administrator(CKA) 2024
+This is the GitHub repository to host all the notes, diagrams, assignments, and resources from the CKA course published on YouTube.
 
+Note: Expand each of the section to view the details.
 <details>
   <summary>1. Cluster Architecture and core concepts</summary>
   
