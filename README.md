@@ -5,6 +5,7 @@ This is the GitHub repository to host all the notes, diagrams, assignments, and 
 Note: Expand each of the section to view the details.
 <details>
   <summary>1. Cluster Architecture and core concepts</summary>
+
   
 - **Day1 Video**: Docker Fundamentals
     -  What is Docker?
