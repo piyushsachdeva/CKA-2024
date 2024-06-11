@@ -6,7 +6,12 @@ Note: Expand each of the section to view the details.
 <details>
   <summary>1. Cluster Architecture and core concepts</summary>
   
-- Docker fundamentals , Architecture etc
+- **Day1 Video**: Docker Fundamentals
+    -  What is Docker?
+    -  How is it different from Virtual Machines
+    -  Docker Architecture
+    -  Docker flow
+    -  Docker commands
 - Dockerize an application, pull , push, tag etc
 - Kubernetes Architecture
 - Docker Vs ContainerD
