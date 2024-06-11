@@ -9,9 +9,13 @@ Note: Expand each of the section to view the details.
   
 **Day1 Video**: Docker Fundamentals
     -  What is Docker?
+    
     -  How is it different from Virtual Machines
+    
     -  Docker Architecture
+    
     -  Docker flow
+    
     -  Docker commands
     
 **Day 2 Video:** Dockerize an application
