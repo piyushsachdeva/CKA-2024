@@ -7,27 +7,39 @@ Note: Expand each of the section to view the details.
   <summary>1. Cluster Architecture and core concepts</summary>
 
   
-- **Day1 Video**: Docker Fundamentals
+**Day1 Video**: Docker Fundamentals
     -  What is Docker?
     -  How is it different from Virtual Machines
     -  Docker Architecture
     -  Docker flow
     -  Docker commands
-- Dockerize an application, pull , push, tag etc
-- Kubernetes Architecture
-- Docker Vs ContainerD
-- kubectl cli 
-- ETCD
-- KubeAPIServer
-- Kube Controller Manager
-- Kube Schedular
-- Kubelet
-- Kube Proxy
+    
+**Day 2 Video:** Dockerize an application
+    - What is Dockerfile, and how do you write it?
+    - docker pull , push, tag etc
+**Day3 Video:** Docker Multi-Stage Builds
+    - How to write dockerfile for multistage build
+    - Benefits of multi-stage builds
+    - Other docker best practises
+**Day 4 Video:** Why do We need Kubernetes?
+**Day 5 Video:** Kubernetes Architecture
+    - Control plane VS Worker Nodes
+    - Overview of control plane components 
+**Day 6 Video** : Install Kubernetes Cluster locally
+    - Install Kind cluster locally
+    - How to access the cluster
 </details>
 
 <details>
   <summary>2. Workloads</summary>
 
+**Day7 Video** : Pods in Kubernetes
+    - What are pods in Kubernetes?
+    - Containers VS Pods
+    - Imperative VS Declarative way for creating Kubernetes resources
+    - Create a sample pod using imperative way
+    - Create a sample pod using declarative way
+    - Inspect the pods
 - Services in Kubernetes: Nodeport, ClusterIP,LoadBalancer
 - NameSpaces
 - Commands and Arguments
