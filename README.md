@@ -2,6 +2,8 @@
 ## First video will be live on 16th June
 This is the GitHub repository to host all the notes, diagrams, assignments, and resources from the CKA course published on YouTube.
 
+**Checkout this [file](https://github.com/piyushsachdeva/CKA-2024/blob/main/%2340daysofkubernetes.md) for the #40daysofkubernetes challenge details**
+
 ### Day0: Intro to the series
 - Course Introduction
 - Discord community server for assistance
