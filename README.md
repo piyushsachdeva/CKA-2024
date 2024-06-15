@@ -1,9 +1,15 @@
-# Work in progress
-# Certified Kubernetes Administrator(CKA) 2024
+# Certified Kubernetes Administrator(CKA) 2024 
+## First video will be live on 16th June
 This is the GitHub repository to host all the notes, diagrams, assignments, and resources from the CKA course published on YouTube.
 
+### Day0: Intro to the series
+- Course Introduction
+- Discord community server for assistance
+- Live QnA sessions every weekend
+- #40daysofkubernetes challenge
+
 ### Day 1: Docker Fundamentals
-**Status**: Yet to be published
+**Status**: Video Live Date: 17th June
 
 - What is Docker?
 - How is it different from Virtual Machines
@@ -12,16 +18,18 @@ This is the GitHub repository to host all the notes, diagrams, assignments, and 
 -  Docker commands
     
 ### Day 2 Video: Dockerize an application
-**Status**: Yet to be published
+**Status**:  Video Live Date: 18th June
 - What is Dockerfile, and how do you write it?
 - docker pull , push, tag etc
 
 ## Day3 Video: Docker Multi-Stage Builds
-- How to write dockerfile for multistage build
+**Status**:  Video Live Date: 19th June
+- How to write a dockerfile for multistage build
 - Benefits of multi-stage builds
-- Other docker best practises
+- Other docker best practices
 
 ## Day 4 Video: Why do We need Kubernetes?
+**Status**:  Video Live Date: 20th June
 
 ## Day 5 Video: Kubernetes Architecture
 - Control plane VS Worker Nodes
@@ -56,28 +64,28 @@ This is the GitHub repository to host all the notes, diagrams, assignments, and 
 ## Day 10 Video: Namespaces:
 - NameSpaces
 - Services and namespaces
-- Demo in-depth
+
 
 ## Day 11 Video: Multi-container Pods
 - What are multi-container pods
 - Multi-container pods pattern - sidecar/init etc
 - Environment variables in Kubernetes
-- Demo
+
 
 ## Day 12 Video: Daemonset, Cronjob, and job
 - What are Daemonset, cronjobs and Jobs
 - Cron fundamentals with examples
-- Demo
+
 
 ## Day13 Video: Static Pods
 - What are static pods
 - Labels and selectors
 - Manual Scheduling
-- Demo
+
 
 ## Day14 Video: Taints and Tolerations
 - What are taints and tolerations
-- demo
+
 
 ## Day15 Video: Node Affinity
 
@@ -87,12 +95,12 @@ This is the GitHub repository to host all the notes, diagrams, assignments, and 
 - Horizontal VS Vertical Autoscaling
 - HPA, VPA, Cluster autoscaling, NAP
 - Metrics server
-- Demo
+
 
 ## Day18 Video: Probes in Kubernetes
 - Liveness VS Readiness Probes
 - HTTP/TCP/Command-based health checks
-- Demo
+
 
 ## Day19 Video: Config maps and Secrets
 - concept and demo
@@ -105,7 +113,7 @@ This is the GitHub repository to host all the notes, diagrams, assignments, and 
 - How TLS works in Kubernetes
 - Why we need TLS in Kubernetes
 - Private key and public certificates
-- Demo
+
 
 ## Day 22 Video: Authorization
 - Authorization VS Authentication
@@ -116,7 +124,7 @@ This is the GitHub repository to host all the notes, diagrams, assignments, and 
 - Role and role binding
 - Generate and approve the certificate
 - grant access to the user
-- demo
+
 
 ## Day 24 Video: Cluster role and cluster role binding
 - concept and demo
@@ -124,60 +132,69 @@ This is the GitHub repository to host all the notes, diagrams, assignments, and 
 ## Day 25 Video: Service Account
 - What are service accounts, and why do we use them?
 - Create a service account and grant access to it
-- demo
+
 
 ## Day26 Video: Network Policies
 - Network policy concept
 - CNI installation
 - enforce network policy by creating the object
   
-## Below videos are in the recording process
+## Day27 Video: Use Kubeadm to install a Kubernetes cluster
+- Provision underlying infrastructure to deploy a Kubernetes cluster
+- Setup Master Node to deploy Kubernetes components
+- Setup multiple worker nodes and join the master node
 
-- Docker storage
-- CSI
-- Storage Class
-- Volumes and Persistent Volumes
-- Volume modes, Access modes and reclaim policies for volumes
+## Day28 Video: Docker storage fundamentals
+- Why do we need storage in docker containers
+- persistent docker storage
 
-<details>
-  <summary>6. Troubleshooting</summary>
+## Day29 Video: Storage in Kubernetes
+- How storage works in Kubernetes
+- hostpath volumes in Kubernetes
+- Persistent volumes and Persistent volume claims
+- Volume modes, Access modes, and reclaim policies for volumes
+- Storage classes and provisions
 
+## Day30 Video: How does DNS work?
+- What happens when you type a website address in your browser
+- different components involved in DNS
+- End-to-end flow
+- Important files and resources
+
+## Day31 Video: Docker Networking
+- How Networking works in a docker container
+
+## Day32 Video: Kubernetes Networking
+- CNI , Network Add-on
+- Containerd vs runc , container runtime
+
+## Day 33 Video: Ingress controller and Ingress resources
+
+## Day 34 Video: Perform a version upgrade on a Kubernetes cluster using Kubeadm
+
+## Day 35 Video: Implement etcd backup and restore
+
+## Day 36 Video: Monitoring, Logging and Alerting
 - Monitor Cluster components, Evaluate cluster and node logging
 - Understand how to monitor applications, metric server
 - Manage container stdout & stderr logs
-- Troubleshoot application failure
-- Troubleshoot cluster component failure
-- Network Troubleshooting
-- Worker node failure - cordon and drain
-</details>
 
-<details>
-  <summary>7. Installation</summary>
+## Day 36 Video: Troubleshoot application failure
 
-- Use Kubeadm to install a basic cluster
-- Manage a highly-available Kubernetes cluster
-- Provision underlying infrastructure to deploy a Kubernetes cluster
-- Perform a version upgrade on a Kubernetes cluster using Kubeadm
-- Implement etcd backup and restore
-</details>
+## Day 37 Video: Troubleshoot cluster component failure
 
-<details>
-  <summary>8. Services and Networking</summary>
+## Day 38 Video: Network Troubleshooting
+ - Worker node failure
+ - cordon, uncordon and drain (maintenance)
 
-- Switching , Routing, DNS and Core-DNS
-- Network Namespace
-- Docker Networking
-- CNI
-- Understand host networking configuration on the cluster nodes
-- Understand connectivity between Pods
-- Know how to use Ingress controllers and Ingress resources
-- Choose an appropriate container network interface plugin - CNI Weave
-</details>
+## Day 39 Video: Kubernetes Installation "the hard way"
+- Installing Kubernetes manually using binaries
 
-<details>
-  <summary>9. Conclusion</summary>
+## Day 40 Video: Realtime project: Host your own container registry on Kubernetes
+- This project will include multiple Kubernetes topics with real-time implementation.
+
+## Day 40 Video: 
 
 - Exam Pattern
-- Last minute preparation
+- Last-minute preparation
 - Tips and Tricks
-</details>
