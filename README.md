@@ -193,7 +193,7 @@ This is the GitHub repository to host all the notes, diagrams, assignments, and 
 ## Day 40 Video: Realtime project: Host your own container registry on Kubernetes
 - This project will include multiple Kubernetes topics with real-time implementation.
 
-## Day 40 Video: 
+## Bonus Video: Mission CKA
 
 - Exam Pattern
 - Last-minute preparation
