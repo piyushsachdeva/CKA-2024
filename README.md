@@ -1,17 +1,18 @@
 # Certified Kubernetes Administrator(CKA) 2024 
-## First video will be live on 16th June
+
 This is the GitHub repository to host all the notes, diagrams, assignments, and resources from the CKA course published on YouTube.
 
 **Checkout this [file](https://github.com/piyushsachdeva/CKA-2024/blob/main/%2340daysofkubernetes.md) for the #40daysofkubernetes challenge details**
 
 ### Day0: Intro to the series
+[![Course Introduction](https://img.youtube.com/vi/6_gMoe7Ik8k/sddefault.jpg)](https://youtu.be/6_gMoe7Ik8k)
 - Course Introduction
 - Discord community server for assistance
 - Live QnA sessions every weekend
 - #40daysofkubernetes challenge
 
 ### Day 1: Docker Fundamentals
-**Status**: Video Live Date: 17th June
+**Status**: Video is live, check out 👉 [Day1](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day01) 👈 folder for notes and useful links ✅
 
 - What is Docker?
 - How is it different from Virtual Machines
