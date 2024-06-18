@@ -75,6 +75,15 @@ docker run -dp 3000:3000 username/new-reponame:tagname
 
 ```
 docker exec -it containername sh
+or
+docker exec -it containerid sh
+```
+- To view docker logs
+
+```
+docker logs containername
+or
+docker logs containerid
 ```
 
 
