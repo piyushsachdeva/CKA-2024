@@ -21,7 +21,7 @@ This is the GitHub repository to host all the notes, diagrams, assignments, and 
 -  Docker commands
     
 ### Day 2 Video: Dockerize an application
-**Status**:  Video Live Date: 18th June
+**Status**: Video is live, check out 👉 [Day2](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day02) 👈 folder for notes and useful links ✅
 - What is Dockerfile, and how do you write it?
 - docker pull , push, tag etc
 
