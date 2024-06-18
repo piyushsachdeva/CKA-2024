@@ -26,7 +26,7 @@ This is the GitHub repository to host all the notes, diagrams, assignments, and 
 - docker pull , push, tag etc
 
 ## Day3 Video: Docker Multi-Stage Builds
-**Status**:  Video Live Date: 19th June
+**Status**: Video is live, check out 👉 [Day3](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day03) 👈 folder for notes and useful links ✅
 - How to write a dockerfile for multistage build
 - Benefits of multi-stage builds
 - Other docker best practices
