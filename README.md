@@ -1,6 +1,7 @@
 # Certified Kubernetes Administrator(CKA) 2024 
 
 This is the GitHub repository to host all the notes, diagrams, assignments, and resources from the CKA course published on YouTube.
+
 Note: If you found this helpful, consider giving this a star ⭐
 
 **Checkout this [file](https://github.com/piyushsachdeva/CKA-2024/blob/main/%2340daysofkubernetes.md) for the #40daysofkubernetes challenge details**
