@@ -219,28 +219,28 @@ Note: If you found the content helpful, consider giving the repository a star �
 
 I've been overwhelmed by the fantastic response to my new YouTube series on the Certified Kubernetes Administrator (CKA) exam! But with all the excitement came some questions, and I'm here to address them head-on.
 
-## 𝐈 𝐜𝐚𝐧𝐧𝐨𝐭 𝐚𝐟𝐟𝐨𝐫𝐝 𝐭𝐡𝐞 𝐂𝐊𝐀 𝐞𝐱𝐚𝐦 𝐢𝐭'𝐬 𝐭𝐨𝐨 𝐞𝐱𝐩𝐞𝐧𝐬𝐢𝐯𝐞. 𝐒𝐡𝐨𝐮𝐥𝐝 𝐈 𝐬𝐭𝐢𝐥𝐥 𝐟𝐨𝐥𝐥𝐨𝐰 𝐚𝐥𝐨𝐧𝐠?
+### 1) 𝐈 𝐜𝐚𝐧𝐧𝐨𝐭 𝐚𝐟𝐟𝐨𝐫𝐝 𝐭𝐡𝐞 𝐂𝐊𝐀 𝐞𝐱𝐚𝐦 𝐢𝐭'𝐬 𝐭𝐨𝐨 𝐞𝐱𝐩𝐞𝐧𝐬𝐢𝐯𝐞. 𝐒𝐡𝐨𝐮𝐥𝐝 𝐈 𝐬𝐭𝐢𝐥𝐥 𝐟𝐨𝐥𝐥𝐨𝐰 𝐚𝐥𝐨𝐧𝐠?
 
 The content of this playlist is based on the exam curriculum because it provides a well-organized learning path. You don't have to worry about the roadmap; you can focus on learning. Even if you are not taking the exam now, you are still gaining the hands-on knowledge that a Kubernetes administrator should have; that's good enough!
 
-## 𝟐) 𝐖𝐡𝐚𝐭 𝐚𝐫𝐞 𝐭𝐡𝐞 𝐩𝐫𝐞𝐫𝐞𝐪𝐮𝐢𝐬𝐢𝐭𝐞𝐬 𝐟𝐨𝐫 𝐭𝐡𝐢𝐬 𝐜𝐨𝐮𝐫𝐬𝐞?
+### 𝟐) 𝐖𝐡𝐚𝐭 𝐚𝐫𝐞 𝐭𝐡𝐞 𝐩𝐫𝐞𝐫𝐞𝐪𝐮𝐢𝐬𝐢𝐭𝐞𝐬 𝐟𝐨𝐫 𝐭𝐡𝐢𝐬 𝐜𝐨𝐮𝐫𝐬𝐞?
 
 The only prerequisites are basic Linux understanding; all the other prerequisites are already covered in this series. Check out the GitHub repo below for the course content. Yes, it is absolutely free for anyone to join and follow along.
  
 
-## 𝟑) 𝐖𝐡𝐢𝐜𝐡 𝐂𝐥𝐨𝐮𝐝 𝐩𝐫𝐨𝐯𝐢𝐝𝐞𝐫 𝐚𝐫𝐞 𝐰𝐞 𝐮𝐬𝐢𝐧𝐠 𝐟𝐨𝐫 𝐭𝐡𝐞 𝐝𝐞𝐦𝐨?
+### 𝟑) 𝐖𝐡𝐢𝐜𝐡 𝐂𝐥𝐨𝐮𝐝 𝐩𝐫𝐨𝐯𝐢𝐝𝐞𝐫 𝐚𝐫𝐞 𝐰𝐞 𝐮𝐬𝐢𝐧𝐠 𝐟𝐨𝐫 𝐭𝐡𝐞 𝐝𝐞𝐦𝐨?
 
 We will not be using any Cloud as the focus is on Kubernetes. Using a cloud service would mean the cloud provider manages the control plane, limiting learning. We will use a local Kubernetes installation on a Kind cluster and a Kubeadm installation on virtual machines. 
 
-## 𝟒) 𝐀𝐫𝐞 𝐰𝐞 𝐝𝐨𝐢𝐧𝐠 𝐚𝐧𝐲 𝐫𝐞𝐚𝐥-𝐭𝐢𝐦𝐞 𝐩𝐫𝐨𝐣𝐞𝐜𝐭𝐬 𝐢𝐧 𝐭𝐡𝐢𝐬 𝐬𝐞𝐫𝐢𝐞𝐬?
+### 𝟒) 𝐀𝐫𝐞 𝐰𝐞 𝐝𝐨𝐢𝐧𝐠 𝐚𝐧𝐲 𝐫𝐞𝐚𝐥-𝐭𝐢𝐦𝐞 𝐩𝐫𝐨𝐣𝐞𝐜𝐭𝐬 𝐢𝐧 𝐭𝐡𝐢𝐬 𝐬𝐞𝐫𝐢𝐞𝐬?
 
 Yes, there will be a couple of real-time projects at the end of this series. We cannot do real-time full-fledged projects in Kubernetes without completing all the essential topics. That is why I added the projects at the end and hands-on tasks in almost every video.
 
-## 5) 𝐇𝐨𝐰 𝐦𝐚𝐧𝐲 𝐯𝐢𝐝𝐞𝐨𝐬 𝐰𝐢𝐥𝐥 𝐛𝐞 𝐩𝐮𝐛𝐥𝐢𝐬𝐡𝐞𝐝 𝐞𝐯𝐞𝐫𝐲 𝐰𝐞𝐞𝐤?
+### 5) 𝐇𝐨𝐰 𝐦𝐚𝐧𝐲 𝐯𝐢𝐝𝐞𝐨𝐬 𝐰𝐢𝐥𝐥 𝐛𝐞 𝐩𝐮𝐛𝐥𝐢𝐬𝐡𝐞𝐝 𝐞𝐯𝐞𝐫𝐲 𝐰𝐞𝐞𝐤?
 
 I have finished recording the entire series and am editing the last few videos. I plan to publish 3 to 4 weekly videos every Monday through Thursday. I have chosen not to publish daily so that viewers following the series have time to understand the concepts, practice hands-on, document their learning, and not feel left behind.
 
-## 6) 𝐖𝐡𝐚𝐭 𝐢𝐟 𝐰𝐞 𝐚𝐫𝐞 𝐬𝐭𝐮𝐜𝐤 𝐬𝐨𝐦𝐞𝐰𝐡𝐞𝐫𝐞 𝐚𝐧𝐝 𝐧𝐞𝐞𝐝 𝐚𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐜𝐞?
+### 6) 𝐖𝐡𝐚𝐭 𝐢𝐟 𝐰𝐞 𝐚𝐫𝐞 𝐬𝐭𝐮𝐜𝐤 𝐬𝐨𝐦𝐞𝐰𝐡𝐞𝐫𝐞 𝐚𝐧𝐝 𝐧𝐞𝐞𝐝 𝐚𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐜𝐞?
 
 You can comment on the video by providing complete details about the issue/query, or you can open a new thread in the discord channel of help-cka-2024, and someone will help you. I also plan to host a live Q&A session every weekend.
 
