@@ -44,9 +44,10 @@ Note: If you found the content helpful, consider giving the repository a star �
 - Other docker best practices
 
 ## Day 4 Video: Why do We need Kubernetes?
-**Status**:  Video Live Date: 20th June
+**Status**: Video is live, check out 👉 [Day4](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day04) 👈 folder for notes and useful links ✅
 
 ## Day 5 Video: Kubernetes Architecture
+**Status**: Video is live, check out 👉 [Day5](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day05) 👈 folder for notes and useful links ✅
 - Control plane VS Worker Nodes
 - Overview of control plane components
 
