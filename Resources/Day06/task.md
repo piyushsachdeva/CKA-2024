@@ -14,7 +14,8 @@
 - Run commands such as `kubectl get nodes` and ensure you have all the nodes ready
 - These nodes are nothing but containers as KIND means Kubernetes IN Docker, which creates containers and uses them as nodes.
 - Run `docker ps` command to verify that all nodes are running as containers.
-** Please remember to include references to the video in your blog and any documentation you follow.**
+
+**Please remember to include references to the video in your blog and any documentation you follow.**
 
 2. **Share your learnings**: Document your key takeaways and insights in a blog post and social media update
 3. **Make it public**: Share what you learn publicly on LinkedIn or Twitter.
