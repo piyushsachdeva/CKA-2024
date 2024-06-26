@@ -52,12 +52,13 @@ Note: If you found the content helpful, consider giving the repository a star �
 - Overview of control plane components
 
 ## Day 6 Video: Install Kubernetes Cluster locally
+**Status**: Video is live, check out 👉 [Day6](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day06) 👈 folder for notes and useful links ✅
 
 - Install Kind cluster locally
 - How to access the cluster
 
 ## Day7 Video: Pods in Kubernetes
-
+**Status**: Video is live, check out 👉 [Day7](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day07) 👈 folder for notes and useful links ✅
 - What are pods in Kubernetes?
 - Containers VS Pods
 - Imperative VS Declarative way for creating Kubernetes resources
