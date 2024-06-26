@@ -13,7 +13,7 @@
 - Use that YAML to create a new pod with the name nginx-new.
 
 **Task3**
-- Apply the below YAML and fix the errors
+- Apply the below YAML and fix the errors, including all the commands that you run during the troubleshooting and the error message
 
 ```YAML
 apiVersion: v1
