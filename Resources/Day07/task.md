@@ -1,8 +1,8 @@
-## Task 6/40
+## Task 7/40
 
 
-1. **Task Details**
-- Document your learnings from the video in a blog , embed the video and includes all the references in the blog.
+1. **Task Details** ☕️
+- Document what you learned from the video in a blog, embed the video, and include all the references in the blog.
 
 **Task 1**
 - Create a pod using the imperative command and use nginx as the image
@@ -28,8 +28,6 @@ spec:
     name: redis
     
 ```
-**Please remember to include references to the video in your blog and any documentation you follow.**
-
 2. **Share your learnings**: Document your key takeaways and insights in a blog post and social media update
 3. **Make it public**: Share what you learn publicly on LinkedIn or Twitter.
    - **Tag us and use the hashtag**: Include the following in your post:
