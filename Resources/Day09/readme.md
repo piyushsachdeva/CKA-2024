@@ -37,6 +37,22 @@ There are 4 types of Services:
 
 ![image](https://github.com/piyushsachdeva/CKA-2024/assets/40286378/3817a5e7-5208-41c8-9dee-d4c052038151)
 
+#### Sample YAML for ClusterIP
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: cluster-svc
+  labels:
+    env: demo
+spec:
+  ports:
+  - port: 80
+  selector:
+    env: demo
+```
+
 
 ### NodePort
 
