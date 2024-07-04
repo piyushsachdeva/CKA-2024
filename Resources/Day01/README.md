@@ -35,6 +35,11 @@
 ![image](https://github.com/piyushsachdeva/CKA-2024/assets/40286378/a8f134d8-b70e-4c99-857e-5da26e68674b)
 
 
+## That's how docker was born(Just kidding!)
+
+![image](https://github.com/piyushsachdeva/CKA-2024/assets/40286378/c781a038-3420-4980-a3d8-ab123fc33d95)
+
+
 
 ## A Simple Docker WorkFlow
 
