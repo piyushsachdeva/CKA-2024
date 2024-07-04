@@ -67,6 +67,7 @@ Note: If you found the content helpful, consider giving the repository a star �
 - Inspect the pods
 
 ## Day8 Video: Replicasets and Deployments in Kubernetes:
+**Status**: Video is live, check out 👉 [Day8](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day08) 👈 folder for notes and useful links ✅
 - Replication Controller
 - ReplicaSet
 - Deployments
@@ -74,22 +75,25 @@ Note: If you found the content helpful, consider giving the repository a star �
 - Scale the deployment
 
 ## Day9 Video: Services in Kubernetes:
-
+**Status**: Video is live, check out 👉 [Day9](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day09) 👈 folder for notes and useful links ✅
 - What are services in Kubernetes, and why do we need them?
 - Node port, ClusterIP, and LoadBalancer
 
 ## Day 10 Video: Namespaces:
+**Status**: Video is live, check out 👉 [Day10](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day10) 👈 folder for notes and useful links ✅
 - NameSpaces
 - Services and namespaces
 
 
 ## Day 11 Video: Multi-container Pods
+**Status**: Video is live, check out 👉 [Day11](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day11) 👈 folder for notes and useful links ✅
 - What are multi-container pods
 - Multi-container pods pattern - sidecar/init etc
 - Environment variables in Kubernetes
 
 
 ## Day 12 Video: Daemonset, Cronjob, and job
+**Status**: Video is live, check out 👉 [Day12](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day12) 👈 folder for notes and useful links ✅
 - What are Daemonset, cronjobs and Jobs
 - Cron fundamentals with examples
 
@@ -102,7 +106,6 @@ Note: If you found the content helpful, consider giving the repository a star �
 
 ## Day14 Video: Taints and Tolerations
 - What are taints and tolerations
-
 
 ## Day15 Video: Node Affinity
 
