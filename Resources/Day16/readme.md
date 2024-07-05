@@ -34,7 +34,7 @@ In our video, we demonstrated some practical examples using YAML files and Kuber
 1. **Exceeding Available Memory**:
    - A pod requesting more memory than is available will be killed due to an OOM (Out of Memory) error.
      
-   ```yaml
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
