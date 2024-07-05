@@ -1,6 +1,6 @@
 # Day 16/40 - Kubernetes Requests and Limits
 
-## Check out the video below for Day14 👇
+## Check out the video below for Day16 👇
 
 [![Day12/40 - Kubernetes Requests and Limits](https://img.youtube.com/vi/Q-mk6EZVX_Q/sddefault.jpg)](https://youtu.be/Q-mk6EZVX_Q)
 
