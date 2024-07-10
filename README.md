@@ -199,16 +199,13 @@ Note: If you found the content helpful, consider giving the repository a star тн
 - Understand how to monitor applications, metric server
 - Manage container stdout & stderr logs
 
-## Day 36 Video: Troubleshoot application failure
+## Day 37 Video: Troubleshoot application failure
 
-## Day 37 Video: Troubleshoot cluster component failure
+## Day 38 Video: Troubleshoot cluster component failure
 
-## Day 38 Video: Network Troubleshooting
+## Day 39 Video: Network Troubleshooting
  - Worker node failure
  - cordon, uncordon and drain (maintenance)
-
-## Day 39 Video: Kubernetes Installation "the hard way"
-- Installing Kubernetes manually using binaries
 
 ## Day 40 Video: Realtime project: Host your own container registry on Kubernetes
 - This project will include multiple Kubernetes topics with real-time implementation.
