@@ -181,8 +181,9 @@ Note: If you found the content helpful, consider giving the repository a star тн
 - End-to-end flow
 - Important files and resources
 
-## Day31 Video: Docker Networking
-- How Networking works in a docker container
+## Day31 Video: DNS in kubernetes
+- How DNS works in Kubernetes
+- Core-DNS
 
 ## Day32 Video: Kubernetes Networking
 - CNI , Network Add-on
