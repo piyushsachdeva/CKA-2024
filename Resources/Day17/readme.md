@@ -4,9 +4,15 @@
 
 [![Day17/40 - Kubernetes Autoscaling | HPA Vs VPA](https://img.youtube.com/vi/afUL5jGoLx0/sddefault.jpg)](https://youtu.be/afUL5jGoLx0)
 
+## Autoscaling types
+
+![image](https://github.com/user-attachments/assets/684d96ca-60b7-4496-a180-dd1ab977a9bb)
+
+
 ## HPA v/S VPA
 
 ![image](https://github.com/user-attachments/assets/5b68a4b1-e5de-4086-9f55-6845bd420f1b)
+
 
 
 ### Sample commands used in the video:
