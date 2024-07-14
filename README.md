@@ -211,7 +211,9 @@ Note: If you found the content helpful, consider giving the repository a star тн
 ## Day 40 Video: Realtime project: Host your own container registry on Kubernetes
 - This project will include multiple Kubernetes topics with real-time implementation.
 
-## Bonus Video: Mission CKA
+## Day 41 Video: JSONPath, advance kubectl commands
+
+## Day 42 Bonus Video: Mission CKA
 
 - Exam Pattern
 - Last-minute preparation
