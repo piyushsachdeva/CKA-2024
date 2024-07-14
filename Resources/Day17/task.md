@@ -6,11 +6,9 @@ In this exercise, you will explore Kubernetes Autoscaling , HPA, VPA, Cluster Au
 Also, could you do the port binding at the cluster level if you are using KIND? The Day9 video has the details on how to do that.
 
 ### Task details
-- Perform the steps as per the video demo , commands and yaml given in the readme file
-
-
-3. **Share your learnings**: Document your key takeaways and insights in a blog post and social media update
-4. **Make it public**: Share what you learn publicly on LinkedIn or Twitter.
+1. Perform the steps as per the video demo , commands and yaml given in the readme file
+2. **Share your learnings**: Document your key takeaways and insights in a blog post and social media update
+3. **Make it public**: Share what you learn publicly on LinkedIn or Twitter.
    - **Tag us and use the hashtag**: Include the following in your post:
      - Tag [@PiyushSachdeva](https://www.linkedin.com/in/piyush-sachdeva) and [@CloudOps Community](https://www.linkedin.com/company/thecloudopscomm) (on both platforms)
      - Use the hashtag **#40daysofkubernetes**
