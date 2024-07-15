@@ -99,19 +99,26 @@ Note: If you found the content helpful, consider giving the repository a star �
 
 
 ## Day13 Video: Static Pods
+**Status**: Video is live, check out 👉 [Day13](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day13) 👈 folder for notes and useful links ✅
 - What are static pods
 - Labels and selectors
 - Manual Scheduling
 
 
 ## Day14 Video: Taints and Tolerations
-- What are taints and tolerations
+**Status**: Video is live, check out 👉 [Day14](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day14) 👈 folder for notes and useful links ✅
 
 ## Day15 Video: Node Affinity
+**Status**: Video is live, check out 👉 [Day15](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day15) 👈 folder for notes and useful links ✅
+
 
 ## Day16 Video: Resource Requests and Limits
+**Status**: Video is live, check out 👉 [Day16](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day16) 👈 folder for notes and useful links ✅
+
 
 ## Day17 Video: Autoscaling in Kubernetes
+**Status**: Video is live, check out 👉 [Day17](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day17) 👈 folder for notes and useful links ✅
+
 - Horizontal VS Vertical Autoscaling
 - HPA, VPA, Cluster autoscaling, NAP
 - Metrics server
