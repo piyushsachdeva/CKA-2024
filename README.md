@@ -125,24 +125,28 @@ Note: If you found the content helpful, consider giving the repository a star �
 
 
 ## Day18 Video: Probes in Kubernetes
+**Status**: Video is live, check out 👉 [Day18](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day18) 👈 folder for notes and useful links ✅
 - Liveness VS Readiness Probes
 - HTTP/TCP/Command-based health checks
 
 
 ## Day19 Video: Config maps and Secrets
+**Status**: Video is live, check out 👉 [Day19](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day19) 👈 folder for notes and useful links ✅
 - concept and demo
   
 ## Day 20 Video: How SSL/TLS works
+**Status**: Video is live, check out 👉 [Day20](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day20) 👈 folder for notes and useful links ✅
 - Symmetric VS Asymmetric encryption
 - SSL certificates and Certificate Authority
 
 ## Day 21 Video: TLS in Kubernetes
+**Status**: Video is live, check out 👉 [Day21](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day21) 👈 folder for notes and useful links ✅
 - How TLS works in Kubernetes
 - Why we need TLS in Kubernetes
 - Private key and public certificates
 
 
-## Day 22 Video: Authorization
+## Day 22 Video: Authorization in Kubernetes
 - Authorization VS Authentication
 - Authorization types, ABAC, RBAC, Node, Webhook
 - Kubeconfig
