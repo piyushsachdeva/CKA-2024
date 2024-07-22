@@ -9,6 +9,10 @@
 
 Imagine your cluster is a fortress.  Authentication is like checking IDs at the gate.  Kubeconfig is your keycard containing certificates that identify you to the Kubernetes API server.
 
+
+![image](https://github.com/user-attachments/assets/057a58d8-537b-4dcb-96e6-ce195d1232bb)
+
+
 ### Making API Calls:
 
 To run a command against a cluster, you can use the below command
