@@ -28,6 +28,6 @@ kubectl certificate deny <certificate-signing-request-name>
 ```
 
 **Below document can also be referred**
-```
+
 https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests/#create-certificatessigningrequest
-```
+
