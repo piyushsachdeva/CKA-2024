@@ -217,18 +217,27 @@ Note: If you found the content helpful, consider giving the repository a star тн
 
 ## Day 39 Video: Network Troubleshooting
  - Worker node failure
- - cordon, uncordon and drain (maintenance)
+ - cordon, uncordon and drain (maintenance)\
 
-## Day 40 Video: Realtime project: Host your own container registry on Kubernetes
-- This project will include multiple Kubernetes topics with real-time implementation.
+## Day 40 Video: JSONPath, advance kubectl commands
+- JSON for beginners
+- JSON v/s YAML
+- JSONPATH basics
+- Multiple JSONPATH queries to fetch details
 
-## Day 41 Video: JSONPath, advance kubectl commands
-
-## Day 42 Bonus Video: Mission CKA
+## Day 41 Mission CKA
 
 - Exam Pattern
+- Pre-requisites
 - Last-minute preparation
 - Tips and Tricks
+- Sample questions
+
+
+## Day 42 Video: Realtime project: Host your own container registry on Kubernetes
+- This project will include multiple Kubernetes topics with real-time implementation.
+
+
 
 
 ## Frequently asked questions:
