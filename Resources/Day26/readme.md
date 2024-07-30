@@ -9,7 +9,8 @@
 Network policy allows you to control the Inbound and Outbound traffic to and from the cluster.
 For example, you can specify a deny-all network policy that restricts all incoming traffic to the cluster, or you can create an allow-network policy that will only allow certain services to be accessed by certain pods on a specific port.
 
-![image](https://github.com/user-attachments/assets/8e76155d-6cc0-4e08-89d0-7c6ec303fb2b)
+![image](https://github.com/user-attachments/assets/30a1758f-5ab9-46c9-ab11-4153056d4847)
+
 
 
 ### Manifests used in the video
