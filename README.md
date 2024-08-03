@@ -147,35 +147,47 @@ Note: If you found the content helpful, consider giving the repository a star �
 
 
 ## Day 22 Video: Authorization in Kubernetes
+**Status**: Video is live, check out 👉 [Day22](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day22) 👈 folder for notes and useful links ✅
 - Authorization VS Authentication
 - Authorization types, ABAC, RBAC, Node, Webhook
 - Kubeconfig
 
 ## Day 23 Video: Role-based access control (RBAC)
+**Status**: Video is live, check out 👉 [Day23](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day23) 👈 folder for notes and useful links ✅
 - Role and role binding
 - Generate and approve the certificate
 - grant access to the user
 
 
 ## Day 24 Video: Cluster role and cluster role binding
+**Status**: Video is live, check out 👉 [Day24](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day24) 👈 folder for notes and useful links ✅
+
 - concept and demo
 
 ## Day 25 Video: Service Account
+**Status**: Video is live, check out 👉 [Day25](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day25) 👈 folder for notes and useful links ✅
+
 - What are service accounts, and why do we use them?
 - Create a service account and grant access to it
 
 
 ## Day26 Video: Network Policies
+**Status**: Video is live, check out 👉 [Day26](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day26) 👈 folder for notes and useful links ✅
+
 - Network policy concept
 - CNI installation
 - enforce network policy by creating the object
   
 ## Day27 Video: Use Kubeadm to install a Kubernetes cluster
+**Status**: Video is live, check out 👉 [Day27](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day27) 👈 folder for notes and useful links ✅
+
 - Provision underlying infrastructure to deploy a Kubernetes cluster
 - Setup Master Node to deploy Kubernetes components
 - Setup multiple worker nodes and join the master node
 
 ## Day28 Video: Docker storage fundamentals
+**Status**: Video is live, check out 👉 [Day28](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day28) 👈 folder for notes and useful links ✅
+
 - Why do we need storage in docker containers
 - persistent docker storage
 
