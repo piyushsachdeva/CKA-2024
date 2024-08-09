@@ -20,6 +20,9 @@ nodes:
 - role: worker
 - role: worker
 ```
+###command to create new cluster 
+
+``` kind create cluster --config kind.yaml --name cka-cluster```
 
 ### What is Service in Kubernetes
 
