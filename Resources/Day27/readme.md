@@ -169,3 +169,22 @@ kubeadm token create --print-join-command
 ## Validation
 
 If all the above steps were completed, you should be able to run `kubectl get nodes` on the master node, and it should return all the 3 nodes in ready status.
+
+Also, make sure all the pods are up and running by using the command as below:
+` kubectl get pods -A`
+
+>If your Calico-node pods are not healthy, please perform the below steps:
+
+- Disabled source/destination checks for master and worker nodes too.
+- Configure Security group rules, Bidirectional, all hosts,TCP 179(Attach it to master and worker nodes)
+- Update the ds using the command:
+`kubectl set env daemonset/calico-node -n calico-system IP_AUTODETECTION_METHOD=interface=ens5`
+Where ens5 is your default interface, you can confirm by running `ifconfig` on all the machines
+- IP_AUTODETECTION_METHOD  is set to first-found to let Calico automatically select the appropriate interface on each node.
+- Wait for some time or delete the calico-node pods and it should be up and running.
+- If you are still facing the issue, you can follow the below workaround
+
+- Install Calico CNI addon using manifest instead of Operator and CR, and all calico pods will be up and running 
+`kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml`
+
+This is not the latest version of calico though(v.3.25). This deploys CNI in kube-system NS. 
