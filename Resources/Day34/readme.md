@@ -1,11 +1,3 @@
-- drain to evict and move  
-- and cordon unschedulable
-
-- take out node01 for maintenance
-- uncordon
-- do not evict non managed pods
-- cordon not drain
-
 ### Kubernetes Release format
 
 ![image](https://github.com/user-attachments/assets/74a7de0a-4bc2-44a7-8c8d-084dde64073e)
