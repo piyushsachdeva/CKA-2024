@@ -1,3 +1,10 @@
+# Day 34/40 - Step-By-Step Guide To Upgrade a Multi Node Kubernetes Cluster With Kubeadm
+
+## Check out the video below for Day34 👇
+
+[![Day 35/40 - Step-By-Step Guide To Upgrade a Multi Node Kubernetes Cluster With Kubeadm](https://img.youtube.com/vi/NtX75Ze47EU/sddefault.jpg)](https://youtu.be/NtX75Ze47EU)
+
+
 ### Kubernetes Release format
 
 ![image](https://github.com/user-attachments/assets/74a7de0a-4bc2-44a7-8c8d-084dde64073e)
