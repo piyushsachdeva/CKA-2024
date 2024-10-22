@@ -74,7 +74,7 @@ docker pull username/new-reponame:tagname
 - To start the docker container, use the below command
 
 ```
-docker run -dp 3000:3000 username/new-reponame:tagname
+docker run -dp 3000:80 username/new-reponame:tagname
 ```
 
 - Verify your app. If you have followed the above steps correctly, your app should be listening on localhost:3000
