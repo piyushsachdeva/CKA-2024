@@ -25,10 +25,36 @@ spec:
   initContainers:
   - name: init-myservice
     image: busybox:1.28
-    command: ['sh', '-c']
+    command: ['sh', '-c'] #command to run
     args: ['until nslookup myservice.default.svc.cluster.local; do echo waiting for myservice; sleep 2; done']
   - name: init-mydb
     image: busybox:1.28
     command: ['sh', '-c']
     args: ['until nslookup mydb.default.svc.cluster.local; do echo waiting for mydb; sleep 2; done']
+```
+
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app.kubernetes.io/name: MyApp
+spec:
+  containers:
+  - name: myapp-container
+    image: busybox:1.28
+    env:
+    command: ['sh', '-c', 'echo The app is running! && sleep 3600']
+  initContainers:
+  - name: init-myservice
+    image: busybox:1.28
+    command: ['sh', '-c'] # command to run
+    args: # arguments to the command
+      - > # multi-line string
+        until nslookup myservice.default.svc.cluster.local; do
+         echo waiting for myservice;
+         sleep 2;
+        done;
 ```
