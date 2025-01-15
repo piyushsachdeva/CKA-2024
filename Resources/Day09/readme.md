@@ -102,3 +102,16 @@ spec:
   selector:
     env: demo
 ```
+
+#### Sample YAML for external name
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  namespace: prod
+spec:
+  type: ExternalName
+  externalName: my.api.example.com
+```
