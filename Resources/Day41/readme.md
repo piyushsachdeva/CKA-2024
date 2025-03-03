@@ -77,4 +77,9 @@ I was awarded the CKA certification on July 13, 2024, and I wanted to share the 
 13) Create a pod and schedule it on node `worker01`
 14) Create an ingress resource task in the [Day 33 folder](https://github.com/piyushsachdeva/CKA-2024/blob/main/Resources/Day33/task.md)
 15) Create a pv with 1Gi capacity and mode readWriteOnce and no storage class; create a pvc with 500Mi storage and mode as readWriteOnce; it should be bounded with the pv. Create a pod that utilizes this pvc and use a mount path `/data`
-
+16) Given a statefulsets with 2 replicas, scale it upto 5 replicas.
+17) Drain the controlplane cluster, upgrade the controlplane cluster to `v1.31.0` to `v1.31.1` (Upgrade kubeadm, kubelet, kubectl, kube-apiserver, kube-controller, kube-scheduler) (No need to upgrade etcd, coredns, cni etc), after upgrade uncordon the controlplane node.
+18) Given a deployment update it with port and env, further expose it as `nodePort` at port 30007.
+19) Given a cluster wide resource, create sa and give the permission to this resource only in given namespace. (hint: Use Clusterrole and rolebinding)
+20) Create a PVC with 10Mi, mount this PVC to the pod at `/var/new-vol`. Now, edit the pvc and increase the size from 10Mi to 50Mi.
+21) Given a pod, add another container logging the message each minute (command is given) which can access the same volume used by first container at `/var/log`. So, the first container running the command `tails -f /var/log/tmp-container.log` can access the file. Further, write the command to see that logs into a file.
