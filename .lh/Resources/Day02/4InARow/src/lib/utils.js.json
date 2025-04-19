@@ -1,0 +1,18 @@
+{
+    "sourceFile": "Resources/Day02/4InARow/src/lib/utils.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1745047119507,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1745047119507,
+            "name": "Commit-0",
+            "content": "import { clsx } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\nexport function cn(...inputs) {\n  return twMerge(clsx(inputs))\n}"
+        }
+    ]
+}

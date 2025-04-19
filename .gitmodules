@@ -1,0 +1,3 @@
+[submodule "day02/4-in-a-row"]
+	path = day02/4-in-a-row
+	url = https://github.com/idubi/4-in-a-row.git

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "Resources/Day02/GAME/Layout.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1744991549926,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1744991549926,
+            "name": "Commit-0",
+            "content": "import React from 'react';\n\nexport default function Layout({ children }) {\n  return (\n    <div className=\"min-h-screen\">\n      <header className=\"bg-gradient-to-r from-blue-700 to-purple-700 py-3 px-4 shadow-md\">\n        <h1 className=\"text-xl md:text-2xl font-bold text-center text-white\">\n          4 in a Row\n        </h1>\n      </header>\n      <main>\n        {children}\n      </main>\n    </div>\n  );\n}"
+        }
+    ]
+}
