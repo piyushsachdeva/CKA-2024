@@ -1,0 +1,22 @@
+{
+    "sourceFile": "Resources/Day02/4InARow/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1744992013030,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1744992020013,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,13 @@\n-module.exports = {\n-  plugins: {\n-    tailwindcss: {},\n-    autoprefixer: {},\n-  }\n-}\n\\ No newline at end of file\n+import React from 'react';\n+import ReactDOM from 'react-dom/client';\n+import './index.css';\n+import Layout from './Layout';\n+\n+const root = ReactDOM.createRoot(document.getElementById('root'));\n+root.render(\n+  <React.StrictMode>\n+    <Layout>\n+      {/* Add your game components here */}\n+    </Layout>\n+  </React.StrictMode>\n+);\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1744992013030,
+            "name": "Commit-0",
+            "content": "module.exports = {\n  plugins: {\n    tailwindcss: {},\n    autoprefixer: {},\n  }\n}"
+        }
+    ]
+}

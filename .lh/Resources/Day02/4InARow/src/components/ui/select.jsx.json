@@ -1,0 +1,18 @@
+{
+    "sourceFile": "Resources/Day02/4InARow/src/components/ui/select.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1745045753432,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1745045753432,
+            "name": "Commit-0",
+            "content": "import * as React from \"react\"\nimport * as SelectPrimitive from \"@radix-ui/react-select\"\nimport { cn } from \"../../lib/utils\"\nimport { ChevronDown } from \"lucide-react\"\n\nconst Select = SelectPrimitive.Root\nconst SelectGroup = SelectPrimitive.Group\nconst SelectValue = SelectPrimitive.Value\n\nconst SelectTrigger = React.forwardRef(({ className, children, ...props }, ref) => (\n  <SelectPrimitive.Trigger\n    ref={ref}\n    className={cn(\n      \"flex h-10 w-full items-center justify-between rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50\",\n      className\n    )}\n    {...props}\n  >\n    {children}\n    <ChevronDown className=\"h-4 w-4 opacity-50\" />\n  </SelectPrimitive.Trigger>\n))\nSelectTrigger.displayName = SelectPrimitive.Trigger.displayName\n\nconst SelectContent = React.forwardRef(({ className, children, ...props }, ref) => (\n  <SelectPrimitive.Portal>\n    <SelectPrimitive.Content\n      ref={ref}\n      className={cn(\n        \"relative z-50 min-w-[8rem] overflow-hidden rounded-md border bg-white text-gray-700 shadow-md animate-in fade-in-80\",\n        className\n      )}\n      {...props}\n    >\n      <SelectPrimitive.Viewport className=\"p-1\">\n        {children}\n      </SelectPrimitive.Viewport>\n    </SelectPrimitive.Content>\n  </SelectPrimitive.Portal>\n))\nSelectContent.displayName = SelectPrimitive.Content.displayName\n\nconst SelectItem = React.forwardRef(({ className, children, ...props }, ref) => (\n  <SelectPrimitive.Item\n    ref={ref}\n    className={cn(\n      \"relative flex cursor-default select-none items-center rounded-sm py-1.5 px-2 text-sm outline-none focus:bg-gray-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50\",\n      className\n    )}\n    {...props}\n  >\n    <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>\n  </SelectPrimitive.Item>\n))\nSelectItem.displayName = SelectPrimitive.Item.displayName\n\nexport {\n  Select,\n  SelectGroup,\n  SelectValue,\n  SelectTrigger,\n  SelectContent,\n  SelectItem,\n}"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "Resources/Day02/4InARow/index.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1744992049899,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1744992049899,
+            "name": "Commit-0",
+            "content": "html\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <title>4 in a Row</title>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>"
+        }
+    ]
+}
