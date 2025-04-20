@@ -1,7 +1,7 @@
 FROM node:18-alpine
 WORKDIR /app
 COPY ./4-in-a-row .
-RUN yarn install --production
-CMD [ "node", "src/index.js" ]
+RUN yarn && yarn build
+CMD [ "yarn", "start" ]
 EXPOSE 5173
 
