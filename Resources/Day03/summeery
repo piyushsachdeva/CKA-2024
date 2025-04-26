@@ -1,0 +1,212 @@
+# 40 days of K8s - CKA challenge (03/40)
+## Multi Stage Docker Build - smaller is better
+@piyushsachdeva
+
+[Day 3/40 - Multi Stage Docker Build - Docker Tutorial For Beginners - CKA Full Course 2024](https://www.youtube.com/watch?v=ajetvJmBvFo&ab_channel=TechTutorialswithPiyush)
+
+in the preview lesson - I created a docker image that is 1.2 GB 
+
+this lesson discussed how to make an image smaller. 
+the chapter focus on main methodology. 
+let me here count some methods considered best approch 
+(BEST PRACTICES) to create as small image as can be created. 
+
+but 1ST : lets count main reasons : why _LARGE_ images are 
+**not** recommended:
+
+## there are several reasons why we want to make images smaller :
+1. Faster Deployment
+ * Smaller images pull and push faster
+ * Reduced network bandwidth usage
+ * Quicker container startup times
+2. Security Benefits
+ * Smaller attack surface
+ * Fewer potentially vulnerable packages
+ * Less code to scan and maintain
+3. Resource Efficiency
+ * Less disk space usage in registries
+ * Reduced memory footprint
+ * Better cache utilization
+4. Cost Savings
+ * Lower storage costs in container registries
+ * Reduced data transfer costs
+ * More efficient use of cloud resources
+5. Better CI/CD Performance
+ * Faster build pipelines
+ * Quicker rollbacks if needed
+ * Improved deployment reliability
+<hr/>
+
+there are several methods to make the docker image smaller, and the most recommended is using **MULTISTAGE BUILD**
+
+lets count and explain the methods : 
+
+## Key techniques for slimming Docker images:
+
+(1) Start from a Minimal Base Image  ('-alpine' or '-slim' )
+<p> when choosing the base image of a known application - usualy alpine
+is available. when you create an image from scratch - use alpine as base
+image.
+alpine is a slim linux operation system, s owhen an image is created out
+of alpine, it is usualy considering installing only what necesarry for
+the application to use.</p>
+<p>there is also scratch image, which is an image that uses the HOST 
+operating system as base, but it is not recommended- since we can never 
+know where our image will be executed. 
+there is whole different approach when using scratch , and I will not 
+write about it here</p>
+<p>**sometimes official versions dont use '-alpine' , but '-slim' in the 
+tagname of the image**</p>
+
+(2) Remove Unnecessary Packages/Files
+<p>after executing image logic - if files are not nesesarry - we can remove the files that used in execution</p>
+**it is importent to remove the files in the same layer *RUN*, since 
+once a layer is executed - storage that is clearde will not be reduced**
+</p>
+<p>
+RUN apt-get update && apt-get install -y \
+some-package && rm -rf /var/lib/apt/lists/*
+</p>
+
+_after installing package we can remove the files that are 
+not neaded manually
+the && add a command after previous comman was executed
+all is done in the same *RUN* layer_
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/56nbjfc9s4aojpkz82dn.png)
+
+
+(3) remove cache on layers
+<p>
+when adding a an argument to Dockerfile , we can then execute the build with dynamic value to this argument 
+it prevent caching of layers , which makes build longer , but also clears cached data from image
+
+FROM ....
+ARG CACHEBUST=1  # default value
+RUN ...
+</p
+>
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nfnk401ji78w1n0dza5j.png)
+
+and then when executing build : 
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/a21jra7lro24lih7dv8y.png)
+
+(4) remove cache on build
+<p>
+when building with --no-cache , we omit cache , just lije in the build ARGUMENTS
+</p>
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/5lrukd8zm4uaefn0x5oo.png)
+
+
+(5) Multi-Stage Builds
+<p>
+when we use multy stage - we actually use the files in one build , but not saving it to the next build. 
+
+we use the result of the execution as source in a new clean build 
+without all of the installations, needed to create this files. 
+
+it is similar to removing files after executing (2)  
+however - using this method - we are creating hirarchical flow of the build. 
+
+</p> 
+(6) .dockerignore 
+<p>
+.dockerignore file is a file created in the same folder as the Dockerfile. in it we list all files that we dont want to add to the 
+docker image 
+</p>
+
+```
+node_modules
+.git
+*.log
+```
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4fmm8vwksuh2yirbpg1l.png)
+
+
+(7) 3rd party tools 
+<p>
+there are known utilities that I use, that 
+help configure and sugest slimming docker 
+---------------------------------------------
+</p>
+1. [Dive](https://github.com/wagoodman/dive)-<p> tool to analyze Docker image *layers* and see what's taking up space.
+</p>
+2. [Slim](https://github.com/slimtoolkit/slim)-<p>This tool analyzes and auto-slims your image by removing unnecessary stuff like:
+ * Unused files
+ * Unreachable code paths
+ * Binaries and debugging tools</p>
+<p>
+*it is ai tool that involved in the build process,m and slim the image by removing unused files*
+</p>
+
+
+
+example : using dive - 
+here we can see difference between multi and regular build 
+we can see that in the regular we have the nodenode-module folder. and we can see diff in sizes of each layer
+```
+dive idubi/four-in-a-row_alpine18
+```
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kx0pkoefavdl13kvdqd5.png)
+
+```
+dive multi-stage-4_in_a_row:1.1
+```
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gfpebgu2so1eezns4bk2.png)
+
+</p>
+
+
+#conclusion : 
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/p6eson6lwpxj2hwtpj7k.png)
+
+<p>
+in this example I use the first node image (installer) to install and all react packeges. 
+then I add the files used in the build of the site. 
+the command  : </p>
+<p> 
+``` RUN yarn && yarn build ```
+</p><p> 
+install all packages , and then execute build
+</p><p>
+then, in the 2ND image (deployer)
+I install NGINX HTTP server - a slim server, much slimmer then node, since I dont need all of the code compilation capabilities of node. 
+
+then I copy the build files from the node server - which are the only files I need to use in the site
+from : /app/dist  ==> to  ==> /usr/share/nginx/html  in deployer image.
+
+and I config expose its port (80) for outer connection (docker access to the image on port 80 of this image)
+</p>
+
+results : 
+------------------------------------------
+the original image (one stage) -  1.2 GB 
+the multi-staged image         -  280MB
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7jxvofypc0bzji8hkgvp.png)
+
+
+
+```
+docker run -d --name 4inarow-multi -p 8080:80 multi-stage-4_in_a_row:1.1
+
+
+docker ps 
+CONTAINER ID   IMAGE                        COMMAND                  CREATED          STATUS          PORTS                  NAMES
+2396e23aa874   multi-stage-4_in_a_row:1.1   "/docker-entrypoint.…"   21 seconds ago   Up 21 seconds   0.0.0.0:8080->80/tcp   4inarow-multi
+
+```
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/iwwg94wubrdi2lvqb0rm.png)
+
+
+
+

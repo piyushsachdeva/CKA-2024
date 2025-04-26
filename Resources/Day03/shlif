@@ -15,3 +15,10 @@ nice tools to configand understand slmming dcoker even more :
 -------------------------------------------------------------
 1. Dive: https://github.com/wagoodman/dive
 2. Slim: https://github.com/slimtoolkit/slim
+
+
+
+docker run -d --name 4inarow-multi -p 8080:80 multi-stage-4_in_a_row
+
+docker run -d --name 4inarow-multi -p 8080:80 idubi/four-in-a-row_alpine18:latest
+docker run -d --name 4inarow-multi -p 8081:80 idubi/four-in-a-row_alpine18:latest
