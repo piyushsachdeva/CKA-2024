@@ -11,7 +11,7 @@ this post summerise what is an orchestrator and why Kubernetes (__K8s__)
 
 # 1. what is an Orchestrator , why do we need k8s to 
 
-after we learnt about Dcoker - we understand that we can create a containerized environment to work as production, as well as testing. 
+after we learnt about Docker - we understand that we can create a containerized environment to work as production, as well as testing. 
 
 this system can be scaled and maintained automatically - if we just had an orchestraiting system to manage it. 
 

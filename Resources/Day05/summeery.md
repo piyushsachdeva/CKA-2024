@@ -66,7 +66,7 @@ if any of the _ETCD_ or  _API Server_ is failing, they must be recovered.
 but as long they are down - current nodes function autonomly, but any change in the cluster is impossible. 
 the kubeletes (will speak about it soon) will keet the current status in the node, but any change in replicaset or pods or any other status of the cluster cant be done. 
 
-if the APIServer is failing - there is no connection between te components of the cluster, and command cant be setnt to the K8s cluster from outside of the cluster (no cli or api commmands)
+if the APIServer is failing - there is no connection between the components of the cluster, and command cant be setnt to the K8s cluster from outside of the cluster (no cli or api commmands)
 
  - CONTROLLER MANAGER - monitor all ofthe controllers inside the cluster. 
  the control is done throught the ETCD.  it is useing the API sServer to read from the rtcd - the cesesary data about the different components in the cluster nodes.    
