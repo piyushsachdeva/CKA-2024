@@ -28,7 +28,7 @@ a K8s cluster contains 2 types of nodes:
 the master node consists 3 main processes and ETCD Component.
 - __ETCD__ - _(Extended Tree Configuration Database)_ this is a __key:value _(like JSON objects)___ database that represent the metadata of the clkuster. 
 it includes all of the structural entities statuses in a given time. 
-whenever a change is needed, of a new entity or current one configuration - this chagnge is updated to the ETCD and upon the new value and current value - the new entity will be created/updated. 
+whenever a change is needed, of a new entity or current one configuration - this change is updated to the ETCD and upon the new value and current value - the new entity will be created/updated. 
 
 - __SCHEDULER__ -  SCHEDULER is in charge of 1 specific thing : schedule the creation of a new POD into a specific NODE.    
 ___Scheduler only acts on unscheduled Pods___ :  Pods with spec.nodeName not set.
@@ -133,7 +133,7 @@ ________________________________________
  KUBELET - Running and maintaining application Pods
 -  kubelets are in charge of maintainence of the NODE. 
 -   talks to the container runtime (containerd / docker ) to ensure pods are erunning properly
--   talks to the ETCD via the API server to check new tasks/chagnges on the pod
+-   talks to the ETCD via the API server to check new tasks/changes on the pod
 -    it is critical for rnning and maintainnt the pods inside the node
  
 KUBE-PROXY - Enabling Service discovery and internal communication
