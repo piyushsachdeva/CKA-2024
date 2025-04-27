@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  k8s-master:
+    build: .
+    privileged: true
+    hostname: k8s-master
+    container_name: k8s-master
+    ports:
+      - "6443:6443"
+    volumes:
+      - /lib/modules:/lib/modules
+      - ./shared:/shared
+    command: bash -c "/start-master.sh"
+
+  k8s-worker-1:
+    build: .
+    privileged: true
+    hostname: k8s-worker-1
+    container_name: k8s-worker-1
+    depends_on:
+      - k8s-master
+    volumes:
+      - /lib/modules:/lib/modules
+      - ./shared:/shared
+    command: bash -c "/start-worker.sh"
+
+  k8s-worker-2:
+    build: .
+    privileged: true
+    hostname: k8s-worker-2
+    container_name: k8s-worker-2
+    depends_on:
+      - k8s-master
+    volumes:
+      - /lib/modules:/lib/modules
+      - ./shared:/shared
+    command: bash -c "/start-worker.sh"

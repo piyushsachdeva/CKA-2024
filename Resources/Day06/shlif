@@ -1,0 +1,46 @@
+<!-- I will use this path :
+
+1.Install Terraform
+
+First, create the project structure:
+mkdir -p ~/k8s-cluster-setup/{terraform,ansible}
+cd ~/k8s-cluster-setup
+
+2.Install the Terraform VMware Provider (vsphere plugin)
+
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform
+
+3.Write a Terraform file to create 3 VMs on my VMware Workstation Pro
+
+
+
+4.install ansible
+5.use Ansible to install Kubernetes with kadm with 3 nodes on it
+
+
+
+
+
+
+
+Step 1: Prepare Terraform Setup
+
+cd terraform 
+terraform init
+
+
+Step 2: Clone or Prepare VM Template
+ -->
+
+
+Step 1: Install Vagrant
+Step 2: Write Vagrantfile
+Step 3: Write Provisioning Scripts (common.sh, master.sh, worker.sh)
+Step 4: vagrant up
+Step 5: Kubernetes ready
+
+
+

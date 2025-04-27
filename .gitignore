@@ -1,3 +1,8 @@
-/Resources/Day03/4-in-a-row
+
 .lh
 ~*
+*.tfvars
+*.tfstate
+*.tfstate.*
+.terraform/
+.history/
