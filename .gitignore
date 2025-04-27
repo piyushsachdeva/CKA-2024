@@ -6,3 +6,6 @@
 *.tfstate.*
 .terraform/
 .history/
+.history/
+*.excalidrawlib*
+*:Zone*
