@@ -249,6 +249,13 @@ Note: If you found the content helpful, consider giving the repository a star тн
 ## Day 42 Video: Realtime project: Host your own container registry on Kubernetes
 - This project will include multiple Kubernetes topics with real-time implementation.
 
+## Day 43 Video: Helm
+
+## Day 44 Video - Kustomize
+
+## Day 45 Video - StatefulSets
+
+## Day 46 Video - Priority class and preemption 
 
 
 
