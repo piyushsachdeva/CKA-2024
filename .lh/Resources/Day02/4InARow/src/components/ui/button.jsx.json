@@ -1,0 +1,18 @@
+{
+    "sourceFile": "Resources/Day02/4InARow/src/components/ui/button.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1745045729535,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1745045729535,
+            "name": "Commit-0",
+            "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva } from \"class-variance-authority\"\nimport { cn } from \"../../lib/utils\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-blue-600 text-white hover:bg-blue-700\",\n        outline: \"border border-gray-300 hover:bg-gray-100\",\n        ghost: \"hover:bg-gray-100\",\n      },\n      size: {\n        default: \"h-10 py-2 px-4\",\n        sm: \"h-9 px-3\",\n        lg: \"h-11 px-8\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nconst Button = React.forwardRef(({ className, variant, size, asChild = false, ...props }, ref) => {\n  const Comp = asChild ? Slot : \"button\"\n  return (\n    <Comp\n      className={cn(buttonVariants({ variant, size, className }))}\n      ref={ref}\n      {...props}\n    />\n  )\n})\n\nButton.displayName = \"Button\"\n\nexport { Button, buttonVariants }"
+        }
+    ]
+}
