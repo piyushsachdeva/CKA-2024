@@ -1,6 +1,4 @@
 ## 🗋 k8s-vmware-cluster/master.s
-
-# k8s-vmware-cluster/master.sh
 #!/bin/bash
 
 set -e

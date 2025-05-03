@@ -23,4 +23,7 @@ if [ $? -ne 0 ]; then
   echo "├── common.sh"
   echo "├── master.sh"
   echo "└── worker.sh"
+  echo "└── disable-swap.sh"
+  
+
 fi
