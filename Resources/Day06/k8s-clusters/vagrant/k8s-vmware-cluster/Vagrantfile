@@ -1,0 +1,46 @@
+## 🗋 k8s-vmware-cluster/Vagrantfile
+
+# k8s-vmware-cluster/Vagrantfile
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-22.04"
+
+  config.vm.provider :vmware_desktop do |v|
+    v.memory = 4096
+    v.cpus = 2
+  end
+
+  config.vm.boot_timeout = 600
+  config.vm.communicator = "ssh"
+  config.ssh.insert_key = false
+  config.ssh.username = "vagrant"
+  config.ssh.password = "vagrant"
+
+
+  # Master Node
+  config.vm.define "master-node" do |node_config|
+    node_config.vm.hostname = "master-node"
+    node_config.vm.network "private_network", ip: "192.168.56.10"
+    node_config.vm.provision "shell", path: "common.sh"
+    node_config.vm.provision "shell", path: "master.sh"
+    node_config.vm.provision "shell", path: "disable-swap.sh", run: "always"
+                                             
+  end
+
+  # Worker Node 1
+  config.vm.define "worker-node-1" do |node_config|
+    node_config.vm.hostname = "worker-node-1"
+    node_config.vm.network "private_network", ip: "192.168.56.11"
+    node_config.vm.provision "shell", path: "common.sh"
+    node_config.vm.provision "shell", path: "worker.sh"
+    node_config.vm.provision "shell", path: "disable-swap.sh", run: "always"
+  end
+
+  # Worker Node 2
+  config.vm.define "worker-node-2" do |node_config|
+    node_config.vm.hostname = "worker-node-2"
+    node_config.vm.network "private_network", ip: "192.168.56.12"
+    node_config.vm.provision "shell", path: "common.sh"
+    node_config.vm.provision "shell", path: "worker.sh"
+    node_config.vm.provision "shell", path: "disable-swap.sh", run: "always"
+  end
+end
