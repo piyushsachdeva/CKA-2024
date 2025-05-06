@@ -337,43 +337,4 @@ kubectl delete pv --all
 kubectl delete sc mongodb-sc
 ```
 
-## Understanding StatefulSets
 
-### Key Components in This Solution
-
-1. **Headless Service**: 
-   - Provides network identity for each Pod
-   - Does not have a ClusterIP (`clusterIP: None`)
-   - Enables direct addressing of each Pod by DNS
-
-2. **StorageClass**:
-   - Defines how storage is provisioned
-   - Used with `volumeBindingMode: WaitForFirstConsumer` to delay binding until a Pod using it is created
-
-3. **PersistentVolumes**:
-   - Pre-provisioned storage for each potential Pod
-   - Named to match the pattern StatefulSet will use
-
-4. **StatefulSet**:
-   - References the headless service
-   - Uses volumeClaimTemplates to request storage
-   - Ensures ordered deployment and scaling
-
-### StatefulSet vs Deployment
-
-| Feature | StatefulSet | Deployment |
-|---------|------------|------------|
-| Pod Identity | Stable, predictable names | Random names |
-| Creation Order | Sequential (0 to N-1) | Parallel |
-| Deletion Order | Sequential (N-1 to 0) | Any order |
-| Scaling | Sequential | Parallel |
-| Updates | Sequential | Parallel |
-| Network Identity | Stable DNS names | Service-based only |
-
-### When to Use StatefulSets
-
-StatefulSets are ideal for:
-- Databases (MongoDB, MySQL, PostgreSQL)
-- Distributed systems (Kafka, Elasticsearch, Redis clusters)
-- Applications requiring stable network identity
-- Applications requiring persistent storage
