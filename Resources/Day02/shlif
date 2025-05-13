@@ -1,0 +1,30 @@
+sandboxes : 
+    https://labs.play-with-k8s.com/
+    https://labs.play-with-docker.com/
+    
+
+
+
+cd Resources/Day02/
+git branch -m day01 day02
+mv ../Day01/Dockerfile .
+
+
+
+docker images | grep day02
+
+docker build . -t day02-node18alpine
+docker tag day02-node18alpine:latest idubi/40daysofk8s-day02:1.0
+docker tag day02-node18alpine:latest idubi/40daysofk8s/day02-node18alpine:0.1
+
+#docker push new-repo:tagname
+docker push idubi/40daysofk8s-day02:latest
+docker push idubi/40daysofk8s-day02:1.0 
+
+
+docker build -t four-in-a-row_ .
+docker run -d --name 4inarow2 -p 5173:5173 four-in-a-row
+docker run -d --name 4inarow2 -p 3000:5173 four-in-a-row
+
+docker build -t 4inarow2:latest idubi/four-in-a-row
+:latest

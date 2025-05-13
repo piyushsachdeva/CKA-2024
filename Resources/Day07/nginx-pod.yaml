@@ -1,0 +1,20 @@
+# template pod yaml hasa : apiVersion, kind, metadata, spec
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod-1
+  labels:
+    name: demo
+    type: frontend
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx:1.23
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+        protocol: TCP
+        

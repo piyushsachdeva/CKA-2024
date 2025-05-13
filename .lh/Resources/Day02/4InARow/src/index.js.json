@@ -1,0 +1,30 @@
+{
+    "sourceFile": "Resources/Day02/4InARow/src/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1744993102541,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1744993198887,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import React from 'react';\n import ReactDOM from 'react-dom/client';\n import './index.css';\n-import Layout from './Layout';\n-import Game from './pages/Game';\n+import Layout from './Layout.js';\n+import Game from './pages/Game.js';\n \n const root = ReactDOM.createRoot(document.getElementById('root'));\n root.render(\n   <React.StrictMode>\n"
+                },
+                {
+                    "date": 1744993217890,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import React from 'react';\n import ReactDOM from 'react-dom/client';\n import './index.css';\n import Layout from './Layout.js';\n-import Game from './pages/Game.js';\n+import Game from './Pages/Game.js';\n \n const root = ReactDOM.createRoot(document.getElementById('root'));\n root.render(\n   <React.StrictMode>\n"
+                },
+                {
+                    "date": 1744993260927,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import React from 'react';\n import ReactDOM from 'react-dom/client';\n import './index.css';\n-import Layout from './Layout.js';\n-import Game from './Pages/Game.js';\n+import Layout from './Layout';\n+import Game from './Pages/Game';\n \n const root = ReactDOM.createRoot(document.getElementById('root'));\n root.render(\n   <React.StrictMode>\n"
+                }
+            ],
+            "date": 1744993102541,
+            "name": "Commit-0",
+            "content": "import React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport './index.css';\nimport Layout from './Layout';\nimport Game from './pages/Game';\n\nconst root = ReactDOM.createRoot(document.getElementById('root'));\nroot.render(\n  <React.StrictMode>\n    <Layout>\n      <Game />\n    </Layout>\n  </React.StrictMode>\n);"
+        }
+    ]
+}
