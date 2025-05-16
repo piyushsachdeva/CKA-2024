@@ -157,7 +157,24 @@ kubectl create secret tls web-tls-secret \
 kubectl get secret web-tls-secret -n web-app
 ```
 
-## Step 3: Create the Ingress Resource
+## Step 3: Create the Ingress Controller and Ingress Resource
+
+Controller
+
+```bash
+wget https://get.helm.sh/helm-v3.10.3-linux-amd64.tar.gz
+tar -zxf helm-v3.10.3-linux-amd64.tar.gz
+mv linux-amd64/helm /usr/local/bin
+
+helm install ingress-nginx \
+    --set controller.service.type=NodePort \
+    --set controller.service.nodePorts.http=30082 \
+    --set controller.service.nodePorts.https=30443 \
+    --repo https://kubernetes.github.io/ingress-nginx \
+    ingress-nginx
+
+```
+
 
 Now let's create the original Ingress resource that we'll later migrate to Gateway API:
 
@@ -171,6 +188,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx   # <- This is required to make it work
   tls:
   - hosts:
     - gateway.web.k8s.local
@@ -306,8 +324,8 @@ cat <<EOF | kubectl apply -f -
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: web-gateway
-  namespace: web-app
+  name: nginx-gateway
+  namespace: nginx-gateway
 spec:
   gatewayClassName: nginx # Use the gateway class that matches your controller
   listeners:
@@ -321,14 +339,20 @@ spec:
       - kind: Secret
         name: web-tls-secret
         namespace: web-app
+    allowedRoutes:
+      namespaces:
+        from: All
   - name: http
     port: 80
     protocol: HTTP
     hostname: gateway.web.k8s.local
+    allowedRoutes:
+      namespaces:
+        from: All
 EOF
 
 # Verify the Gateway resource
-kubectl get gateway -n web-app
+kubectl get gateway -n nginx-gateway
 ```
 
 Expected output:
@@ -350,9 +374,10 @@ metadata:
   namespace: web-app
 spec:
   parentRefs:
-  - name: web-gateway
+  - name: nginx-gateway
     kind: Gateway
-    namespace: web-app
+    namespace: nginx-gateway
+    sectionName: http
   hostnames:
   - gateway.web.k8s.local
   rules:
@@ -382,19 +407,57 @@ NAME        HOSTNAMES                  AGE
 web-route   ["gateway.web.k8s.local"]  30s
 ```
 
+httpsroute
+
+``` bash
+cat <<EOF | kubectl apply -f -
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: web-route-https # Give it a distinct name if you also have an HTTP one
+  namespace: web-app
+spec:
+  parentRefs:
+  - name: nginx-gateway
+    kind: Gateway
+    namespace: nginx-gateway 
+    sectionName: https # Reference the HTTPS listener
+  hostnames:
+  - gateway.web.k8s.local
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /app
+    backendRefs:
+    - name: web-service
+      port: 80
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /api
+    backendRefs:
+    - name: api-service
+      port: 8080
+EOF
+```
+
+
 ## Step 10: Verify the Gateway API Configuration
 
 Let's verify that our Gateway API resources are properly configured:
 
 ```bash
 # Check the Gateway status
-kubectl describe gateway web-gateway -n web-app
+kubectl describe gateway nginx-gateway -n web-app
 
 # Check the HTTPRoute status
 kubectl describe httproute web-route -n web-app
 
 # Check if the HTTPRoute is properly bound to the Gateway
 kubectl get httproute web-route -n web-app -o jsonpath='{.status.parents[0].conditions[?(@.type=="Accepted")].status}'
+kubectl get httproute web-route-https -n web-app -o jsonpath='{.status.parents[0].conditions[?(@.type=="Accepted")].status}'
+
 ```
 
 The output for the last command should be "True" if the HTTPRoute is properly accepted by the Gateway.
@@ -405,10 +468,10 @@ Now, test that the application is accessible through the new Gateway API:
 
 ```bash
 # Test the /app endpoint
-curl -k https://gateway.web.k8s.local/app
+curl -v -H "Host: gateway.web.k8s.local" http://$NODE_IP:30080/app
 
 # Test the /api endpoint
-curl -k https://gateway.web.k8s.local/api
+curl -v -H "Host: gateway.web.k8s.local" http://$NODE_IP:30081/app
 ```
 
 You should see the expected responses from both services.
@@ -441,7 +504,7 @@ If your Gateway isn't getting programmed:
 
 ```bash
 # Check Gateway controller logs
-kubectl logs -n nginx-gateway deployment/nginx-gateway-controller
+kubectl logs -n nginx-gateway deployment/nginx-gateway
 
 # Check Gateway status for errors
 kubectl describe gateway web-gateway -n web-app
