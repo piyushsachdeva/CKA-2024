@@ -60,51 +60,7 @@ spec:
     app: web-service
 EOF
 
-# Create the API service deployment and service
-cat <<EOF | kubectl apply -f -
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: api-service
-  namespace: web-app
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: api-service
-  template:
-    metadata:
-      labels:
-        app: api-service
-    spec:
-      containers:
-      - name: api
-        image: nginx:latest
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - name: api-config
-          mountPath: /usr/share/nginx/html
-      volumes:
-      - name: api-config
-        configMap:
-          name: api-content
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: api-service
-  namespace: web-app
-spec:
-  ports:
-  - port: 8080
-    targetPort: 80
-    protocol: TCP
-  selector:
-    app: api-service
-EOF
-
-# Create ConfigMaps with sample content
+# Create ConfigMap with sample content
 cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: ConfigMap
@@ -120,19 +76,6 @@ data:
       <p>This is the web front-end service.</p>
     </body>
     </html>
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: api-content
-  namespace: web-app
-data:
-  index.html: |
-    {
-      "status": "online",
-      "message": "API service is running",
-      "version": "1.0.0"
-    }
 EOF
 ```
 
@@ -188,7 +131,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingressClassName: nginx   # <- This is required to make it work
+  ingressClassName: nginx
   tls:
   - hosts:
     - gateway.web.k8s.local
@@ -197,20 +140,13 @@ spec:
   - host: gateway.web.k8s.local
     http:
       paths:
-      - path: /app
+      - path: /
         pathType: Prefix
         backend:
           service:
             name: web-service
             port:
               number: 80
-      - path: /api
-        pathType: Prefix
-        backend:
-          service:
-            name: api-service
-            port:
-              number: 8080
 EOF
 
 # Verify the Ingress resource
@@ -232,8 +168,8 @@ Let's make sure the Ingress is working before we migrate:
 echo "$(kubectl get ingress web -n web-app -o jsonpath='{.status.loadBalancer.ingress[0].ip}') gateway.web.k8s.local" | sudo tee -a /etc/hosts
 
 # Test HTTP access
-curl -k https://gateway.web.k8s.local/app
-curl -k https://gateway.web.k8s.local/api
+curl -k http://gateway.web.k8s.local/
+curl -k https://gateway.web.k8s.local/
 ```
 
 ## Step 5: Inspect the Existing Ingress Resource
@@ -363,7 +299,6 @@ web-gateway   nginx   10.0.0.1       True         30s
 
 ## Step 9: Create the HTTPRoute Resource
 
-Next, create the HTTPRoute resource that defines the routing rules:
 
 ```bash
 cat <<EOF | kubectl apply -f -
@@ -384,63 +319,53 @@ spec:
   - matches:
     - path:
         type: PathPrefix
-        value: /app
+        value: /
     backendRefs:
     - name: web-service
       port: 80
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /api
-    backendRefs:
-    - name: api-service
-      port: 8080
 EOF
-
-# Verify the HTTPRoute resource
-kubectl get httproute -n web-app
 ```
 
-Expected output:
-```
-NAME        HOSTNAMES                  AGE
-web-route   ["gateway.web.k8s.local"]  30s
-```
+### Create HTTPRoute for HTTPS
 
-httpsroute
+```bash
 
-``` bash
 cat <<EOF | kubectl apply -f -
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: web-route-https # Give it a distinct name if you also have an HTTP one
+  name: web-route-https
   namespace: web-app
 spec:
   parentRefs:
   - name: nginx-gateway
     kind: Gateway
-    namespace: nginx-gateway 
-    sectionName: https # Reference the HTTPS listener
+    namespace: nginx-gateway
+    sectionName: https
   hostnames:
   - gateway.web.k8s.local
   rules:
   - matches:
     - path:
         type: PathPrefix
-        value: /app
+        value: /
     backendRefs:
     - name: web-service
       port: 80
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /api
-    backendRefs:
-    - name: api-service
-      port: 8080
 EOF
+
+# Verify the HTTPRoute resources
+kubectl get httproute -n web-app
+
 ```
+
+Expected output:
+```
+NAME        HOSTNAMES                  AGE
+web-route   ["gateway.web.k8s.local"]  30s
+web-route-https   ["gateway.web.k8s.local"]  10s
+```
+
 
 
 ## Step 10: Verify the Gateway API Configuration
@@ -467,28 +392,17 @@ The output for the last command should be "True" if the HTTPRoute is properly ac
 Now, test that the application is accessible through the new Gateway API:
 
 ```bash
-# Test the /app endpoint
-curl -v -H "Host: gateway.web.k8s.local" http://$NODE_IP:30080/app
+# Test the / endpoint
+curl -v -H "Host: gateway.web.k8s.local" http://$NODE_IP:30080/
 
-# Test the /api endpoint
-curl -v -H "Host: gateway.web.k8s.local" http://$NODE_IP:30081/app
+# Test the / endpoint
+curl -v -H "Host: gateway.web.k8s.local" https://$NODE_IP:30081/
 ```
 
 You should see the expected responses from both services.
 
-## Step 12: Compare Traffic Between Ingress and Gateway API
 
-To verify that both Ingress and Gateway API are handling traffic correctly:
-
-```bash
-# Generate some test traffic to both endpoints
-for i in {1..10}; do
-  curl -k https://gateway.web.k8s.local/app
-  curl -k https://gateway.web.k8s.local/api
-done
-```
-
-## Step 13: Remove the Old Ingress Resource (After Verification)
+## Step 12: Remove the Old Ingress Resource (After Verification)
 
 Once you've verified that the Gateway API is working correctly, you can remove the old Ingress resource:
 
@@ -533,5 +447,5 @@ If you're experiencing TLS issues:
 kubectl get secret web-tls-secret -n web-app
 
 # Test with specific TLS options
-curl -k -v https://gateway.web.k8s.local/app
+curl -k -v https://gateway.web.k8s.local/
 ```
