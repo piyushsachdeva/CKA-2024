@@ -244,16 +244,17 @@ nginx-gateway  NodePort   10.96.188.84   <none>        80:30080/TCP,443:30081/TC
 
 Now, let's create the GatewayClass and Gateway resources. Save the following YAML to a file named `gateway-resources.yaml`:
 
-```yaml
----
+```bash
+cat <<EOF | kubectl apply -f -
 # GatewayClass defines the controller that implements the Gateway API
 apiVersion: gateway.networking.k8s.io/v1
 kind: GatewayClass
 metadata:
   name: nginx
 spec:
-  controllerName: gateway.nginx.org/nginx-gateway-controller                                                                                                 
-
+  controllerName: gateway.nginx.org/nginx-gateway-controller
+EOF                                                                                               
+```
 Now, let's migrate to the Gateway API by first creating the Gateway resource:
 
 ```bash
@@ -388,6 +389,27 @@ kubectl get httproute web-route-https -n web-app -o jsonpath='{.status.parents[0
 
 The output for the last command should be "True" if the HTTPRoute is properly accepted by the Gateway.
 
+
+If you are facing error with the listener, make sure that secret was created in the same namespace as gateway, if not, create the below reference grant
+
+```bash
+cat <<EOF | kubectl apply -f -
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: ReferenceGrant
+metadata:
+  name: allow-gateway-to-web-app-secrets
+  namespace: web-app # This ReferenceGrant must be in the namespace of the Secret
+spec:
+  from:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    namespace: nginx-gateway # This specifies which namespace is allowed to reference
+  to:
+  - group: "" # Core API group for Secrets
+    kind: Secret
+    name: web-tls-secret # Optionally, restrict to a specific secret name (or omit name for all secrets)
+EOF
+```
 ## Step 11: Test the Gateway API Configuration
 
 Now, test that the application is accessible through the new Gateway API:
@@ -396,8 +418,11 @@ Now, test that the application is accessible through the new Gateway API:
 # Test the / endpoint
 curl -v -H "Host: gateway.web.k8s.local" http://$NODE_IP:30080/
 
+# Add the entry in /etc/hosts
+# ${NODE_IP}   gateway.web.k8s.local
+
 # Test the / endpoint
-curl -v -H "Host: gateway.web.k8s.local" https://$NODE_IP:30081/
+curl -v -k https://gateway.web.k8s.local:30081/
 ```
 
 You should see the expected responses from both services.
