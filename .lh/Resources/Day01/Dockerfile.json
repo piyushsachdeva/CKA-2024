@@ -1,0 +1,22 @@
+{
+    "sourceFile": "Resources/Day01/Dockerfile",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1744972060115,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1744972109343,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,6 +2,6 @@\n WORKDIR /app\n COPY . .\n RUN yarn install --production\n CMD [ \"node\", \"src/index.js\" ]\n+EXPOSE 3000\n \n-\n"
+                }
+            ],
+            "date": 1744972060115,
+            "name": "Commit-0",
+            "content": "FROM node:18-alpine\nWORKDIR /app\nCOPY . .\nRUN yarn install --production\nCMD [ \"node\", \"src/index.js\" ]\n\n\n"
+        }
+    ]
+}
