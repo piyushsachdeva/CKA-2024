@@ -5,20 +5,23 @@
 1. **Traditional vs Operator Pattern**
 
 Traditional: Deploy application → Manual configuration → Manual scaling/updates
+
 Operator: Deploy operator → Declare desired state → Operator handles everything
 
 2. **Key Components**
 
-Custom Resource Definitions (CRDs): Extend Kubernetes API with new resource types
-Custom Resources (CRs): Instances of CRDs
-Controller: Watches CRs and reconciles actual state with desired state
+- Custom Resource Definitions (CRDs): Extend Kubernetes API with new resource types
+
+- Custom Resources (CRs): Instances of CRDs
+
+- Controller: Watches CRs and reconciles actual state with desired state
 
 3. **Why Use Operators?**
 
-Automate complex application lifecycle management
-Encode operational knowledge into code
-Provide consistent deployment and management experience
-Handle day-2 operations (backup, restore, scaling, updates)
+- Automate complex application lifecycle management
+- Encode operational knowledge into code
+- Provide consistent deployment and management experience
+- Handle day-2 operations (backup, restore, scaling, updates)
 
 The cert-manager Operator is a prime example. Instead of manually obtaining, renewing, and managing TLS certificates for your applications, you simply define Issuer and Certificate Custom Resources. The cert-manager Operator then watches these CRs and automatically handles the entire certificate lifecycle for you, including issuance from various sources (like Let's Encrypt), renewal, and even injecting them into Kubernetes Secrets.
 
