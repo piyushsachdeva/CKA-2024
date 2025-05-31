@@ -1,0 +1,22 @@
+{
+    "sourceFile": "Resources/Day01/shlif",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1744973093696,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1744983740930,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,10 @@\n-docker tag local-image:tagname new-repo:tagname\n+\n+cd Resources/Day02/\n+git branch -m day01 day02\n+mv ../Day01/Dockerfile .\n+docker build . -t day02-node18alpine\n+\n+\n+\n+docker tag day02.node18alpin:idubi/40.days.of.k8s:1.0\n docker push new-repo:tagname\n"
+                }
+            ],
+            "date": 1744973093696,
+            "name": "Commit-0",
+            "content": "docker tag local-image:tagname new-repo:tagname\ndocker push new-repo:tagname\n"
+        }
+    ]
+}

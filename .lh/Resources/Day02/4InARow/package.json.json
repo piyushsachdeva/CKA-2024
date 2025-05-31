@@ -1,0 +1,26 @@
+{
+    "sourceFile": "Resources/Day02/4InARow/package.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1744991842743,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1744993658680,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,17 @@\n   \"private\": true,\n   \"dependencies\": {\n     \"react\": \"^18.2.0\",\n     \"react-dom\": \"^18.2.0\",\n-    \"react-scripts\": \"5.0.1\"\n+    \"react-scripts\": \"5.0.1\",\n+    \"framer-motion\": \"^10.16.0\",\n+    \"lucide-react\": \"^0.284.0\",\n+    \"@radix-ui/react-select\": \"^1.2.2\",\n+    \"@radix-ui/react-label\": \"^2.0.2\",\n+    \"@radix-ui/react-slot\": \"^1.0.2\",\n+    \"class-variance-authority\": \"^0.7.0\",\n+    \"clsx\": \"^2.0.0\",\n+    \"tailwind-merge\": \"^1.14.0\"\n   },\n   \"devDependencies\": {\n     \"autoprefixer\": \"^10.4.14\",\n     \"postcss\": \"^8.4.27\",\n"
+                },
+                {
+                    "date": 1745045667253,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,8 +31,13 @@\n       \"react-app\",\n       \"react-app/jest\"\n     ]\n   },\n+  \"paths\": {\n+    \"@/*\": [\n+      \"./src/*\"\n+    ]\n+  },\n   \"browserslist\": {\n     \"production\": [\n       \">0.2%\",\n       \"not dead\",\n"
+                }
+            ],
+            "date": 1744991842743,
+            "name": "Commit-0",
+            "content": "{\n  \"name\": \"4-in-a-row\",\n  \"version\": \"1.0.0\",\n  \"private\": true,\n  \"dependencies\": {\n    \"react\": \"^18.2.0\",\n    \"react-dom\": \"^18.2.0\",\n    \"react-scripts\": \"5.0.1\"\n  },\n  \"devDependencies\": {\n    \"autoprefixer\": \"^10.4.14\",\n    \"postcss\": \"^8.4.27\",\n    \"tailwindcss\": \"^3.3.3\"\n  },\n  \"scripts\": {\n    \"start\": \"react-scripts start\",\n    \"build\": \"react-scripts build\",\n    \"test\": \"react-scripts test\",\n    \"eject\": \"react-scripts eject\"\n  },\n  \"eslintConfig\": {\n    \"extends\": [\n      \"react-app\",\n      \"react-app/jest\"\n    ]\n  },\n  \"browserslist\": {\n    \"production\": [\n      \">0.2%\",\n      \"not dead\",\n      \"not op_mini all\"\n    ],\n    \"development\": [\n      \"last 1 chrome version\",\n      \"last 1 firefox version\",\n      \"last 1 safari version\"\n    ]\n  }\n}\n"
+        }
+    ]
+}
