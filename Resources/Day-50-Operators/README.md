@@ -69,13 +69,14 @@ Before you begin, please ensure you have the following installed and configured:
 ### Step 4.1: Install Operator Lifecycle Manager (OLM)
 
 We will install OLM in your cluster. This will create a new namespace `olm` and deploy the OLM components.
+[source](https://operatorhub.io/operator/cert-manager)
 
 ```bash
-# Get the latest OLM release version
-OLM_VERSION=$(curl -s https://api.github.com/repos/operator-framework/operator-lifecycle-manager/releases/latest | grep tag_name | cut -d '"' -f 4)
-
 # Install OLM
-curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/${OLM_VERSION}/install.sh | bash -s ${OLM_VERSION}
+curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.32.0/install.sh | bash -s v0.32.0
+
+# Install the operator
+curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.32.0/install.sh | bash -s v0.32.0
 ```
 
 Wait for OLM to be ready. You can check the pods in the `olm` namespace:
@@ -83,16 +84,15 @@ Wait for OLM to be ready. You can check the pods in the `olm` namespace:
 kubectl get pods -n olm
 ```
 
+Wait for the cert-manager operator to be in `Succeeded` state
+```bash
+kubectl get csv -n operators
+```
+
+
 Ensure all OLM-related pods (e.g., `olm-operator`, `catalog-operator`, `package-server`) are in a `Running` state.
 
-### Step 4.2: Prepare for cert-manager Operator Installation via OLM
-
-Now, let's prepare the environment for cert-manager using OLM.
-
-**Create the cert-manager Namespace:** This is where our cert-manager operator and its components will reside.
-```bash
-kubectl create namespace cert-manager
-```
+### Step 4.2: Prepare for cert-manager Operator configuration
 
 **Create an OperatorGroup:** An OperatorGroup defines a set of namespaces that an Operator will watch. For cert-manager, we'll create an OperatorGroup in its own namespace.
 
@@ -102,10 +102,10 @@ apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
   name: cert-manager-operatorgroup
-  namespace: cert-manager
+  namespace: operators
 spec:
   targetNamespaces:
-  - cert-manager
+  - operators
 ```
 
 Apply this manifest:
@@ -121,7 +121,7 @@ apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
   name: cert-manager
-  namespace: cert-manager
+  namespace: operators
 spec:
   channel: stable # Or a specific version channel like 'v1.14' if available
   name: cert-manager # This is the package name in the catalog
@@ -142,7 +142,7 @@ After the Subscription is created, OLM will automatically deploy the cert-manage
 You should see the cert-manager-operator pod (deployed by OLM) and then the actual cert-manager, cert-manager-cainjector, and cert-manager-webhook pods (deployed by the cert-manager operator itself).
 
 ```bash
-kubectl get pods -n cert-manager
+kubectl get pods -n operators
 ```
 
 Look for pods named something like `cert-manager-operator-...`, `cert-manager-...`, `cert-manager-cainjector-...`, and `cert-manager-webhook-...`.
@@ -250,7 +250,7 @@ kubectl describe secret my-app-tls -n default
 To see the Operator's internal workings, you can view the logs of the cert-manager controller pod.
 
 ```bash
-kubectl logs -f -n cert-manager $(kubectl get pods -n cert-manager -l app.kubernetes.io/component=controller -o jsonpath='{.items[0].metadata.name}')
+kubectl logs -f -n operators $(kubectl get pods -n operators -l app.kubernetes.io/component=controller -o jsonpath='{.items[0].metadata.name}')
 ```
 
 You'll see log entries indicating that it's processing the Certificate resource, creating CertificateRequest objects, and finally creating the TLS Secret. This demonstrates the "controller" part of the Operator pattern.
@@ -260,12 +260,12 @@ Operators continuously watch for changes in Custom Resources. However, sometimes
 
 First, identify the cert-manager controller pod:
 ```bash
-kubectl get pods -n cert-manager -l app.kubernetes.io/component=controller
+kubectl get pods -n operators -l app.kubernetes.io/component=controller
 ```
 
 Then, delete the pod. Kubernetes will automatically recreate it because it's managed by a Deployment.
 ```bash
-kubectl delete pod <cert-manager-controller-pod-name> -n cert-manager
+kubectl delete pod <cert-manager-controller-pod-name> -n operators
 ```
 
 Replace `<cert-manager-controller-pod-name>` with the actual name you found in the previous command (e.g., `cert-manager-7c8d9f-abcde`).
@@ -290,19 +290,12 @@ kubectl delete -f cert-manager-subscription.yaml
 kubectl delete -f cert-manager-operatorgroup.yaml
 ```
 
-**Delete the cert-manager namespace:**
+**Delete the operators namespace:**
 ```bash
-kubectl delete namespace cert-manager
+kubectl delete namespace operators
 ```
 
-**Uninstall OLM (Optional):** If you installed OLM solely for this assignment and want to remove it completely.
-
-```bash
-OLM_VERSION=$(curl -s https://api.github.com/repos/operator-framework/operator-lifecycle-manager/releases/latest | grep tag_name | cut -d '"' -f 4)
-curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/${OLM_VERSION}/cleanup.sh | bash -s ${OLM_VERSION}
-```
-
-You might also need to delete the olm namespace manually if the cleanup script doesn't remove it:
+**Delete the OLM namespace**
 ```bash
 kubectl delete namespace olm
 ```
