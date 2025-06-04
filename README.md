@@ -1,4 +1,4 @@
-# Certified Kubernetes Administrator(CKA) 2024 
+# Certified Kubernetes Administrator(CKA) 20245
 
 This is the GitHub repository to host all the notes, diagrams, assignments, and resources from the CKA course published on YouTube.
 
