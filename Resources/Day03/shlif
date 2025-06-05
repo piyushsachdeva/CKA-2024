@@ -1,0 +1,24 @@
+# Syntax: ln -s <source_folder> <link_name>
+ln -s ../Day02/4-in-a-row ./4-in-a-row
+
+docker build  --no-cache -t multi-stage-4_in_a_row:1.1 .
+
+
+docker run -d --name 4inarow-multi -p 8080:80 multi-stage-4_in_a_row
+
+dcoker logs 4inarow-multi bash
+
+docker exec -it 4inarow-multi bash
+
+
+nice tools to configand understand slmming dcoker even more : 
+-------------------------------------------------------------
+1. Dive: https://github.com/wagoodman/dive
+2. Slim: https://github.com/slimtoolkit/slim
+
+
+
+docker run -d --name 4inarow-multi -p 8080:80 multi-stage-4_in_a_row
+
+docker run -d --name 4inarow-multi -p 8080:80 idubi/four-in-a-row_alpine18:latest
+docker run -d --name 4inarow-multi -p 8081:80 idubi/four-in-a-row_alpine18:latest
