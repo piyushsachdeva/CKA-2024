@@ -88,54 +88,12 @@ kubectl get pods -n olm
 Wait for the cert-manager operator to be in `Succeeded` state
 ```bash
 kubectl get csv -n operators
+
 ```
->Note: This could take a few minutes!
 
 Ensure all OLM-related pods (e.g., `olm-operator`, `catalog-operator`, `package-server`) are in a `Running` state.
 
-### Step 4.2: Prepare for cert-manager Operator configuration
-
-**Create an OperatorGroup:** An OperatorGroup defines a set of namespaces that an Operator will watch. For cert-manager, we'll create an OperatorGroup in its own namespace.
-
-```yaml
-# cert-manager-operatorgroup.yaml
-apiVersion: operators.coreos.com/v1
-kind: OperatorGroup
-metadata:
-  name: cert-manager-operatorgroup
-  namespace: operators
-spec:
-  targetNamespaces:
-  - operators
-```
-
-Apply this manifest:
-```bash
-kubectl apply -f cert-manager-operatorgroup.yaml
-```
-
-**Create a Subscription:** A Subscription tells OLM to install a specific Operator from a CatalogSource. We'll subscribe to the cert-manager operator from the community-operators catalog (which is typically installed with OLM).
-
-```yaml
-# cert-manager-subscription.yaml
-apiVersion: operators.coreos.com/v1alpha1
-kind: Subscription
-metadata:
-  name: cert-manager
-  namespace: operators
-spec:
-  channel: stable # Or a specific version channel like 'v1.14' if available
-  name: cert-manager # This is the package name in the catalog
-  source: community-operators # The CatalogSource name
-  sourceNamespace: olm # The namespace where the CatalogSource is deployed
-```
-
-Apply this manifest:
-```bash
-kubectl apply -f cert-manager-subscription.yaml
-```
-
-### Step 4.4: Verify the Installation and Observe Operator Components
+### Step 4.2: Verify the Installation and Observe Operator Components
 
 After the Subscription is created, OLM will automatically deploy the cert-manager Operator and its associated resources.
 
@@ -157,6 +115,28 @@ kubectl get crds | grep cert-manager
 
 You should see CRDs like `certificates.cert-manager.io`, `issuers.cert-manager.io`, `clusterissuers.cert-manager.io`, and `certificaterequests.cert-manager.io`.
 
+### Step 4.3: Prepare for cert-manager Operator configuration
+
+**Create an OperatorGroup:** An OperatorGroup defines a set of namespaces that an Operator will watch. For cert-manager, we'll create an OperatorGroup in its own namespace.
+
+```yaml
+# cert-manager-operatorgroup.yaml
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: cert-manager-operatorgroup
+  namespace: operators
+spec:
+  targetNamespaces:
+  - operators
+```
+
+Apply this manifest:
+```bash
+kubectl apply -f cert-manager-operatorgroup.yaml
+```
+
+
 **Inspect Custom Resources (CRs) (Initial State):**
 At this point, you won't see any Issuer or Certificate CRs yet, as we haven't created any.
 
@@ -167,7 +147,7 @@ kubectl get certificate -n default
 
 (You should see "No resources found" or similar, which is expected.)
 
-### Step 4.5: Create an Issuer and a Certificate
+### Step 4.4: Create an Issuer and a Certificate
 
 Now, let's create some cert-manager Custom Resources and see the Operator in action. We'll create a simple self-signed Issuer and then a Certificate that uses it.
 
@@ -221,7 +201,7 @@ Apply this manifest:
 kubectl apply -f my-app-certificate.yaml
 ```
 
-### Step 4.6: Observe Operator Reconciliation and Secret Creation
+### Step 4.5: Observe Operator Reconciliation and Secret Creation
 
 Now, let's see the cert-manager Operator in action.
 
@@ -273,7 +253,7 @@ Replace `<cert-manager-controller-pod-name>` with the actual name you found in t
 
 After the new pod starts, you can again view its logs (as in step 3) to observe it re-processing existing Issuer and Certificate resources. This demonstrates the resilience and self-healing nature of Kubernetes Deployments combined with the Operator's reconciliation loop.
 
-### Step 4.7: Clean Up
+### Step 4.6: Clean Up
 
 It's crucial to clean up your cluster after completing the assignment.
 
