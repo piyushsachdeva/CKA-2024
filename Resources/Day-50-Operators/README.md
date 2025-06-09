@@ -89,7 +89,7 @@ Wait for the cert-manager operator to be in `Succeeded` state
 ```bash
 kubectl get csv -n operators
 ```
-
+>Note: This could take a few minutes!
 
 Ensure all OLM-related pods (e.g., `olm-operator`, `catalog-operator`, `package-server`) are in a `Running` state.
 
