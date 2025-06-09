@@ -76,10 +76,11 @@ We will install OLM in your cluster. This will create a new namespace `olm` and 
 curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.32.0/install.sh | bash -s v0.32.0
 
 # Install the operator
-curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.32.0/install.sh | bash -s v0.32.0
+kubectl create -f https://operatorhub.io/install/cert-manager.yaml
 ```
 
 Wait for OLM to be ready. You can check the pods in the `olm` namespace:
+
 ```bash
 kubectl get pods -n olm
 ```
