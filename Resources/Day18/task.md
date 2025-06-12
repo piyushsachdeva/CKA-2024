@@ -14,8 +14,8 @@ Also, could you do the port binding at the cluster level if you are using KIND? 
 - create another pod with the image name as `registry.k8s.io/e2e-test-images/agnhost:2.40`
 - add the liveness and readiness probes that perform health checks on port 8080 on the path /healthz , the checks should start after 5 seconds for every 10 seconds
 
-1. **Share your learnings**: Document your key takeaways and insights in a blog post and social media update
-2. **Make it public**: Share what you learn publicly on LinkedIn or Twitter.
+2. **Share your learnings**: Document your key takeaways and insights in a blog post and social media update
+3. **Make it public**: Share what you learn publicly on LinkedIn or Twitter.
    - **Tag us and use the hashtag**: Include the following in your post:
      - Tag [@PiyushSachdeva](https://www.linkedin.com/in/piyush-sachdeva) and [@CloudOps Community](https://www.linkedin.com/company/thecloudopscomm) (on both platforms)
      - Use the hashtag **#40daysofkubernetes**
