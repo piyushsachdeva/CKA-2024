@@ -1,0 +1,26 @@
+{
+    "sourceFile": "Resources/Day02/shlif",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1744985516345,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1744985545670,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,5 +10,8 @@\n docker build . -t day02-node18alpine\n docker tag day02-node18alpine:latest idubi/40daysofk8s-day02:1.0\n docker tag day02-node18alpine:latest idubi/40daysofk8s/day02-node18alpine:0.1\n \n-docker push new-repo:tagname\n+#docker push new-repo:tagname\n+docker push idubi/40daysofk8s-day02:1.0 \n+docker push idubi/40daysofk8s-day02:latest\n+\n"
+                },
+                {
+                    "date": 1744993253995,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,11 @@\n+sandboxes : \n+    https://labs.play-with-k8s.com/\n+    https://labs.play-with-docker.com/\n+    \n \n+\n+\n cd Resources/Day02/\n git branch -m day01 day02\n mv ../Day01/Dockerfile .\n \n@@ -11,7 +17,8 @@\n docker tag day02-node18alpine:latest idubi/40daysofk8s-day02:1.0\n docker tag day02-node18alpine:latest idubi/40daysofk8s/day02-node18alpine:0.1\n \n #docker push new-repo:tagname\n+docker push idubi/40daysofk8s-day02:latest\n docker push idubi/40daysofk8s-day02:1.0 \n-docker push idubi/40daysofk8s-day02:latest\n \n+\n"
+                }
+            ],
+            "date": 1744985516345,
+            "name": "Commit-0",
+            "content": "\ncd Resources/Day02/\ngit branch -m day01 day02\nmv ../Day01/Dockerfile .\n\n\n\ndocker images | grep day02\n\ndocker build . -t day02-node18alpine\ndocker tag day02-node18alpine:latest idubi/40daysofk8s-day02:1.0\ndocker tag day02-node18alpine:latest idubi/40daysofk8s/day02-node18alpine:0.1\n\ndocker push new-repo:tagname\n"
+        }
+    ]
+}

@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="https://www.docker.com/favicon.ico" />    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+      <meta name="ulp-version" content="1.33.4">
+    
+    
+    
+    <meta name="robots" content="noindex, nofollow">
+    
+    
+    <link rel="stylesheet" href="https://cdn.auth0.com/ulp/react-components/1.110.4/css/main.cdn.min.css">
+    <style id="custom-styles-container">
+      
+        
+
+
+
+
+        
+          :root, .af-custom-form-container .af-form {
+    --primary-color: #1D63ED;
+  }
+        
+      
+
+        
+          :root, .af-custom-form-container .af-form {
+    --button-font-color: #ffffff;
+  }
+        
+      
+
+        
+          :root {
+    --secondary-button-border-color: #c9cace;
+    --social-button-border-color: #c9cace;
+    --radio-button-border-color: #c9cace;
+  }
+        
+      
+
+        
+          :root {
+    --secondary-button-text-color: #1e212a;
+  }
+        
+      
+
+        
+          :root {
+    --link-color: #1D63ED;
+  }
+        
+      
+
+        
+          :root {
+    --title-font-color: #1e212a;
+  }
+        
+      
+
+        
+          :root {
+    --font-default-color: #1e212a;
+  }
+        
+      
+
+        
+          :root {
+    --widget-background-color: #ffffff;
+  }
+        
+      
+
+        
+          :root {
+    --box-border-color: #c9cace;
+  }
+        
+      
+
+        
+          :root {
+    --font-light-color: #65676e;
+  }
+        
+      
+
+        
+          :root {
+    --input-text-color: #000000;
+  }
+        
+      
+
+        
+          :root {
+    --input-border-color: #c9cace;
+    --border-default-color: #c9cace;
+  }
+        
+      
+
+        
+          :root {
+    --input-background-color: #ffffff;
+  }
+        
+      
+
+        
+          :root {
+    --icon-default-color: #65676e;
+  }
+        
+      
+
+        
+          :root {
+    --error-color: #d03c38;
+    --error-text-color: #ffffff;
+  }
+        
+      
+
+        
+          :root {
+    --success-color: #13a688;
+  }
+        
+      
+
+        
+          :root {
+    --base-focus-color: #1D63ED;
+    --transparency-focus-color: rgba(29,99,237, 0.15);
+  }
+        
+      
+
+        
+          :root {
+    --base-hover-color: #000000;
+    --transparency-hover-color: rgba(0,0,0, var(--hover-transparency-value));
+  }
+        
+      
+
+        
+      
+
+
+
+
+        
+          
+        
+      
+
+        
+          html, :root, .af-custom-form-container .af-form {
+    font-size: 16px;
+    --default-font-size: 16px;
+  }
+        
+      
+
+        
+          body {
+    --title-font-size: 1.5rem;
+    --title-font-weight: var(--font-default-weight);
+  }
+        
+      
+
+        
+          .c0dc0bdb8 {
+    font-size: 0.875rem;
+    font-weight: var(--font-default-weight);
+  }
+        
+      
+
+        
+          .cec2dc2f4 {
+    font-size: 0.875rem;
+    font-weight: var(--font-default-weight);
+  }
+  .ulp-passkey-benefit-heading {
+    font-size: 1.025rem;
+  }
+        
+      
+
+        
+          .ce869b6b0, .c140d09bf {
+    font-size: 1rem;
+    font-weight: var(--font-default-weight);
+  }
+        
+      
+
+        
+          body {
+    --ulp-label-font-size: 1rem;
+    --ulp-label-font-weight: var(--font-default-weight);
+  }
+        
+      
+
+        
+          .c98cf9362, .cd77573df, [id^='ulp-container-'] a {
+    font-size: 0.875rem;
+    font-weight: var(--font-bold-weight) !important;
+  }
+        
+      
+
+        
+          .cd77573df, .c98cf9362 {
+      text-decoration: underline;
+    }
+        
+      
+
+
+
+
+        
+          :root {
+    --button-border-width: 1px;
+    --social-button-border-width: 1px;
+    --radio-border-width: 1px;
+  }
+        
+      
+
+        
+          body {
+    --button-border-radius: 4px;
+    --radio-border-radius: 4px;
+  }
+        
+      
+
+        
+          :root {
+    --input-border-width: 1px;
+  }
+        
+      
+
+        
+          body {
+    --input-border-radius: 4px;
+  }
+
+  .af-custom-form-container .af-form {
+    --border-radius: 4px;
+  }
+        
+      
+
+        
+          :root {
+    --border-radius-outer: 4px;
+  }
+        
+      
+
+        
+          :root {
+    --box-border-width: 1px;
+  }
+        
+      
+
+        
+          body {
+    --shadow-component-outer: none;
+  }
+        
+      
+
+
+
+
+        
+          
+    body {
+      --logo-alignment: 0 auto;
+    }
+  
+        
+      
+
+        
+          
+    .c15d9e58d {
+      content: url('https://d36jcksde1wxzq.cloudfront.net/app-ui/_assets/docker-logo-V2TKVFGA.svg');
+    }
+  
+        
+      
+
+        
+          body {
+    --logo-height: 40px;
+  }
+  .c15d9e58d {
+    height: var(--logo-height);
+  }
+  
+        
+      
+
+        
+          
+    body {
+      --header-alignment: center;
+    }
+  
+        
+      
+
+        
+          
+        
+      
+
+
+
+
+        
+          .cb33b4717 {
+    --page-background-alignment: center;
+  }
+        
+      
+
+        
+          body {
+    --page-background-color: #F9F9FA;
+  }
+        
+      
+
+        
+          
+        
+      
+
+
+
+
+      
+    </style>
+    <style>
+    /* By default, hide features for javascript-disabled browsing */
+    /* We use !important to override any css with higher specificity */
+    /* It is also overriden by the styles in <noscript> in the header file */
+    .no-js {
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
+  </style>
+  <noscript>
+    <style>
+      /* We use !important to override the default for js enabled */
+      /* If the display should be other than block, it should be defined specifically here */
+      .js-required { display: none !important; }
+      .no-js {
+        clip: auto;
+        clip-path: none;
+        height: auto;
+        overflow: auto;
+        position: static;
+        white-space: normal;
+        width: var(--prompt-width);
+      }
+    </style>
+  </noscript>
+    
+<link
+      href="https://fonts.googleapis.com/css?family=Comfortaa|Open+Sans:300,400,400i,600,600i,700"
+      rel="stylesheet"
+    />
+    <script>
+      (window.heap = window.heap || []),
+        (heap.load = function (e, t) {
+          (window.heap.appid = e), (window.heap.config = t = t || {});
+          var r = document.createElement('script');
+          (r.type = 'text/javascript'),
+            (r.async = !0),
+            (r.src = 'https://cdn.heapanalytics.com/js/heap-' + e + '.js');
+          var a = document.getElementsByTagName('script')[0];
+          a.parentNode.insertBefore(r, a);
+          for (
+            var n = function (e) {
+                return function () {
+                  heap.push(
+                    [e].concat(Array.prototype.slice.call(arguments, 0)),
+                  );
+                };
+              },
+              p = [
+                'addEventProperties',
+                'addUserProperties',
+                'clearEventProperties',
+                'identify',
+                'resetIdentity',
+                'removeEventProperty',
+                'setEventProperties',
+                'track',
+                'unsetEventProperty',
+              ],
+              o = 0;
+            o < p.length;
+            o++
+          )
+            heap[p[o]] = n(p[o]);
+        });
+      heap.load('4204607514', {
+        rewrite: function (props) {
+          // Don't track URL query params
+          // These often contain CSRF nonces or tokens with PII (/complete-signup)
+          if (props.pageview_properties.query) {
+            props.pageview_properties.query = '';
+          }
+          if (props.session_properties.query) {
+            props.session_properties.query = '';
+          }
+          return props;
+        },
+      });
+    </script>
+    <style>
+      .content {
+        height: calc(100vh - 60px);
+        min-height: 753px;
+      }
+      .content > main {
+        min-height: calc(100vh - 118px) !important;
+      }
+      main > section {
+        gap: 24px;
+      }
+      .footer {
+        height: 53px;
+        padding: 16px 0;
+        width: 100%;
+        z-index: 10;
+      }
+      .footer ul {
+        text-align: center;
+      }
+      .footer ul li {
+        display: inline-block;
+        margin: 0 4px;
+      }
+      .footer ul li:not(:first-of-type) {
+        margin-left: 0;
+      }
+      .footer ul li:not(:first-of-type)::before {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        width: 4px;
+        height: 4px;
+        margin-right: 7px;
+        background-color: #ccc;
+        border-radius: 50%;
+      }
+      #footer-links a {
+        font-size: 14px;
+        color: #1d63ed;
+        text-decoration: underline;
+      }
+
+      .signup-card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 16px;
+        font-size: 14px;
+      }
+
+      .signup-link {
+        font-weight: var(--font-bold-weight) !important;
+        font-size: 14px;
+        text-decoration: underline;
+      }
+
+      /* Chained selectors are necessary to reach high enough specificity to be prioritized over auth0 styles */
+      @media (max-width: 600px) {
+        ._widget-auto-layout > .content > main > section > div {
+          border: none !important;
+          flex-grow: 0 !important;
+        }
+
+        ._widget-auto-layout > .content > main > section > div > div > div {
+          padding-bottom: 0 !important;
+        }
+      }
+    </style>
+    <title></title>
+  </head>
+  <body class="_widget-auto-layout">
+    <div class="content"><main class="_widget login-id">
+  <section class="c2193a836 _prompt-box-outer cc1db84e7">
+    <div class="c55d59d7d cddeed381">
+      
+    
+      
+    
+      <div class="ccf087072">
+        <header class="cdc33b6e5 c98680059">
+          <div title="Docker" id="custom-prompt-logo" style="width: auto !important; height: 60px !important; position: static !important; margin: auto !important; padding: 0 !important; background-color: transparent !important; background-position: center !important; background-size: contain !important; background-repeat: no-repeat !important"></div>
+        
+          <img class="c15d9e58d ceaa1eafd" id="prompt-logo-center" src="https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png" alt="Docker">
+        
+          
+            <h1 class="cd1305c91 cbe117e72">Sign in</h1>
+          
+        
+          <div class="c0dc0bdb8 c8399dc4b">
+            <p class="cfcdcf262 c146b7a74">Using Docker for work? We recommend signing in with your work email address.</p>
+          </div>
+        </header>
+      
+        <div class="cec2dc2f4 c93a9d579">
+          
+        
+          
+            <div class="ccb3f0dd1 ce78944aa">
+              <div class="c0f9e9d73">
+                
+              
+                
+                  <form method="POST" class="cbd27b2d3 _form-login-id" data-form-primary="true">
+                    <input type="hidden" name="state" value="hKFo2SB2aWY3S1BNQXFTUlM5VGJvbnQxZExEU2t0bWt6RkdtVaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGg3Z3RnLUNvWUZFTGJkdHJ0aVZwaTJqQzB2TmM2b0FTo2NpZNkgbHZlOUdHbDhKdFNVcm5lUTFFVnVDMGxiakhkaTluYjk">
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    <div class="ccb3f0dd1 ce78944aa">
+                      <div class="c0f9e9d73">
+                        
+                      
+                        
+                          
+                            <div class="input-wrapper _input-wrapper">
+                              <div class="cd252b87f c74bfdd7c text c9941065b" data-action-text="" data-alternate-action-text="">
+                                <label class="cd028131e no-js c0bb9e449 c72e2f7de" for="username">
+                                  Username or email address
+                                </label>
+                              
+                                <input class="input cbd4a4c6b c325e6027" inputMode="text" name="username" id="username" type="text" value="" required autoComplete="email" autoCapitalize="none" spellCheck="false" autoFocus>
+                              
+                                <div class="cd028131e js-required c0bb9e449 c72e2f7de" data-dynamic-label-for="username" aria-hidden="true">
+                                  Username or email address*
+                                </div>
+                              </div>
+                            
+                              
+                            </div>
+                          
+                        
+                      
+                        
+                      
+                        
+                      </div>
+                    </div>
+                  
+                    
+                  
+                    <input class="hide" type="password" autoComplete="off" tabindex="-1" aria-hidden="true">
+                  
+                    <input type="hidden" id="js-available" name="js-available" value="false">
+                  
+                    <input type="hidden" id="webauthn-available" name="webauthn-available" value="false">
+                  
+                    <input type="hidden" id="is-brave" name="is-brave" value="false">
+                  
+                    <input type="hidden" id="webauthn-platform-available" name="webauthn-platform-available" value="false">
+                  
+                    
+                  
+                    <div class="cdbf6569e">
+                      
+                        <button type="submit" name="action" value="default" class="ce869b6b0 cf7babd65 c86310ac3 c9b36c38b _button-login-id" data-action-button-primary="true">Continue</button>
+                      
+                    </div>
+                  </form>
+                
+              </div>
+            </div>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <div class="ce11e8c83 c3800885b">
+              <span>Or</span>
+            </div>
+          
+        
+          
+        
+          
+            
+          
+            <div class="c67f4dcf6 cbfc63e56">
+              
+            
+              
+                <form method="post" data-provider="google" class="c140d09bf c755f1c6b c985830ba" data-form-secondary="true">
+                  <input type="hidden" name="state" value="hKFo2SB2aWY3S1BNQXFTUlM5VGJvbnQxZExEU2t0bWt6RkdtVaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGg3Z3RnLUNvWUZFTGJkdHJ0aVZwaTJqQzB2TmM2b0FTo2NpZNkgbHZlOUdHbDhKdFNVcm5lUTFFVnVDMGxiakhkaTluYjk">
+                
+                  <input type="hidden" name="connection" value="google-oauth2">
+                
+                  <button type="submit" class="cfa10d636 cdf8c8a3c c94de217b" data-provider="google" data-action-button-secondary="true">
+                    
+                      <span class="c62373a01 c36f3072e" data-provider="google"></span>
+                    
+                  
+                    <span class="cc5871089">Continue with Google</span>
+                  </button>
+                </form>
+              
+                <form method="post" data-provider="github" class="c140d09bf c755f1c6b c04235b16" data-form-secondary="true">
+                  <input type="hidden" name="state" value="hKFo2SB2aWY3S1BNQXFTUlM5VGJvbnQxZExEU2t0bWt6RkdtVaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGg3Z3RnLUNvWUZFTGJkdHJ0aVZwaTJqQzB2TmM2b0FTo2NpZNkgbHZlOUdHbDhKdFNVcm5lUTFFVnVDMGxiakhkaTluYjk">
+                
+                  <input type="hidden" name="connection" value="github">
+                
+                  <button type="submit" class="cfa10d636 cdf8c8a3c c8a30bd9b" data-provider="github" data-action-button-secondary="true">
+                    
+                      <span class="c62373a01 c36f3072e" data-provider="github"></span>
+                    
+                  
+                    <span class="cc5871089">Continue with GitHub</span>
+                  </button>
+                </form>
+              
+                <form method="post" data-provider="oidc" class="c140d09bf c755f1c6b _social-button-container-oidc" data-form-secondary="true">
+                  <input type="hidden" name="state" value="hKFo2SB2aWY3S1BNQXFTUlM5VGJvbnQxZExEU2t0bWt6RkdtVaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGg3Z3RnLUNvWUZFTGJkdHJ0aVZwaTJqQzB2TmM2b0FTo2NpZNkgbHZlOUdHbDhKdFNVcm5lUTFFVnVDMGxiakhkaTluYjk">
+                
+                  <input type="hidden" name="connection" value="docker-sso-oidc">
+                
+                  <button type="submit" class="cfa10d636 cdf8c8a3c _social-button-oidc" data-provider="oidc" data-action-button-secondary="true">
+                    
+                      <img class="c62373a01 cb685c7e4" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cGF0aCBkPSJNMTcgOC45OTk5NEMxNyA4LjQ4ODEyIDE2LjgwNDcgNy45NzYzIDE2LjQxNDIgNy41ODU3OUMxNi4wMjM3IDcuMTk1MjYgMTUuNTExOCA3IDE1IDdNMTUgMTVDMTguMzEzNyAxNSAyMSAxMi4zMTM3IDIxIDlDMjEgNS42ODYyOSAxOC4zMTM3IDMgMTUgM0MxMS42ODYzIDMgOSA1LjY4NjI5IDkgOUM5IDkuMjczNjggOS4wMTgzMiA5LjU0MzA4IDkuMDUzODEgOS44MDcwNEM5LjExMjE4IDEwLjI0MTIgOS4xNDEzNiAxMC40NTgzIDkuMTIxNzIgMTAuNTk1NkM5LjEwMTI1IDEwLjczODcgOS4wNzUyIDEwLjgxNTcgOS4wMDQ2OSAxMC45NDE5QzguOTM3IDExLjA2MyA4LjgxNzcxIDExLjE4MjMgOC41NzkxMyAxMS40MjA5TDMuNDY4NjMgMTYuNTMxNEMzLjI5NTY4IDE2LjcwNDMgMy4yMDkyIDE2Ljc5MDggMy4xNDczNiAxNi44OTE3QzMuMDkyNTMgMTYuOTgxMiAzLjA1MjEzIDE3LjA3ODcgMy4wMjc2MyAxNy4xODA4QzMgMTcuMjk1OSAzIDE3LjQxODIgMyAxNy42NjI3VjE5LjRDMyAxOS45NjAxIDMgMjAuMjQwMSAzLjEwODk5IDIwLjQ1NEMzLjIwNDg3IDIwLjY0MjIgMy4zNTc4NSAyMC43OTUxIDMuNTQ2MDEgMjAuODkxQzMuNzU5OTIgMjEgNC4wMzk5NSAyMSA0LjYgMjFIN1YxOUg5VjE3SDExTDEyLjU3OTEgMTUuNDIwOUMxMi44MTc3IDE1LjE4MjMgMTIuOTM3IDE1LjA2MyAxMy4wNTgxIDE0Ljk5NTNDMTMuMTg0MyAxNC45MjQ4IDEzLjI2MTMgMTQuODk4NyAxMy40MDQ0IDE0Ljg3ODNDMTMuNTQxNyAxNC44NTg2IDEzLjc1ODggMTQuODg3OCAxNC4xOTMgMTQuOTQ2MkMxNC40NTY5IDE0Ljk4MTcgMTQuNzI2MyAxNSAxNSAxNVoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzY3NzI4NSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIC8+Cjwvc3ZnPg==" alt="Connection icon">
+                    
+                  
+                    <span class="cc5871089">Continue with SSO</span>
+                  </button>
+                </form>
+              
+            
+              
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  
+    
+  </section>
+</main>
+<script id="client-scripts">
+window.ulpFlags = {"enable_ulp_wcag_compliance":false};!function(){var e,t,E,A,C,S,F,T,n,r,a={exports:function(e,t){return"object"==typeof e.ulpFlags&&null!==e.ulpFlags?e.ulpFlags:{}}}.exports(window,document),i=((e={}).exports=function(n,a){var r={},i={};function u(e,t){if(e.classList)return e.classList.add(t);var n=e.className.split(" ");-1===n.indexOf(t)&&(n.push(t),e.className=n.join(" "))}function o(e,t,n,r){return e.addEventListener(t,n,r)}function c(e){return"string"==typeof e}function l(e,t){return c(e)?a.querySelector(e):e.querySelector(t)}function s(e,t){if(e.classList)return e.classList.remove(t);var n=e.className.split(" "),r=n.indexOf(t);-1!==r&&(n.splice(r,1),e.className=n.join(" "))}function f(e,t){return e.getAttribute(t)}function d(e,t,n){return e.setAttribute(t,n)}var e=["text","number","email","password","tel","url"],t="select,textarea,"+e.map(function(e){return'input[type="'+e+'"]'}).join(",");return{addClass:u,toggleClass:function(e,t,n){if(!0===n||!1===n)return r=e,a=t,!0!==n?s(r,a):u(r,a);var r,a;if(e.classList)return e.classList.toggle(t);var i=e.className.split(" "),o=i.indexOf(t);-1!==o?i.splice(o,1):i.push(t),e.className=i.join(" ")},hasClass:function(e,t){return e.classList?e.classList.contains(t):-1!==e.className.split(" ").indexOf(t)},addClickListener:function(e,t){return o(e,"click",t)},addEventListener:o,getAttribute:f,hasAttribute:function(e,t){return e.hasAttribute(t)},getElementById:function(e){return a.getElementById(e)},getParent:function(e){return e.parentNode},isString:c,loadScript:function(e,t){var n=a.createElement("script");for(var r in t)r.startsWith("data-")?n.dataset[r.replace("data-","")]=t[r]:n[r]=t[r];n.src=e,a.body.appendChild(n)},removeScript:function(e){a.querySelectorAll('script[src="'+e+'"]').forEach(function(e){e.remove()})},poll:function(e){var i=e.interval||2e3,t=e.url||n.location.href,o=e.condition||function(){return!0},u=e.onSuccess||function(){},c=e.onError||function(){};return setTimeout(function r(){var a=new XMLHttpRequest;return a.open("GET",t),a.setRequestHeader("Accept","application/json"),a.onload=function(){if(200===a.status){var e="application/json"===a.getResponseHeader("Content-Type").split(";")[0]?JSON.parse(a.responseText):a.responseText;return o(e)?u():setTimeout(r,i)}if(429!==a.status)return c({status:a.status,responseText:a.responseText});var t=1e3*Number.parseInt(a.getResponseHeader("X-RateLimit-Reset")),n=t-(new Date).getTime();return setTimeout(r,i<n?n:i)},a.send()},i)},querySelector:l,querySelectorAll:function(e,t){var n=c(e)?a.querySelectorAll(e):e.querySelectorAll(t);return Array.prototype.slice.call(n)},removeClass:s,removeElement:function(e){return e.remove()},setAttribute:d,removeAttribute:function(e,t){return e.removeAttribute(t)},swapAttributes:function(e,t,n){var r=f(e,t),a=f(e,n);d(e,n,r),d(e,t,a)},setGlobalFlag:function(e,t){r[e]=!!t},getGlobalFlag:function(e){return!!r[e]},setSubmittedForm:function(e,t){i[e]=t},getSubmittedForm:function(e){return i[e]},preventFormSubmit:function(e){e.stopPropagation(),e.preventDefault()},matchMedia:function(e){return"function"!=typeof n.matchMedia&&n.matchMedia(e).matches},dispatchEvent:function(e,t,n){var r;"function"!=typeof Event?(r=a.createEvent("Event")).initCustomEvent(t,n,!1):r=new Event(t,{bubbles:n}),e.dispatchEvent(r)},timeoutPromise:function(e,a){return new Promise(function(t,n){var r=setTimeout(function(){n(new Error("timeoutPromise: promise timed out"))},e);a.then(function(e){clearTimeout(r),t(e)},function(e){clearTimeout(r),n(e)})})},createMutationObserver:function(e){return"undefined"==typeof MutationObserver?null:new MutationObserver(e)},consoleWarn:function(){(console.warn||console.log).apply(console,arguments)},getConfigJson:function(e){try{var t=l(e);if(!t)return null;var n=t.value;return n?JSON.parse(n):null}catch(e){return null}},getCSSVariable:function(e){return getComputedStyle(a.documentElement).getPropertyValue(e)},removeAndTrimString:function(e,t){var n=new RegExp(t,"g"),r=e.replace(n,"");return r=r.replace(/\s+/g,"  ").trim()},setTimeout:setTimeout,globalWindow:n,SUPPORTED_INPUT_TYPES:e,ELEMENT_TYPE_SELECTOR:t,RUN_INIT:!0}},e.exports)(window,document),o=function(){var e={};function v(e){if(!("string"==typeof e||e instanceof String)){var t=typeof e;throw null===e?t="null":"object"===t&&(t=e.constructor.name),new TypeError("Expected a string but received a "+t)}}function m(e,t){var n,r;v(e),r="object"==typeof t?(n=t.min||0,t.max):(n=t,arguments[2]);var a=encodeURI(e).split(/%..|./).length-1;return n<=a&&(void 0===r||a<=r)}function h(e,t){for(var n in void 0===e&&(e={}),t)void 0===e[n]&&(e[n]=t[n]);return e}var b={require_tld:!0,allow_underscores:!1,allow_trailing_dot:!1,allow_numeric_tld:!1,allow_wildcard:!1,ignore_max_length:!1},t="(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])",n="("+t+"[.]){3}"+t,r=new RegExp("^"+n+"$"),a="(?:[0-9a-fA-F]{1,4})",i=new RegExp("^((?:"+a+":){7}(?:"+a+"|:)|(?:"+a+":){6}(?:"+n+"|:"+a+"|:)|(?:"+a+":){5}(?::"+n+"|(:"+a+"){1,2}|:)|(?:"+a+":){4}(?:(:"+a+"){0,1}:"+n+"|(:"+a+"){1,3}|:)|(?:"+a+":){3}(?:(:"+a+"){0,2}:"+n+"|(:"+a+"){1,4}|:)|(?:"+a+":){2}(?:(:"+a+"){0,3}:"+n+"|(:"+a+"){1,5}|:)|(?:"+a+":){1}(?:(:"+a+"){0,4}:"+n+"|(:"+a+"){1,6}|:)|(?::((?::"+a+"){0,5}:"+n+"|(?::"+a+"){1,7}|:)))(%[0-9a-zA-Z-.:]{1,})?$");function g(e,t){return void 0===t&&(t=""),v(e),(t=String(t))?"4"===t?r.test(e):"6"===t&&i.test(e):g(e,4)||g(e,6)}var w={allow_display_name:!1,allow_underscores:!1,require_display_name:!1,allow_utf8_local_part:!0,require_tld:!0,blacklisted_chars:"",ignore_max_length:!1,host_blacklist:[],host_whitelist:[]},y=/^([^\x00-\x1F\x7F-\x9F\cX]+)</i,_=/^[a-z\d!#\$%&'\*\+\-\/=\?\^_`{\|}~]+$/i,x=/^[a-z\d]+$/,E=/^([\s\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e]|(\\[\x01-\x09\x0b\x0c\x0d-\x7f]))*$/i,A=/^[a-z\d!#\$%&'\*\+\-\/=\?\^_`{\|}~\u00A1-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+$/i,C=/^([\s\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|(\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*$/i,S=254;function o(e,t){if(v(e),(t=h(t,w)).require_display_name||t.allow_display_name){var n=e.match(y);if(n){var r=n[1];if(e=e.replace(r,"").replace(/(^<|>$)/g,""),r.endsWith(" ")&&(r=r.slice(0,-1)),!function(e){var t=e.replace(/^"(.+)"$/,"$1");if(!t.trim())return!1;if(/[\.";<>]/.test(t)){if(t===e)return!1;if(t.split('"').length!==t.split('\\"').length)return!1}return!0}(r))return!1}else if(t.require_display_name)return!1}if(!t.ignore_max_length&&e.length>S)return!1;var a=e.split("@"),i=a.pop(),o=i.toLowerCase();if(t.host_blacklist.includes(o))return!1;if(0<t.host_whitelist.length&&!t.host_whitelist.includes(o))return!1;var u=a.join("@");if(t.domain_specific_validation&&("gmail.com"===o||"googlemail.com"===o)){var c=(u=u.toLowerCase()).split("+")[0];if(!m(c.replace(/\./g,""),{min:6,max:30}))return!1;for(var l=c.split("."),s=0;s<l.length;s++)if(!x.test(l[s]))return!1}if(!(!1!==t.ignore_max_length||m(u,{max:64})&&m(i,{max:254})))return!1;if(!function(e,t){v(e),(t=h(t,b)).allow_trailing_dot&&"."===e[e.length-1]&&(e=e.substring(0,e.length-1)),!0===t.allow_wildcard&&0===e.indexOf("*.")&&(e=e.substring(2));var n=e.split("."),r=n[n.length-1];if(t.require_tld){if(n.length<2)return!1;if(!t.allow_numeric_tld&&!/^([a-z\u00A1-\u00A8\u00AA-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]{2,}|xn[a-z0-9-]{2,})$/i.test(r))return!1;if(/\s/.test(r))return!1}return!(!t.allow_numeric_tld&&/^\d+$/.test(r))&&n.every(function(e){return!(63<e.length&&!t.ignore_max_length||!/^[a-z_\u00a1-\uffff0-9-]+$/i.test(e)||/[\uff01-\uff5e]/.test(e)||/^-|-$/.test(e)||!t.allow_underscores&&/_/.test(e))})}(i,{require_tld:t.require_tld,ignore_max_length:t.ignore_max_length,allow_underscores:t.allow_underscores})){if(!t.allow_ip_domain)return!1;if(!g(i)){if(!i.startsWith("[")||!i.endsWith("]"))return!1;var f=i.slice(1,-1);if(0===f.length||!g(f))return!1}}if('"'===u[0])return u=u.slice(1,u.length-1),t.allow_utf8_local_part?C.test(u):E.test(u);for(var d=t.allow_utf8_local_part?A:_,p=(l=u.split("."),0);p<l.length;p++)if(!d.test(l[p]))return!1;return!t.blacklisted_chars||-1===u.search(new RegExp("["+t.blacklisted_chars+"]+","g"))}return e.exports=function(e,t){return{ulpRequiredFunction:function(e,t){return!t||!!e.value},ulpEmailValidationFunction:function(e,t){return!t||!e.value||!!o(e.value)},ulpPatternCheckFunction:function(e,t){return!t||!e.value||function(e){if("password"===e.name)return!0;var t=e.getAttribute("pattern");return!t||null!==e.value.match(t)}(e)}}},e.exports}()(window,document),u={exports:function(e,t){for(var i="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_",s=new Uint8Array(256),o=0;o<i.length;o++)s[i.charCodeAt(o)]=o;function u(e){var t,n=new Uint8Array(e),r=n.length,a="";for(t=0;t<r;t+=3)a+=i[n[t]>>2],a+=i[(3&n[t])<<4|n[t+1]>>4],a+=i[(15&n[t+1])<<2|n[t+2]>>6],a+=i[63&n[t+2]];return r%3==2?a=a.substring(0,a.length-1):r%3==1&&(a=a.substring(0,a.length-2)),a}function n(){return navigator&&navigator.credentials&&"undefined"!=typeof PublicKeyCredential}return{base64URLEncode:u,base64URLDecode:function(e){var t,n,r,a,i,o=.75*e.length,u=e.length,c=0,l=new Uint8Array(o);for(t=0;t<u;t+=4)n=s[e.charCodeAt(t)],r=s[e.charCodeAt(t+1)],a=s[e.charCodeAt(t+2)],i=s[e.charCodeAt(t+3)],l[c++]=n<<2|r>>4,l[c++]=(15&r)<<4|a>>2,l[c++]=(3&a)<<6|63&i;return l.buffer},publicKeyCredentialToJSON:function e(t){if(t instanceof Array){var n=[];for(o=0;o<t.length;o+=1)n.push(e(t[o]));return n}if(t instanceof ArrayBuffer)return u(t);if(t instanceof Object){var r={};for(var a in t)r[a]=e(t[a]);return r}return t},str2ab:function(e){for(var t=new ArrayBuffer(e.length),n=new Uint8Array(t),r=0,a=e.length;r<a;r++)n[r]=e.charCodeAt(r);return t},isWebAuthnAvailable:n,isWebauthnPlatformAuthenticatorAvailableAsync:function(e){return n()?e(1e3,PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()):Promise.resolve(!1)}}}}.exports(window,document);({exports:function(e,r,a,t){var n=e(".c18bd27d5"),i=e("#alert-trigger"),o=e(".cd6e022d6"),u=e(".c288aacd4"),c=!1;i&&u&&n&&t(n,function(e){var t=e.target===i,n=u.contains(e.target);return t&&!c?(r(o,"show"),void(c=!0)):t&&c||c&&!n?(a(o,"show"),void(c=!1)):void 0})}}).exports(i.querySelector,i.addClass,i.removeClass,i.addClickListener),(E="recaptcha_v2",A="recaptcha_enterprise",C="hcaptcha",S="friendly_captcha",F="arkose",T="auth0_v2",(t={}).exports=function(i,o,a,u,c,l,s){var f=500,d=3,p=0,v=a("div[data-captcha-sitekey]"),t=a("div[data-captcha-sitekey] input");function m(){switch(g()){case E:return window.grecaptcha;case A:return window.grecaptcha.enterprise;case C:return window.hcaptcha;case S:return window.friendlyChallenge;case F:return window.arkose;case T:return window.turnstile}}function h(){return a(function(){switch(g()){case E:case A:return"#ulp-recaptcha";case C:return"#ulp-hcaptcha";case S:return"#ulp-friendly-captcha";case F:return"#ulp-arkose";case T:return"#ulp-auth0-v2-captcha"}}())}function b(){return v.getAttribute("data-captcha-lang")}function g(){return v.getAttribute("data-captcha-provider")}function w(){return v.getAttribute("data-captcha-sitekey")}function y(){return a('form[data-form-primary="true"]')}function _(e){return t.value=e}function x(){var e=m(),t=l("--ulp-captcha-widget-theme")||"light";if(g()===S)"dark"===t&&u(a(".frc-captcha"),"dark"),(r=e.autoWidget).opts.language=b(),r.opts.doneCallback=function(e){_(e)};else{var n={sitekey:w(),theme:t,"expired-callback":function(){_(""),u(v,"c8f3f37a9"),e.reset(r)},callback:function(e){_(e),c(v,"c8f3f37a9")}};g()===T&&(n.language=b(),n.retry="never",n["response-field"]=!1,n["error-callback"]=function(e){return fetch("https://www.cloudflarestatus.com/api/v2/summary.json").then(function(e){return e.json()}).then(function(e){for(var t=0;t<e.components.length;t++){var n=e.components[t];if("Turnstile"===n.name)return"operational"===n.status}return!1}).catch(function(e){return!1}).then(function(e){e&&p<d?(_(""),u(v,"c8f3f37a9"),m().reset(r),p++):(_("BYPASS_CAPTCHA"),c(v,"c8f3f37a9"))}),!0});var r=e.render(h(),n)}}v&&function(){var e="captchaCallback_"+Math.floor(1000001*Math.random()),t=g(),n={async:!0,defer:!0},r=function(e,t,n,r){switch(g()){case E:return"https://www.recaptcha.net/recaptcha/api.js?render=explicit&hl="+e+"&onload="+t;case A:return"https://www.recaptcha.net/recaptcha/enterprise.js?render=explicit&hl="+e+"&onload="+t;case C:return"https://js.hcaptcha.com/1/api.js?render=explicit&hl="+e+"&onload="+t;case S:return"https://cdn.jsdelivr.net/npm/friendly-challenge@0.9.14/widget.min.js";case F:return"https://"+n+".arkoselabs.com/v2/"+r+"/api.js";case T:return"https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload="+t}}(b(),e,v.getAttribute("data-captcha-client-subdomain"),w());if(t===F||t===T){n["data-callback"]=e,n.onerror=function(){if(p<d)return o(r),i(r,n),void p++;o(r),_("BYPASS_CAPTCHA")};var a=function(e){var t,n;t=e,n=function(e){setTimeout(function(){t.run()},f),e.preventDefault()},y().addEventListener("submit",n),t.setConfig({onCompleted:function(e){_(e.token),y().submit()},onError:function(e){return fetch("https://status.arkoselabs.com/api/v2/status.json").then(function(e){return e.json()}).then(function(e){var t=e.status.indicator;return"none"===t}).catch(function(e){return!1}).then(function(e){if(e&&p<d)return t.reset(),new Promise(function(e){setTimeout(function(){e(t.run())},f),p++});_("BYPASS_CAPTCHA"),y().removeEventListener("submit",n)})}})};t===T&&(a=function(){x()}),window[e]=a}else window[e]=function(){delete window[e],x()},t===S&&(u(h(),"frc-captcha"),s(h(),"data-sitekey",w()),n.onload=window[e]);i(r,n)}()},t.exports)(i.loadScript,i.removeScript,i.querySelector,i.addClass,i.removeClass,i.getCSSVariable,i.setAttribute),((n={}).exports=function(r,e,a,i,o,u,c,l,n,s,t){if(!t.enable_ulp_wcag_compliance){if(r("body._simple-labels"))return e(".cd028131e.no-js").forEach(function(e){o(e,"no-js")}),void e(".cd028131e.js-required").forEach(function(e){i(e,"hide")});e(".cd252b87f:not(.caba95db9):not(disabled)").forEach(function(e){i(e,"c0224ab0c");var t,n=r(e,".input");n.value&&i(e,"cdd96b16b"),a(e,"change",f),a(n,"blur",f),a(n,"animationstart",d),t=n,c(function(){t.value&&l(t,"change",!0)},100)})}function f(e){var t=e.target,n=u(t);t.value||s(t,"data-autofilled")?i(n,"cdd96b16b"):o(n,"cdd96b16b")}function d(e){var t=e.target;"onAutoFillStart"===e.animationName&&(n(t,"data-autofilled",!0),l(e.target,"change",!0),a(t,"keyup",p,{once:!0}))}function p(e){var t=e.target;n(t,"data-autofilled","")}},n.exports)(i.querySelector,i.querySelectorAll,i.addEventListener,i.addClass,i.removeClass,i.getParent,i.setTimeout,i.dispatchEvent,i.setAttribute,i.getAttribute,a),{exports:function(e,t,r,a,i,o,u,c){function n(e){var t=r("submitted"),n=i("submittedForm");a("submitted",!0),o("submittedForm",e.currentTarget),t&&n&&n===e.currentTarget?u(e):"apple"===c(e.target,"data-provider")&&setTimeout(function(){a("submitted",!1)},2e3)}var l=e("form");l&&l.forEach(function(e){t(e,"submit",n)})}}.exports(i.querySelectorAll,i.addEventListener,i.getGlobalFlag,i.setGlobalFlag,i.getSubmittedForm,i.setSubmittedForm,i.preventFormSubmit,i.getAttribute),{exports:function(t,e,n){var r=t("form._form-detect-browser-capabilities"),a=t("main.login-id"),i=t("main.signup-with-passkeys"),o=t("div#passkey-detect-browser-capabilities");if(r||a||i||o){var u=e.isWebAuthnAvailable();t("#webauthn-available").value=u?"true":"false",t("#js-available").value="true",navigator.brave?navigator.brave.isBrave().then(function(e){t("#is-brave").value=e,c()}):c()}function c(){u?e.isWebauthnPlatformAuthenticatorAvailableAsync(n).then(function(e){t("#webauthn-platform-available").value=e?"true":"false",r&&r.submit()}).catch(function(e){t("#webauthn-platform-available").value="false",r&&r.submit()}):(t("#webauthn-platform-available").value="false",r&&r.submit())}}}.exports(i.querySelector,u,i.timeoutPromise),function(){var e={};function u(e,n,r,t,a,i){var o="user-initiated-passkey-challenge",u=n("#allow-passkeys");if(u&&u.value){var c=a("#passkey-config-json");if(c){var l=n(".passkey-begin-button"),s=r.isWebauthnPlatformAuthenticatorAvailableAsync(t),f=n("#username"),d=c,p=new AbortController;d.publicKey.challenge=r.base64URLDecode(d.publicKey.challenge),l&&e(l,function(e){l.disabled=!0,p.abort(o),navigator.credentials.get(d).then(function(e){var t=b(e);s.then(function(e){t.isUserVerifyingPlatformAuthenticatorAvailable=e,h(JSON.stringify(t)),v()})}).catch(function(e){m(e)})}),window.PublicKeyCredential&&window.PublicKeyCredential.isConditionalMediationAvailable&&window.PublicKeyCredential.isConditionalMediationAvailable().then(function(e){if(e){var t=Object.assign({},d,{mediation:"conditional",signal:p.signal});navigator.credentials.get(t).then(function(e){f.blur();var t=b(e);s.then(function(e){t.isUserVerifyingPlatformAuthenticatorAvailable=e,h(JSON.stringify(t)),v()})}).catch(function(e){e!==o&&"AbortError"!==e.name&&i("autofill UI error",e)})}}).catch(function(){})}}function v(){n("form._form-passkey-challenge").submit()}function m(e){var t;n("#action").value="showError::"+(t=e,JSON.stringify({name:t.name,message:t.message,stack:t.stack})),n("form._form-passkey-challenge").submit()}function h(e){n("#passkey").value=e}function b(e){var t={id:e.id,rawId:r.base64URLEncode(e.rawId),type:e.type,response:{clientDataJSON:r.base64URLEncode(e.response.clientDataJSON),authenticatorData:r.base64URLEncode(e.response.authenticatorData),signature:r.base64URLEncode(e.response.signature),userHandle:e.response.userHandle?r.base64URLEncode(e.response.userHandle):null}};return e.authenticatorAttachment&&(t.authenticatorAttachment=e.authenticatorAttachment),t}}return e.exports=function(e,t,n,r,a,i,o){return e(window,"load",function(e){u(t,n,r,a,i,o)}),{configurePasskeys:u}},e.exports}()(i.addEventListener,i.addClickListener,i.querySelector,u,i.timeoutPromise,i.getConfigJson,i.consoleWarn),{exports:function(t,e,n){var r=e(".passkey-hidden-ui"),a=navigator.userAgent.toLowerCase(),i=!!window.safari||a.match(/safari/)&&!a.match(/chrome/)&&!a.match(/chromium/);!r||r.length<=0||(i?r.forEach(function(e){t(e,"passkey-hidden-ui")}):window.PublicKeyCredential&&window.PublicKeyCredential.isConditionalMediationAvailable&&window.PublicKeyCredential.isConditionalMediationAvailable().then(function(e){e?r.forEach(function(e){n(e)}):r.forEach(function(e){t(e,"passkey-hidden-ui")})}).catch(function(e){r.forEach(function(e){t(e,"passkey-hidden-ui")})}))}}.exports(i.removeClass,i.querySelectorAll,i.removeElement),{exports:function(n,e,r,a,i,o,u,c,l,t,s,f){if(f.enable_ulp_wcag_compliance){var d=e("[id^='ulp-container-']");if(d&&d.length){var p=t(_);if(p)for(var v=0;v<d.length;v++)p.observe(d[v],{childList:!0,subtree:!0})}_()}function m(e){var t=e.target,n=o(t);t.value||c(t,"data-autofilled")?a(n,"cdd96b16b"):i(n,"cdd96b16b")}function h(e){var t=e.target,n=o(t);a(n,"focus"),y(t,n)}function b(e){var t=e.target,n=o(t);i(n,"focus"),m(e),y(t,n)}function g(e){var t=e.target;l(t,"data-autofilled","")}function w(e){var t=e.target;"onAutoFillStart"===e.animationName&&(l(t,"data-autofilled",!0),dispatchEvent(e.target,"change",!0),r(t,"keyup",g,{once:!0}))}function y(e,t){e.value?a(t,"cdd96b16b"):i(t,"cdd96b16b")}function _(){e(".ulp-field").forEach(function(e){if(!u(e,"c0224ab0c")){var t=n(e,s);t&&(a(e,"c0224ab0c"),y(t,e),setTimeout(function(){y(t,e)},50),t===document.activeElement&&a(e,"focus"),r(t,"change",m),r(t,"focus",h),r(t,"blur",b),r(t,"animationstart",w))}})}}}.exports(i.querySelector,i.querySelectorAll,i.addEventListener,i.addClass,i.removeClass,i.getParent,i.hasClass,i.getAttribute,i.setAttribute,i.createMutationObserver,i.ELEMENT_TYPE_SELECTOR,a),{exports:function(n,e,r,a,i,o,u,t,c,l){if(!l.enable_ulp_wcag_compliance){var s=e("[id^='ulp-container-']");if(s&&s.length){var f=t(b);if(f)for(var d=0;d<s.length;d++)f.observe(s[d],{childList:!0,subtree:!0});b()}}function p(e){var t=e.target,n=o(t);t.value?a(n,"cdd96b16b"):i(n,"cdd96b16b")}function v(e){var t=e.target,n=o(t);a(n,"focus"),h(t,n)}function m(e){var t=e.target,n=o(t);i(n,"focus"),h(t,n)}function h(e,t){e.value?a(t,"cdd96b16b"):i(t,"cdd96b16b")}function b(){e("[id^='ulp-container-'] .ulp-field").forEach(function(e){if(!u(e,"c0224ab0c")){var t=n(e,c);t&&(a(e,"c0224ab0c"),h(t,e),setTimeout(function(){h(t,e)},50),t===document.activeElement&&a(e,"focus"),r(t,"change",p),r(t,"focus",v),r(t,"blur",m))}})}}}.exports(i.querySelector,i.querySelectorAll,i.addEventListener,i.addClass,i.removeClass,i.getParent,i.hasClass,i.createMutationObserver,i.ELEMENT_TYPE_SELECTOR,a),{exports:function(r,o,a,i,u,c,l,s,f,d,p,v,t,m,h,e,n,b){if(b.enable_ulp_wcag_compliance){var g=!1,w=e+',input[type="checkbox"]';return F(),[w,y,_,x,E,A,C,S,F]}function y(e){var t=u(e,"data-ulp-validation-function"),n=i(e);return{functionName:t,element:r(n,w),parent:n}}function _(e){var a=[],i=[];return o(e,"[data-ulp-validation-function]").forEach(function(e){var t=y(e),n=[];if(t.element){if("input"===t.element.tagName.toLowerCase()){var r=u(t.element,"type");"checkbox"!==r&&-1===h.indexOf(r)&&n.push("Unsupported input type: "+r)}}else n.push("Could not find element");v[t.functionName]||n.push("Could not find function with name: "+t.functionName),n.length?i=i.concat(n):a.push(e)}),i.length&&t(i.join("\r\n")),a}function x(e,t,n){var r=y(e),a=(0,v[r.functionName])(r.element,t,n);a?s(e,"ulp-validator-error")&&(d(e,"ulp-validator-error"),l(e,"data-is-error")):s(e,"ulp-validator-error")||(f(e,"ulp-validator-error"),c(e,"data-is-error",!0));var i=o(r.parent,".ulp-validator-error");return p(r.parent,"ulp-error",!!i.length),a}function E(t){var n=y(t),e=(u(t,"data-ulp-validation-event-listeners")||"").replace(/\s/g,"").split(",").filter(function(e){return!!e});e.length&&e.forEach(function(e){a(n.element,e,function(){x(t,g,e)})})}function A(e,t,n){g=!0;var r=n.filter(function(e){return!x(e,g,"submit")});if(!r.length)return t.submitter&&"default"==u(t.submitter,"value")&&c(t.submitter,"disabled",!0),void e.submit();m(t);var a=y(r[0]);a.element.focus({preventScroll:!0}),a.parent.scrollIntoView({behavior:"smooth"})}function C(){var t=r('form[data-form-primary="true"]'),n=_(t);0!==n.length&&(n.forEach(function(e){E(e)}),a(t,"submit",function(e){A(t,e,n)}))}function S(){if(n)for(var e in n)n.hasOwnProperty(e)&&(v[e]=n[e])}function F(){var e=r("form[data-disable-html-validations]");e&&(S(),c(e,"novalidate",""),C())}}}.exports(i.querySelector,i.querySelectorAll,i.addEventListener,i.getParent,i.getAttribute,i.setAttribute,i.removeAttribute,i.hasClass,i.addClass,i.removeClass,i.toggleClass,i.globalWindow,i.consoleWarn,i.preventFormSubmit,i.SUPPORTED_INPUT_TYPES,i.ELEMENT_TYPE_SELECTOR,o,a),{exports:function(r,o,a,i,u,c,l,t,s,f,e,n){if(!n.enable_ulp_wcag_compliance){var d=!1,p=e+',input[type="checkbox"]';return y(),[p,v,m,h,b,g,w,y]}function v(e){var t=u(e,"data-ulp-validation-function"),n=i(e);return{functionName:t,element:r(n,p),parent:n}}function m(e){var a=[],i=[];return o(e,"[data-ulp-validation-function]").forEach(function(e){var t=v(e),n=[];if(t.element){if("input"===t.element.tagName.toLowerCase()){var r=u(t.element,"type");"checkbox"!==r&&-1===f.indexOf(r)&&n.push("Unsupported input type: "+r)}}else n.push("Could not find element");l[t.functionName]||n.push("Could not find function with name: "+t.functionName),n.length?i=i.concat(n):a.push(e)}),i.length&&t(i.join("\r\n")),a}function h(e,t,n){var r=v(e),a=(0,l[r.functionName])(r.element,t,n);c(e,"ulp-validator-error",!a);var i=o(r.parent,".ulp-validator-error");return c(r.parent,"ulp-error",!!i.length),a}function b(t){var n=v(t),e=(u(t,"data-ulp-validation-event-listeners")||"").replace(/\s/g,"").split(",").filter(function(e){return!!e});e.length&&e.forEach(function(e){a(n.element,e,function(){h(t,d,e)})})}function g(e,t,n){d=!0;var r=n.filter(function(e){return!h(e,d,"submit")});if(r.length){s(t);var a=v(r[0]);a.element.focus({preventScroll:!0}),a.parent.scrollIntoView({behavior:"smooth"})}else e.submit()}function w(){var t=r('form[data-form-primary="true"]'),n=m(t);0!==n.length&&(n.forEach(function(e){b(e)}),a(t,"submit",function(e){g(t,e,n)}))}function y(){var e=o("[id^='ulp-container-']");e&&e.length&&w()}}}.exports(i.querySelector,i.querySelectorAll,i.addEventListener,i.getParent,i.getAttribute,i.toggleClass,i.globalWindow,i.consoleWarn,i.preventFormSubmit,i.SUPPORTED_INPUT_TYPES,i.ELEMENT_TYPE_SELECTOR,a),{exports:function(e,t,n){function r(n){t(n,"click",function(e){e.preventDefault();var t=document.createElement("input");t.name="action",t.type="hidden",t.value=n.value,n.form.appendChild(t),n.form.submit(),n.form.removeChild(t)})}function a(){e('form button[type="submit"][formnovalidate]').forEach(function(e){r(e)})}return n&&a(),[a,r]}}.exports(i.querySelectorAll,i.addEventListener,i.RUN_INIT),((r={}).exports=function(o,e,u,c,l,s,t,f,n){if(n.enable_ulp_wcag_compliance){var r=e('[class*="aria-error-check"]');if(r&&r.length){var a=t(function(e){e&&e.length&&e.map(function(e){if(e.target&&u(e.target,"aria-error-check")){var t=o('[id="'+c(e.target,"data-ulp-validation-target")+'"');if(t){var n=c(t,"aria-describedby");c(e.target,"data-is-error")?(r=t,a=n,i=e.target.id,a&&-1!==a.search(i)||l(r,"aria-describedby",a?a+" "+i:i),l(r,"aria-invalid",!0)):function(e,t,n){if(t){var r=f(t,n);r.length?l(e,"aria-describedby",r):(s(e,"aria-invalid"),s(e,"aria-describedby"))}else s(e,"aria-invalid"),s(e,"aria-describedby")}(t,n,e.target.id)}}var r,a,i})});a&&r.map(function(e){a.observe(e,{attributes:!0,attributeFilter:["class","data-is-error"]})})}}},r.exports)(i.querySelector,i.querySelectorAll,i.hasClass,i.getAttribute,i.setAttribute,i.removeAttribute,i.createMutationObserver,i.removeAndTrimString,a)}();
+</script>
+</div>
+    <footer class="footer">
+      <ul id="footer-links">
+        <li>
+          <a
+            href="https://www.docker.com/legal/docker-privacy-policy"
+            target="_blank"
+            >Privacy Policy</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.docker.com/legal/docker-terms-service"
+            target="_blank"
+            >Terms of Service</a
+          >
+        </li>
+      </ul>
+    </footer>
+  </body>
+  <template id="signup-card">
+    <div style="min-height: auto !important">
+      <nav class="signup-card">
+        Don't have an account?&nbsp
+        <a href="https://hub.docker.com/signup" id="signup" class="signup-link">
+          Sign Up
+        </a>
+      </nav>
+    </div>
+  </template>
+  <script>
+    (function () {
+      const loginCardContainer = document.querySelector('main > section');
+      if (
+        window.location.pathname !== '/u/login/identifier' ||
+        !loginCardContainer
+      ) {
+        return;
+      }
+
+      const content = document.querySelector('.content');
+      if (content) {
+        content.style.minHeight = '832px';
+      }
+
+      const signupCard = document
+        .getElementById('signup-card')
+        .content.cloneNode(true);
+
+      signupCard.firstElementChild.setAttribute(
+        'class',
+        loginCardContainer.firstElementChild.getAttribute('class'),
+      );
+
+      loginCardContainer.appendChild(signupCard);
+      const signupLink = signupCard.querySelector('.signup-link');
+      signupLink.href += window.location.search;
+    })();
+  </script>
+</html>

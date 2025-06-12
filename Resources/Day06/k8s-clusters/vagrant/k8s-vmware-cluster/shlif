@@ -1,0 +1,47 @@
+
+
+
+vagrant destroy -f
+Remove-Item -Recurse -Force .vagrant
+vagrant up --provider=vmware_desktop
+
+
+vagrant ssh master-node
+vagrant ssh worker-node-1
+vagrant ssh worker-node-2
+
+systemctl is-active containerd
+systemctl is-active kubelet
+
+sudo journalctl -u kubelet -f
+
+
+
+sudo kubeadm reset -f
+
+
+sudo rm -rf /etc/kubernetes/
+sudo rm -rf /var/lib/kubelet/
+sudo rm -rf /var/lib/etcd/  # optional (master only)
+sudo rm -rf /etc/cni/
+sudo rm -rf /opt/cni/
+
+# Restart services
+sudo systemctl restart kubelet docker containerd
+
+# Then re-run join
+sudo bash /vagrant/join.sh
+
+
+
+
+
+sudo swapoff -a
+sudo sed -i '/ swap / s/^/#/' /etc/fstab
+
+
+
+sudo swapoff -a
+sudo systemctl restart kubelet docker containerd
+
+

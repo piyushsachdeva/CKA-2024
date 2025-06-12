@@ -1,0 +1,18 @@
+{
+    "sourceFile": "Resources/Day02/4InARow/src/Row/tailwind.config.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1744991935123,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1744991935123,
+            "name": "Commit-0",
+            "content": "module.exports = {\n  content: [\n    \"./src/**/*.{js,jsx,ts,tsx}\",\n  ],\n  theme: {\n    extend: {},\n  },\n  plugins: [],\n}"
+        }
+    ]
+}
