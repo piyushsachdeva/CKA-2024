@@ -6,19 +6,23 @@
 
 master nodes security group 
 
-![image.png](attachment:99dfe39a-be49-4046-bad0-a6ff9d1843e0:image.png)
+![image](https://github.com/user-attachments/assets/e29bf4e2-6f16-4c7c-b3d9-4f8075766d14)
 
-![image.png](attachment:36888124-bf6a-4a99-98dc-040dcb2e9a73:image.png)
+![image](https://github.com/user-attachments/assets/d77055dd-199a-4971-85a2-87c4d9866f77)
 
-worker node security gourp
 
-![image.png](attachment:238ae691-d4f9-46e6-91cb-079cdb82ca5b:image.png)
+worker node security group
+
+![image](https://github.com/user-attachments/assets/342b8fef-84de-496f-aa9f-ad2fa3a22dd5)
+
 
 load balancer security group
 
-![image.png](attachment:276337e1-8f83-4cab-8e07-bfd1e17502b5:image.png)
+![image](https://github.com/user-attachments/assets/23f7d21a-1870-47bb-901c-12125ad5f190)
 
-![image.png](attachment:28f1772b-461c-4579-86fb-923986d7e10e:image.png)
+
+![image](https://github.com/user-attachments/assets/5ccc03aa-cb80-490c-8013-9d8621a75f45)
+
 
 - 2 machines for master, ubuntu 16.04+, 2 CPU, 2 GB RAM, 10 GB storage
 - 2 machines for worker, ubuntu 16.04+, 1 CPU, 2 GB RAM, 10 GB storage
@@ -341,7 +345,7 @@ kubeadm init \
 
 final command will look like the below 
 
-![image.png](attachment:dfccd1fd-f5d8-42a4-8bd1-969857e38ca6:image.png)
+![image](https://github.com/user-attachments/assets/c885d24d-4d4b-4dc0-849c-3962d63260a5)
 
 To start using your cluster, you need to run the following as a regular user:
 
@@ -357,17 +361,17 @@ now you can do `kubectl get nodes` to see you control plane node is okay or not 
 
  
 
-![image.png](attachment:6634e5d8-b815-4bad-868e-03f761997419:image.png)
+![image](https://github.com/user-attachments/assets/ce616d86-b716-4f71-bef3-1ccb475b2496)
 
 this command will generate two different type of join tokens 
 
 1. Join token for other master nodes to join the control plane 
 
-![image.png](attachment:c320674b-2911-4a74-934b-ecd7d6f3d91f:image.png)
+![image](https://github.com/user-attachments/assets/afe7ddb3-a7f6-42d6-b076-77724c9d5032)
 
 1. Join token for the worker node to join the worker plane 
 
-![image.png](attachment:4a48b1a6-d4ca-4bc3-9e1b-c73a90e1b878:image.png)
+![image](https://github.com/user-attachments/assets/e4d79bd0-0b08-44ca-a884-40d17f596b0e)
 
 copy and save both the commands this will be needed in the future
 
@@ -383,13 +387,13 @@ kubectl apply -f custom-resources.yaml
 
 will see a output like this 
 
-![image.png](attachment:2f2ab43f-8a4e-410f-93a3-79323e3abcf7:image.png)
+![image](https://github.com/user-attachments/assets/5b2bc24a-1598-47e0-85f1-56e3da5b2a58)
 
 after this if you do `kubectl get nodes` you will see your control-plnae node is ready state 
 
  
 
-![image.png](attachment:9cef9dda-5ca0-48f7-a8b4-bb1901327904:image.png)
+![image](https://github.com/user-attachments/assets/e0a36c98-70d9-4071-bb3a-8cd69ca22dad)
 
 all done on the leader control plane node
 
@@ -504,7 +508,7 @@ systemctl status kubelet
 
 now use the join command to join the control plane leader node  (I told you to save it in the leader node setup phase )
 
-![image.png](attachment:d5ab3b48-cd3d-42a8-929d-5137f02e99c1:image.png)
+![image](https://github.com/user-attachments/assets/55a35340-9935-4727-8a1d-6297ba9f05cc)
 
 you will see a message like this if everything goes right
 
@@ -527,7 +531,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 Run `'kubectl get nodes`' to see this node join the cluster.
 
-![image.png](attachment:c3badcc1-863e-469b-b138-1343876ad52e:image.png)
+![image](https://github.com/user-attachments/assets/e6ec6e0f-d6e1-4e92-8b19-b346abb01911)
 
 now you have two master nodes in ready states in the control plane now lets setup the worker nodes 
 
@@ -646,7 +650,7 @@ now use the previously generated commands to join the worker nodes to the contro
 
 the command looks like this 
 
-![image.png](attachment:a772391d-3665-4f5f-9671-cfa16f763228:image.png)
+![image](https://github.com/user-attachments/assets/8386eaa5-aea6-45b2-a104-baf4502faa62)
 
   if everything goes right you will a message like this
 
@@ -657,7 +661,7 @@ This node has joined the cluster:
 
 Run '`kubectl get nodes`' on the control-plane to see this node join the cluster.
 
-![image.png](attachment:d793ab61-ba51-4fa9-a4eb-3f62bbc130a8:image.png)
+![image](https://github.com/user-attachments/assets/4cac178f-6216-4a93-b78e-27419883210c)
 
 let see if our load balancer is working fine or not 
 
