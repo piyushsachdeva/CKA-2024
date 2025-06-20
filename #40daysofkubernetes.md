@@ -40,6 +40,6 @@ This challenge isn't just about winning prizes. It's about:
 - **Building confidence**: Solidify your skills and feel empowered to tackle real-world Kubernetes deployments.
 - **Boosting your exposure**: Share what you learn with the community and gain valuable recognition.
 
-Join the **#40daysofkubernetes** challenge today and embark on your Kubernetes mastery journey! 🚢
+
 
 Let's learn, grow, and build something extraordinary together! 💪
