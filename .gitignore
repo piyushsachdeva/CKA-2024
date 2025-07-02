@@ -1,0 +1,16 @@
+.DS_STORE
+.history/
+.history/
+.history/*
+.lh
+.lh
+.terraform/
+.vagrant/
+*:Zone*
+*.excalidrawlib*
+*.tfstate
+*.tfstate.*
+*.tfvars
+/.lh/*
+~*
+node_modules/

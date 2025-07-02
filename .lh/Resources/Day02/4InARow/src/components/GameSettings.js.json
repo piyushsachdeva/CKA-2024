@@ -1,0 +1,30 @@
+{
+    "sourceFile": "Resources/Day02/4InARow/src/components/GameSettings.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1745046597247,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1745046652793,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n   SelectContent,\n   SelectItem,\n   SelectTrigger,\n   SelectValue,\n-} from \"@/components/ui/select\";\n+} from \"../select\";\n import { Input } from \"@/components/ui/input\";\n import { Gamepad2, Lightbulb } from \"lucide-react\";\n \n export default function GameSettings({ onStartGame }) {\n"
+                },
+                {
+                    "date": 1745046671444,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n   SelectContent,\n   SelectItem,\n   SelectTrigger,\n   SelectValue,\n-} from \"../select\";\n+} from \"../components/ui/select\";\n import { Input } from \"@/components/ui/input\";\n import { Gamepad2, Lightbulb } from \"lucide-react\";\n \n export default function GameSettings({ onStartGame }) {\n"
+                },
+                {
+                    "date": 1745046720289,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n   SelectItem,\n   SelectTrigger,\n   SelectValue,\n } from \"../components/ui/select\";\n-import { Input } from \"@/components/ui/input\";\n+import { Input } from \"../components/ui/input\";\n import { Gamepad2, Lightbulb } from \"lucide-react\";\n \n export default function GameSettings({ onStartGame }) {\n   const [level, setLevel] = React.useState(\"1\");\n"
+                }
+            ],
+            "date": 1745046597247,
+            "name": "Commit-0",
+            "content": "import React from 'react';\nimport { Button } from \"../components/ui/button\";\nimport { Label } from \"../components/ui/label\";\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"@/components/ui/select\";\nimport { Input } from \"@/components/ui/input\";\nimport { Gamepad2, Lightbulb } from \"lucide-react\";\n\nexport default function GameSettings({ onStartGame }) {\n  const [level, setLevel] = React.useState(\"1\");\n  const [rows, setRows] = React.useState(6);\n  const [cols, setCols] = React.useState(7);\n  const [hints, setHints] = React.useState(3);\n\n  const handleSubmit = (e) => {\n    e.preventDefault();\n    onStartGame({\n      level: parseInt(level),\n      rows: parseInt(rows),\n      cols: parseInt(cols),\n      hints: parseInt(hints)\n    });\n  };\n\n  return (\n    <form onSubmit={handleSubmit} className=\"space-y-6 p-6 bg-white rounded-xl shadow-lg max-w-md mx-auto\">\n      <div className=\"text-center mb-8\">\n        <h2 className=\"text-2xl font-bold text-gray-900\">Game Settings</h2>\n        <p className=\"text-gray-500 mt-2\">Configure your game against the AI</p>\n      </div>\n\n      <div className=\"space-y-4\">\n        <div>\n          <Label>AI Difficulty Level</Label>\n          <Select value={level} onValueChange={setLevel}>\n            <SelectTrigger className=\"w-full mt-1\">\n              <SelectValue placeholder=\"Select level\" />\n            </SelectTrigger>\n            <SelectContent>\n              {[...Array(8)].map((_, i) => (\n                <SelectItem key={i + 1} value={(i + 1).toString()}>\n                  Level {i + 1} ({i + 1} moves ahead)\n                </SelectItem>\n              ))}\n            </SelectContent>\n          </Select>\n        </div>\n\n        <div className=\"grid grid-cols-2 gap-4\">\n          <div>\n            <Label>Rows (4-10)</Label>\n            <Input\n              type=\"number\"\n              min=\"4\"\n              max=\"10\"\n              value={rows}\n              onChange={(e) => setRows(e.target.value)}\n              className=\"mt-1\"\n            />\n          </div>\n          <div>\n            <Label>Columns (4-10)</Label>\n            <Input\n              type=\"number\"\n              min=\"4\"\n              max=\"10\"\n              value={cols}\n              onChange={(e) => setCols(e.target.value)}\n              className=\"mt-1\"\n            />\n          </div>\n        </div>\n\n        <div>\n          <Label>Number of Hints</Label>\n          <Input\n            type=\"number\"\n            min=\"0\"\n            max=\"10\"\n            value={hints}\n            onChange={(e) => setHints(e.target.value)}\n            className=\"mt-1\"\n          />\n          <p className=\"text-sm text-gray-500 mt-1\">How many hints you can use during the game</p>\n        </div>\n      </div>\n\n      <Button type=\"submit\" className=\"w-full bg-blue-600 hover:bg-blue-700\">\n        <Gamepad2 className=\"w-4 h-4 mr-2\" />\n        Start Game\n      </Button>\n    </form>\n  );\n}"
+        }
+    ]
+}

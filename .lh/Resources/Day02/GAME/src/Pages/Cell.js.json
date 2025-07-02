@@ -1,0 +1,18 @@
+{
+    "sourceFile": "Resources/Day02/GAME/src/Pages/Cell.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1744991454122,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1744991454122,
+            "name": "Commit-0",
+            "content": "import React from 'react';\nimport { motion } from \"framer-motion\";\n\nexport default function Cell({ value, onClick, isValid, isWinning, isHint }) {\n  const getCellColor = () => {\n    if (!value) return isHint ? 'bg-yellow-100' : 'bg-gray-100';\n    return value === 1 ? 'bg-red-500' : 'bg-yellow-500';\n  };\n\n  return (\n    <div \n      className={`relative w-full pt-[100%] ${isValid ? 'cursor-pointer hover:bg-gray-200' : ''} ${\n        isHint ? 'ring-2 ring-yellow-300' : ''\n      }`}\n      onClick={isValid ? onClick : undefined}\n    >\n      <div className=\"absolute inset-1 rounded-full\">\n        <motion.div\n          initial={{ scale: 0 }}\n          animate={{ scale: value ? 1 : 0 }}\n          className={`w-full h-full rounded-full ${getCellColor()} ${isWinning ? 'ring-4 ring-green-400' : ''}`}\n        />\n      </div>\n    </div>\n  );\n}"
+        }
+    ]
+}
