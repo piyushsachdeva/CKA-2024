@@ -5,11 +5,9 @@
 
 [![Day 2/40 - How To Dockerize a Project - CKA Full Course 2024](https://img.youtube.com/vi/nfRsPiRGx74/sddefault.jpg)](https://youtu.be/nfRsPiRGx74)
 
-## If you would like to use docker and Kubernetes sandbox environment , you can use below:
-```
-https://labs.play-with-docker.com/
-https://labs.play-with-k8s.com/
-```
+## If you would like to use a Docker or Kubernetes sandbox instead of a local setup, you can use the below:
+- Docker playground: https://labs.play-with-docker.com/
+- Kubernetes playground: https://killercoda.com/playgrounds/scenario/kubernetes
 
 ## Download Docker desktop client
 ```
@@ -31,15 +29,17 @@ cd getting-started-app/
 ```
 touch Dockerfile
 ```
-- Using the text editor of your choice, paste the below content ( Details about each of these have already shared in the video)
-```
-FROM node:18-alpine
+- Using the text editor of your choice, paste the below content (each instruction is explained in the video)
+```dockerfile
+FROM node:22-alpine
 WORKDIR /app
 COPY . .
-RUN yarn install --production
+RUN npm install --omit=dev
 CMD ["node", "src/index.js"]
 EXPOSE 3000
 ```
+
+> Note: The video uses `node:18-alpine` and `yarn install --production`. Node 18 reached end of life in April 2025 and the sample repo has since moved from yarn to npm, so the Dockerfile above uses a supported Node LTS image and `npm`. The rest of the steps are the same as in the video.
 
 - Build the docker image using the application code and Dockerfile
 

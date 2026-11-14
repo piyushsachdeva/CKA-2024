@@ -104,7 +104,8 @@ metadata:
   namespace: kube-system
 spec:
   ports:
-  - name: https
+  - appProtocol: https
+    name: https
     port: 443
     protocol: TCP
     targetPort: https
@@ -138,7 +139,7 @@ spec:
         - --kubelet-use-node-status-port
         - --kubelet-insecure-tls
         - --metric-resolution=15s
-        image: registry.k8s.io/metrics-server/metrics-server:v0.7.1
+        image: registry.k8s.io/metrics-server/metrics-server:v0.9.1
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3

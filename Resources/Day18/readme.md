@@ -13,12 +13,19 @@
 - To ensure your application is highly available and self-healing
 
 ### Type of health probes in Kubernetes
-- Readiness ( Ensure application is ready)
-- Liveness ( Restart the application if health checks fail)
-- Startup ( Probes for legacy applications that need a lot of time to start)
+- Readiness (checks that the application is ready to receive traffic. If it fails, the pod is removed from the Service endpoints. The container is not restarted)
+- Liveness (restarts the container if the health check fails)
+- Startup (for slow-starting applications. Liveness and readiness checks start only after the startup probe has passed)
 
 ### Types of health checks they perform?
-- HTTP/TCP/command
+- HTTP (`httpGet`), TCP (`tcpSocket`), command (`exec`) and gRPC (`grpc`)
+
+### Common probe settings
+- `initialDelaySeconds`: wait this long after the container starts before the first check (default 0)
+- `periodSeconds`: how often to run the check (default 10)
+- `timeoutSeconds`: how long to wait for a response (default 1)
+- `failureThreshold`: how many failures in a row before the probe is treated as failed (default 3)
+- `successThreshold`: how many successes in a row before the probe is treated as passed again (default 1)
 
 ### Health probes
 
@@ -64,7 +71,7 @@ metadata:
 spec:
   containers:
   - name: liveness
-    image: registry.k8s.io/busybox
+    image: registry.k8s.io/busybox:1.27.2
     args:
     - /bin/sh
     - -c
@@ -95,7 +102,37 @@ spec:
     - containerPort: 8080
     livenessProbe:
       tcpSocket:
-        port: 3000
+        port: 8080
       initialDelaySeconds: 10
       periodSeconds: 5
+```
+
+> Note: The container listens on port 8080. If you change the probe port to one where nothing is listening, for example 3000, the probe fails and you can watch the kubelet restart the container (`kubectl describe pod tcp-pod`).
+
+#### startup probe
+
+The startup probe below gives the application up to 30 x 10 = 300 seconds to start. The liveness probe takes over only after the startup probe has succeeded once.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: startup-demo
+spec:
+  containers:
+  - name: app
+    image: registry.k8s.io/e2e-test-images/agnhost:2.40
+    args:
+    - liveness
+    startupProbe:
+      httpGet:
+        path: /healthz
+        port: 8080
+      failureThreshold: 30
+      periodSeconds: 10
+    livenessProbe:
+      httpGet:
+        path: /healthz
+        port: 8080
+      periodSeconds: 10
 ```

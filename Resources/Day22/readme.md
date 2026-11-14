@@ -2,7 +2,7 @@
 
 ## Check out the video below for Day22 👇
 
-[![Day Day 22/40 - Kubernetes Authentication and Authorization Simply Explained ](https://img.youtube.com/vi/P0bogYEyfeI/sddefault.jpg)](https://youtu.be/P0bogYEyfeI)
+[![Day 22/40 - Kubernetes Authentication and Authorization Simply Explained](https://img.youtube.com/vi/P0bogYEyfeI/sddefault.jpg)](https://youtu.be/P0bogYEyfeI)
 
 
 ### Authentication: Verifying Who You Are
@@ -46,15 +46,34 @@ Authorization is like granting access levels within the fortress. Kubernetes off
 
 ### Authorization Modes:
 
-The API server can be configured with different authorization modes (like "always allow" or "always deny"), but these are for testing only.  In practice, a priority sequence is used as below:-
+The API server can be configured with different authorization modes (like `AlwaysAllow` or `AlwaysDeny`), but these are for testing only. The modes are set with the `--authorization-mode` flag of the API server and are checked in the order in which they are listed. A kubeadm cluster uses `--authorization-mode=Node,RBAC` by default:
 
-- Node Authorizer: Checks node communication.
+- Node Authorizer: Checks requests coming from the kubelets.
 - RBAC: Grants access based on assigned roles.
-- Webhook (if enabled): Performs additional authorization checks.
+- Webhook (if enabled): Asks an external service to make the decision.
+
+As soon as one mode allows or denies the request, the decision is final. If a mode has no opinion, the request goes to the next mode. If no mode allows it, the request is denied.
+
+```
+sudo grep authorization-mode /etc/kubernetes/manifests/kube-apiserver.yaml
+```
+
+### Add a new user to your kubeconfig
+
+Once you have a signed certificate for a user (Day 21), add the user and a context to your kubeconfig. You will need this for the Day 23 task.
+
+```
+kubectl config set-credentials adam --client-key=adam.key --client-certificate=adam.crt --embed-certs=true
+kubectl config set-context adam --cluster=<cluster-name> --user=adam
+kubectl config get-contexts
+kubectl config use-context adam
+kubectl auth whoami
+```
+
+You get the cluster name from `kubectl config get-clusters`. To go back to the admin user, run `kubectl config use-context <admin-context-name>`.
 
 ### Remember:
 
 - Authentication verifies your identity.
 - Authorization determines your access level.
 - RBAC is a user-friendly and recommended way to manage authorization.
-- Keep exploring, Kubernetes ninjas!   There's more to discover in the video about configuring authentication and authorization in your cluster.

@@ -28,17 +28,31 @@ Here’s a breakdown of the commands to manage taints and tolerations:
 
 ### Tainting a Node:
 
-```bash
-kubectl taint nodes node1 key=gpu:NoSchedule
-```
-
-This command taints node1 with the key "gpu" and the effect "NoSchedule." Pods without a toleration for this taint won't be scheduled there.
-
-To remove the taint , you add - at the end of the command , like below.
+The format of a taint is `key=value:effect`.
 
 ```bash
-kubectl taint nodes node1 key=gpu:NoSchedule-
+kubectl taint nodes node1 gpu=true:NoSchedule
 ```
+
+This command taints node1 with the key "gpu", the value "true" and the effect "NoSchedule". Pods without a toleration for this taint won't be scheduled there.
+
+To see the taints on a node:
+
+```bash
+kubectl describe node node1 | grep -i taints
+```
+
+To remove the taint, you add - at the end of the command, like below.
+
+```bash
+kubectl taint nodes node1 gpu=true:NoSchedule-
+```
+
+### Taint effects
+
+- `NoSchedule`: new pods without a matching toleration are not scheduled on the node. Pods that are already running there are not touched.
+- `PreferNoSchedule`: the scheduler tries to avoid the node but can still use it if there is no other choice.
+- `NoExecute`: new pods are not scheduled, and pods that are already running on the node without a matching toleration are evicted.
 
 ### Adding toleration to the pod:
 
@@ -60,14 +74,16 @@ spec:
     effect: "NoSchedule"
 ```
 
->Note: This pod specification defines a toleration for the "gpu" taint with the effect "NoSchedule." This allows the pod to be scheduled on tainted nodes.
+>Note: This pod specification defines a toleration for the taint `gpu=true:NoSchedule`. This allows the pod to be scheduled on the tainted node. With `operator: "Exists"` you leave out the `value`, and the toleration matches any value of that key.
+
+>Note: A toleration only allows a pod onto a tainted node. It does not force the pod to go there, so the pod can still land on any other node without a taint. To make sure a pod runs on a particular node, combine the toleration with a node selector or node affinity.
 
 ### Labels vs Taints/Tolerations
 
-Labels group nodes based on size, type,env, etc. Unlike taints, labels don't directly affect scheduling but are useful for organizing resources.
+Labels group nodes based on size, type, env, etc. A label on a node does nothing to scheduling by itself. It only matters when a pod asks for it through a `nodeSelector` or node affinity. A taint works the other way round: the node pushes pods away unless they tolerate the taint.
 
 ### Limitations to Remember 🚧
 
 Taints and tolerations are powerful tools, but they have limitations. They cannot handle complex expressions like "AND" or "OR." 
-So, what do we use in that case? We use a combination of Taints, tolerance, and Node affinity, which we will discuss in the next video.
+So, what do we use in that case? We use a combination of taints, tolerations, and node affinity, which we will discuss in the next video.
 

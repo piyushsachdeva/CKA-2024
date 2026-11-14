@@ -7,7 +7,7 @@ In this assignment, you will learn how to migrate an existing Kubernetes Ingress
 
 ## Requirements
 
-- A Kubernetes cluster (version 1.24+)
+- A Kubernetes cluster running a supported version
 - kubectl installed and configured
 - Basic understanding of Kubernetes networking concepts
 - Helm and kustomize (optional, for installing controllers)
@@ -21,8 +21,8 @@ In this assignment, you will learn how to migrate an existing Kubernetes Ingress
 
 ### 2. Create and Test an Ingress Resource
 
-- Set up an Ingress controller (e.g., NGINX Ingress Controller)
-- Create an Ingress resource that routes traffic to your services:
+- Set up an Ingress controller (e.g., the F5 NGINX Ingress Controller. The community ingress-nginx controller was retired in March 2026)
+- Create an Ingress resource that routes traffic to your service:
   - Host: `gateway.web.k8s.local`
   - Path `/` should route to the web frontend service
   - Configure TLS for secure communication
@@ -33,9 +33,10 @@ In this assignment, you will learn how to migrate an existing Kubernetes Ingress
 - Install Gateway API CRDs in your cluster
 - Deploy a Gateway API controller (e.g., NGINX Gateway Fabric)
 - Create the necessary Gateway API resources:
-  - GatewayClass
+  - GatewayClass (your controller may create one for you)
   - Gateway
   - HTTPRoute(s)
+  - ReferenceGrant, if the Gateway and the TLS secret are in different namespaces
 - Ensure proper TLS configuration with the Gateway resources
 
 ### 4. Verify the Migration

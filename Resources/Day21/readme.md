@@ -34,6 +34,32 @@ openssl genrsa -out adam.key 2048
 openssl req -new -key adam.key -out adam.csr -subj "/CN=adam"
 ```
 
+**To create the CertificateSigningRequest object**
+
+The `request` field takes the content of the csr file in base64, on a single line:
+
+```
+cat adam.csr | base64 | tr -d "\n"
+```
+
+```yaml
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata:
+  name: adam
+spec:
+  request: <base64 encoded csr from the command above>
+  signerName: kubernetes.io/kube-apiserver-client
+  expirationSeconds: 604800 # 7 days
+  usages:
+  - client auth
+```
+
+```
+kubectl apply -f csr.yaml
+kubectl get csr
+```
+
 **To approve a csr**
 ```
 kubectl certificate approve <certificate-signing-request-name>
@@ -42,6 +68,18 @@ kubectl certificate approve <certificate-signing-request-name>
 **To deny a csr**
 ```
 kubectl certificate deny <certificate-signing-request-name>
+```
+
+**To get the signed certificate out of the csr object**
+```
+kubectl get csr adam -o jsonpath='{.status.certificate}' | base64 -d > adam.crt
+```
+
+**To check the certificates of the control plane components (kubeadm clusters)**
+```
+ls /etc/kubernetes/pki
+sudo kubeadm certs check-expiration
+sudo openssl x509 -in /etc/kubernetes/pki/apiserver.crt -text -noout
 ```
 
 **Below document can also be referred**

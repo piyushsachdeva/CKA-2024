@@ -3,15 +3,13 @@
 
 ## Check out the video below for Day3 👇
 
-[![Day 2/40 - How To Dockerize a Project - CKA Full Course 2024](https://img.youtube.com/vi/ajetvJmBvFo/sddefault.jpg)](https://youtu.be/ajetvJmBvFo)
+[![Day 3/40 - Multi Stage Docker Build - Docker Tutorial For Beginners](https://img.youtube.com/vi/ajetvJmBvFo/sddefault.jpg)](https://youtu.be/ajetvJmBvFo)
 
 # Pre-requisites ( If you have followed Day2 video and/or already have Docker Setup, then skip this step)
 
-## If you would like to use docker and Kubernetes sandbox environment , you can use below:
-```
-https://labs.play-with-docker.com/
-https://labs.play-with-k8s.com/
-```
+## If you would like to use a Docker or Kubernetes sandbox instead of a local setup, you can use the below:
+- Docker playground: https://labs.play-with-docker.com/
+- Kubernetes playground: https://killercoda.com/playgrounds/scenario/kubernetes
 
 ## Download Docker desktop client
 ```
@@ -37,16 +35,21 @@ touch Dockerfile
 
 - Using the text editor of your choice, paste the below content:
 Note: Details about the below Dockerfile have already been shared in the video
-```
-FROM node:18-alpine AS installer
+```dockerfile
+# Stage 1: build the app
+FROM node:22-alpine AS installer
 WORKDIR /app
 COPY package*.json ./
-RUN npm install 
+RUN npm install
 COPY . .
 RUN npm run build
-FROM nginx:latest AS deployer
+
+# Stage 2: copy only the build output into a small web server image
+FROM nginx:stable-alpine AS deployer
 COPY --from=installer /app/build /usr/share/nginx/html
 ```
+
+> Note: The video uses `node:18-alpine` and `nginx:latest`. Node 18 is end of life, so the Dockerfile above uses a supported Node LTS image. It also pins nginx to the `stable-alpine` tag, because `latest` can change under you and one of the best practices covered in this video is to avoid it.
 
 - Build the docker image using the application code and Dockerfile
 
@@ -93,12 +96,13 @@ or
 docker logs containerid
 ```
 
-- To view the content of Docker container
+- To view the low-level details of a container or an image (config, mounts, network and so on)
 ```
-docker inspect
+docker inspect containername
+docker inspect imagename
 ```
 
-- Cleanup the old docker images from local repo using below command:
+- Clean up the old docker images from your machine using the below command:
 
 ```
 docker image rm image-id

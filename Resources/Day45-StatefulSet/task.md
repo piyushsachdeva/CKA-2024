@@ -6,7 +6,7 @@ In this assignment, you will learn how to deploy and scale a stateful applicatio
 
 ## Prerequisites
 
-- A working Kubernetes cluster (minikube, kind, [kodekloud sandbox](https://kodekloud.com/public-playgrounds) or a cloud provider's managed Kubernetes)
+- A working Kubernetes cluster (minikube, kind, the kubeadm cluster from Day 27, a playground such as [Killercoda](https://killercoda.com/playgrounds/scenario/kubernetes) or [KodeKloud](https://kodekloud.com/public-playgrounds), or a cloud provider's managed Kubernetes)
 - kubectl command-line tool installed and configured
 - Basic understanding of Kubernetes concepts (Pods, Services, Deployments)
 
@@ -50,4 +50,5 @@ Create and deploy a StatefulSet manifest that:
 
 ### 7. Clean Up Resources
 
-Clean up all resources created during this assignment, observe the deleting happens sequentially
+- Scale the StatefulSet down to 0 and observe that the Pods are deleted one by one, in reverse order
+- Clean up all the resources created during this assignment, including the PersistentVolumeClaims, which are not deleted along with the StatefulSet

@@ -5,7 +5,6 @@ In this exercise, you will explore namespaces in depth by creating multiple Kube
 
 > [!NOTE]
 > If you do not already have a Kubernetes cluster, you can create a local Kubernetes cluster by following [Day06 Video](https://youtu.be/RORhczcOrWs)
-Also, could you do the port binding at the cluster level if you are using KIND? The Day9 video has the details on how to do that.
 
 ### Task details
 - Create two namespaces and name them ns1 and ns2
@@ -17,19 +16,6 @@ Also, could you do the port binding at the cluster level if you are using KIND? 
 - Create two services to expose both of your deployments and name them svc-ns1 and svc-ns2
 - exec into each pod and try to curl the IP address of the service running on the other namespace.
 - This curl should work.
-- Now try curling the service name instead of IP. You will notice that you are getting an error and cannot resolve the host.
-- Now use the FQDN of the service and try to curl again, this should work.
+- Now try curling the service in the other namespace by its short name (for example `svc-ns2` from a pod in ns1) instead of the IP. You will notice that you are getting an error and cannot resolve the host, because a short name is only resolved inside the pod's own namespace.
+- Now use the FQDN of the service (`svc-ns2.ns2.svc.cluster.local`) and try to curl again, this should work.
 - In the end, delete both the namespaces, which should delete the services and deployments underneath them.
-
-
-3. **Share your learnings**: Document your key takeaways and insights in a blog post and social media update
-4. **Make it public**: Share what you learn publicly on LinkedIn or Twitter.
-   - **Tag us and use the hashtag**: Include the following in your post:
-     - Tag [@PiyushSachdeva](https://www.linkedin.com/in/piyush-sachdeva) and [@CloudOps Community](https://www.linkedin.com/company/thecloudopscomm) (on both platforms)
-     - Use the hashtag **#40daysofkubernetes**
-     - **Embed the video**: Enhance your blog post by embedding the video lesson from the Kubernetes series. This will give you visual context and reinforce your written explanations.
-
-## Blog Post Focus 📝
-
-- **Clarity is essential**: Write your blog post clearly and concisely, making it easy for anyone to grasp the concepts, regardless of their prior Kubernetes experience.
-
