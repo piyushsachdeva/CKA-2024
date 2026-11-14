@@ -1,0 +1,3 @@
+[submodule "Resources/external-project"]
+	path = Resources/external-project
+	url = https://github.com/piyushsachdeva/CKA-2024.git
