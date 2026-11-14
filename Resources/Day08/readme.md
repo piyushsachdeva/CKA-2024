@@ -18,4 +18,24 @@ https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 ### Replication Controller
 https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/
 
+> Note: ReplicationController is a legacy API. It is covered in the video only so that you understand how ReplicaSet and Deployment came about. In real clusters and in the exam you will use a Deployment, which manages ReplicaSets for you.
+
+### Commands used in the video
+
+```bash
+# create a deployment and generate its YAML without creating it
+kubectl create deployment nginx-deploy --image=nginx --replicas=3
+kubectl create deployment nginx-deploy --image=nginx --replicas=3 --dry-run=client -o yaml > deploy.yaml
+
+# scale
+kubectl scale deployment nginx-deploy --replicas=5
+
+# rolling update and rollback
+kubectl set image deployment/nginx-deploy nginx=nginx:1.27
+kubectl rollout status deployment/nginx-deploy
+kubectl rollout history deployment/nginx-deploy
+kubectl rollout undo deployment/nginx-deploy
+kubectl rollout undo deployment/nginx-deploy --to-revision=1
+```
+
 

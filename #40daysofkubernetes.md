@@ -1,5 +1,32 @@
 # 40 Days of Kubernetes: Deep Dive Challenge 🚀
 
+> **This challenge is completed.** It ran along with the first release of the video series, from June 17th, 2024. This page is kept as an archive of the challenge rules and the winners. You can still follow the course and do the tasks in every day's folder at your own pace.
+
+## 🏆 Challenge Winners
+
+Congratulations to all the amazing participants who dedicated their time and effort to learn Kubernetes throughout this journey.
+
+### 🖊️ **Blogging Champions**
+1. **Shivam Gautam** 
+2. **Rahul Vadakkiniyil** 
+3. **Shriram Sahu** 
+4. **Teddy D** 
+5. **Pratik Shinde** 
+6. **Baivab Mukhopadhyay** 
+
+### 👥 **Community Champions**
+1. **Baivab Mukhopadhyay** - Discord: itzmario7320
+2. **Priyanka** 
+3. **Vivek** 
+4. **Dheeman Das** 
+5. **Micheal Choudhary**
+
+A huge thanks to everyone who participated, shared their learning journey, and contributed to building this amazing community! 🙏
+
+---
+
+## The original challenge announcement
+
 Calling all Kubernetes enthusiasts! 🌟
 
 Ready to advance your Kubernetes knowledge? Join us for the **#40daysofkubernetes** challenge, an intensive learning journey designed to equip you with the skills to master this powerful container orchestration platform.
@@ -11,11 +38,11 @@ Ready to advance your Kubernetes knowledge? Join us for the **#40daysofkubernete
 
 ## The Challenge 🏆
 
-After a video is published, a new task will be presented in the `tasks.md` file located within a dedicated folder. These tasks will guide you through practical exercises, helping you solidify your understanding of core Kubernetes concepts.
+After a video is published, a new task will be presented in the `task.md` file located within a dedicated folder. These tasks will guide you through practical exercises, helping you solidify your understanding of core Kubernetes concepts.
 
 ## Participation 💡
 
-1. **Complete the daily tasks**: Follow the instructions outlined in the `tasks.md` file for each day.
+1. **Complete the daily tasks**: Follow the instructions outlined in the `task.md` file for each day.
 2. **Share your learnings**: Document your key takeaways and insights in a blog post (highly encouraged) or a social media update (mandatory).
 3. **Make it public**: Share what you learn publicly on LinkedIn or Twitter.
    - **Tag us and use the hashtag**: Include the following in your post:

@@ -1,4 +1,6 @@
-# Solution to the Day45 Assignment
+# Day 45 - StatefulSets: Solution to the Assignment
+
+The assignment is in [task.md](task.md).
 
 ## Understanding StatefulSets
 
@@ -30,8 +32,9 @@
 | Creation Order | Sequential (0 to N-1) | Parallel |
 | Deletion Order | Sequential (N-1 to 0) | Any order |
 | Scaling | Sequential | Parallel |
-| Updates | Sequential | Parallel |
-| Network Identity | Stable DNS names | Service-based only |
+| Updates | Sequential, from the highest ordinal to the lowest | Rolling, several pods at a time |
+| Network Identity | Stable DNS name per pod | Service-based only |
+| Storage | Each pod gets its own PVC from `volumeClaimTemplates` | All pods share the same PVC |
 
 ### When to Use StatefulSets
 
@@ -44,9 +47,11 @@ StatefulSets are ideal for:
 This document provides a complete solution to the StatefulSet assignment. It includes all necessary YAML files, step-by-step instructions for deployment, 
 and explanations of key concepts.
 
+> Note: The video uses the `mongo:4.4` image and the `mongo` shell. MongoDB 4.4 is end of life and the `mongo` shell was removed in MongoDB 6.0, so the steps below use `mongo:7.0` and `mongosh`.
+
 ## 1. Environment Setup
 
-First, ensure your Kubernetes cluster is running, if you dont have a cluster, you can use the kodekloud free lab 
+First, ensure your Kubernetes cluster is running. If you don't have a cluster, you can use a free playground such as Killercoda or KodeKloud.
 
 ```bash
 # Verify cluster connection
@@ -56,10 +61,10 @@ kubectl get nodes
 
 ## 2. Create Directory Structure for PersistentVolumes
 
-If using minikube or a local Kubernetes setup, create the required directories:
+The PersistentVolumes in this solution are `hostPath` volumes, which means the data is stored in a directory on the node where the pod runs. Create the directories on **every** worker node, because a pod can be scheduled on any of them:
 
 ```bash
-# SSH into the worker node
+# SSH into each worker node and run
 
 # Create directories for PersistentVolumes
 sudo mkdir -p /mnt/data/mongodb-{0..4}
@@ -229,7 +234,7 @@ spec:
     spec:
       containers:
       - name: mongodb
-        image: mongo:4.4
+        image: mongo:7.0
         ports:
         - containerPort: 27017
         volumeMounts:
@@ -293,15 +298,15 @@ data-mongodb-2    Bound    pv-mongodb-2   1Gi        RWO            mongodb-sc  
 Connect to the first MongoDB instance:
 
 ```bash
-kubectl exec -it mongodb-0 -- mongo
+kubectl exec -it mongodb-0 -- mongosh
 ```
 
 Create some test data:
 
 ```javascript
 use testdb
-db.users.insert({name: "user1", email: "user1@example.com"})
-db.users.insert({name: "user2", email: "user2@example.com"})
+db.users.insertOne({name: "user1", email: "user1@example.com"})
+db.users.insertOne({name: "user2", email: "user2@example.com"})
 db.users.find()
 exit
 ```
@@ -321,7 +326,7 @@ kubectl get pods -w
 Connect to the recreated Pod and verify data persistence:
 
 ```bash
-kubectl exec -it mongodb-0 -- mongo
+kubectl exec -it mongodb-0 -- mongosh
 ```
 
 ```javascript
@@ -331,6 +336,16 @@ exit
 ```
 
 You should see that your data is still there.
+
+> Note: The recreated pod gets the same name (`mongodb-0`) and binds to the same PVC (`data-mongodb-0`). With `hostPath` volumes the data is on the disk of one node, so on a cluster with more than one worker the data is found again only if the pod comes back on the same node. A real setup uses `local` volumes with node affinity or a CSI driver, so that the pod always follows its data.
+
+### Step 4.3.1: Check the stable network identity
+
+Every pod of a StatefulSet gets its own DNS name through the headless service, in the form `<pod-name>.<service-name>.<namespace>.svc.cluster.local`:
+
+```bash
+kubectl run dns-test --rm -it --image=busybox:1.28 --restart=Never -- nslookup mongodb-0.mongodb-service.default.svc.cluster.local
+```
 
 ### Step 4.4: Scale the StatefulSet
 
@@ -370,11 +385,17 @@ Expected output should now include PVCs for all 5 Pods.
 When you're done with the exercise, clean up all resources:
 
 ```bash
+# scale down first to see the pods terminate in reverse order (mongodb-4 first, mongodb-0 last)
+kubectl scale statefulset mongodb --replicas=0
+kubectl get pods -w
+
 kubectl delete statefulset mongodb
 kubectl delete svc mongodb-service
-kubectl delete pvc --all
-kubectl delete pv --all
+kubectl delete pvc -l app=mongodb
+kubectl delete pv pv-mongodb-0 pv-mongodb-1 pv-mongodb-2 pv-mongodb-3 pv-mongodb-4
 kubectl delete sc mongodb-sc
 ```
+
+> Note: Deleting a StatefulSet does not delete its PVCs. This is on purpose, to protect the data. You delete them yourself, as shown above. Deleting the StatefulSet directly also does not guarantee that the pods stop in order, which is why we scale it down to 0 first.
 
 

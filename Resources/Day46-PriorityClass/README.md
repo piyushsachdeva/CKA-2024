@@ -1,4 +1,6 @@
-# Day46 Pod Priority and Preemption Solution
+# Day 46 - Pod Priority and Preemption: Solution to the Assignment
+
+The assignment is in [task.md](task.md).
 
 ## Introduction
 
@@ -62,6 +64,16 @@ Verify the priority classes:
 
 ```bash
 kubectl get priorityclasses
+```
+
+You will also see two built-in classes, `system-cluster-critical` and `system-node-critical`. Kubernetes uses them for its own components such as CoreDNS and kube-proxy. Their values are above 2 billion, while the classes that you create can have a value of up to 1 billion.
+
+> Note: `low-priority` has `globalDefault: true`, so every new pod in the cluster that does not set a `priorityClassName` gets this class. Only one PriorityClass can be the global default. Without a global default, such pods have priority 0. The cleanup step at the end removes it again.
+
+You can also create a PriorityClass with a single command:
+
+```bash
+kubectl create priorityclass high-priority --value=1000000 --description="high priority" --dry-run=client -o yaml
 ```
 
 ## Step 2: Create Pods with Different Priorities
@@ -135,7 +147,13 @@ kubectl apply -f high-priority-pod.yaml
 
 ## Step 3: Create a Resource-Constrained Environment
 
-To demonstrate preemption, create several resource-intensive pods with low priority:
+To demonstrate preemption, the nodes must be full. First check how much CPU your worker nodes can allocate and how much of it is already requested:
+
+```bash
+kubectl describe nodes | grep -A 7 "Allocated resources"
+```
+
+Then create several resource-intensive pods with low priority. Set `replicas` high enough that the CPU requests fill all your worker nodes. The demo is ready when at least one `resource-hog` pod is stuck in `Pending`.
 
 ```yaml
 # resource-hog.yaml
@@ -169,11 +187,15 @@ Apply this manifest:
 
 ```bash
 kubectl apply -f resource-hog.yaml
+kubectl get pods -o wide
+
+# if no resource-hog pod is Pending yet, add more replicas
+kubectl scale deployment resource-hog --replicas=10
 ```
 
 ## Step 4: Deploy a Critical High-Priority Pod
 
-Now, create a high-priority pod that requires substantial resources:
+Now, create a high-priority pod. There is no free CPU left for it, so the scheduler has to remove lower-priority pods to make room:
 
 ```yaml
 # critical-pod.yaml
@@ -188,7 +210,7 @@ spec:
     resources:
       requests:
         memory: "512Mi"
-        cpu: "15000m"
+        cpu: "1000m"
   priorityClassName: high-priority
 ```
 
@@ -206,13 +228,20 @@ Watch the pods and observe preemption:
 kubectl get pods -o wide -w
 ```
 
-You should see one or more low-priority pods being terminated to make room for the high-priority pod.
+You should see one or more low-priority pods being terminated to make room for the high-priority pod. The Deployment recreates the pods that were removed, and they stay in `Pending` because there is no room for them.
+
+> Note: The request of the critical pod must be smaller than the allocatable CPU of a single node. The scheduler preempts pods only when removing them makes the new pod fit. If the pod asks for more than a whole node has (for example 15 CPUs on a 2 CPU node), nothing is preempted and the pod just stays in `Pending`.
 
 Check the events to observe preemption:
 
 ```bash
-kubectl get events --sort-by=.metadata.creationTimestamp
+kubectl get events --sort-by=.metadata.creationTimestamp | grep -i preempt
+kubectl get pods -o custom-columns=NAME:.metadata.name,PRIORITY:.spec.priority,CLASS:.spec.priorityClassName,STATUS:.status.phase
 ```
+
+## Preemption policy
+
+By default a PriorityClass has `preemptionPolicy: PreemptLowerPriority`. If you set `preemptionPolicy: Never`, pods of that class are still placed ahead of lower-priority pods in the scheduling queue, but they never evict running pods.
 
 
 

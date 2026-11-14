@@ -1,34 +1,143 @@
-# Kubernetes Custom Resources and CRDs with sample-controller
+# Day 49 - Kubernetes Custom Resources and CRDs
 
-This guide provides a step-by-step solution to demonstrate the creation and management of Custom Resources (CRs) and Custom Resource Definitions (CRDs) in Kubernetes, using the kubernetes/sample-controller as an example.
+This guide shows how to create and manage Custom Resource Definitions (CRDs) and Custom Resources (CRs) in Kubernetes. Part 1 needs only `kubectl` and covers what you need for the CKA exam. Part 2 runs the kubernetes/sample-controller, as shown in the video, to see a controller act on a custom resource.
 
 ## Table of Contents
 
-- [Prerequisites](#prerequisites)
-- [Step-by-Step Guide](#step-by-step-guide)
-  - [Step 1: Clone the sample-controller Repository](#step-1-clone-the-sample-controller-repository)
-  - [Step 2: Build and Run the Sample Controller](#step-2-build-and-run-the-sample-controller)
-  - [Step 3: Create the CustomResourceDefinition (CRD)](#step-3-create-the-customresourcedefinition-crd)
-  - [Step 4: Create a Custom Resource (CR) of Type Foo](#step-4-create-a-custom-resource-cr-of-type-foo)
-  - [Step 5: Verify the Created Resources](#step-5-verify-the-created-resources)
-  - [Step 6: Clean Up (Optional)](#step-6-clean-up-optional)
 - [Understanding the Components](#understanding-the-components)
-- [Troubleshooting](#troubleshooting)
+- [Part 1: Create your own CRD and Custom Resource](#part-1-create-your-own-crd-and-custom-resource)
+- [Part 2: CRD with a controller (sample-controller)](#part-2-crd-with-a-controller-sample-controller)
+- [Part 3: CRDs installed by other tools](#part-3-crds-installed-by-other-tools)
+- [Useful Commands](#useful-commands)
 
-## Prerequisites
+## Understanding the Components
 
-Before you begin, ensure you have:
+### What is a Custom Resource Definition (CRD)?
 
-- A running Kubernetes cluster (e.g., Minikube, Kind, or a cloud-managed cluster)
-- `kubectl` configured to connect to your cluster
-- Go programming language installed (version 1.16 or higher is recommended)
-- Basic understanding of Kubernetes concepts (Pods, Deployments, Services)
+A CRD is a Kubernetes API extension that allows you to define custom resource types. It tells Kubernetes:
+- What the new resource should be called (kind, plural name, short names)
+- Which API group and versions it has
+- Whether it is namespaced or cluster-scoped
+- What fields it should have and how they should be validated (an OpenAPI v3 schema)
 
-## Step-by-Step Guide
+### What is a Custom Resource (CR)?
+
+A Custom Resource is an instance of a CRD. It's the actual object that contains your specific configuration data. Once the CRD exists, you work with custom resources the same way as with built-in objects: `kubectl get`, `describe`, `apply`, `delete`, RBAC and so on.
+
+### What is a controller?
+
+A CRD and its custom resources only store data in etcd. Nothing happens in the cluster until a controller watches these objects and acts on them. A CRD together with its controller is what is called an operator (see the [Day-50](../Day-50-Operators) folder).
+
+## Part 1: Create your own CRD and Custom Resource
+
+### Step 1: Create the CRD
+
+Save the following as `crontab-crd.yaml`. The name of a CRD must be `<plural>.<group>`.
+
+```yaml
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: crontabs.stable.example.com
+spec:
+  group: stable.example.com
+  scope: Namespaced
+  names:
+    plural: crontabs
+    singular: crontab
+    kind: CronTab
+    shortNames:
+    - ct
+  versions:
+  - name: v1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            required: ["cronSpec", "image"]
+            properties:
+              cronSpec:
+                type: string
+              image:
+                type: string
+              replicas:
+                type: integer
+                minimum: 1
+                maximum: 10
+    additionalPrinterColumns:
+    - name: Schedule
+      type: string
+      jsonPath: .spec.cronSpec
+    - name: Replicas
+      type: integer
+      jsonPath: .spec.replicas
+```
+
+```bash
+kubectl apply -f crontab-crd.yaml
+kubectl get crd crontabs.stable.example.com
+kubectl api-resources --api-group=stable.example.com
+```
+
+### Step 2: Create a Custom Resource
+
+Save the following as `my-crontab.yaml`:
+
+```yaml
+apiVersion: stable.example.com/v1
+kind: CronTab
+metadata:
+  name: my-new-cron-object
+spec:
+  cronSpec: "* * * * */5"
+  image: my-awesome-cron-image
+  replicas: 2
+```
+
+```bash
+kubectl apply -f my-crontab.yaml
+kubectl get crontab
+kubectl get ct
+kubectl describe ct my-new-cron-object
+```
+
+### Step 3: See the validation at work
+
+Change `replicas` to `20` in `my-crontab.yaml` and apply it again. The API server rejects it, because the schema of the CRD allows a maximum of 10.
+
+### Step 4: Read the documentation of the fields
+
+```bash
+kubectl explain crontab
+kubectl explain crontab.spec
+kubectl explain crontab.spec.replicas
+```
+
+### Step 5: Clean Up
+
+Deleting a CRD also deletes all the custom resources of that type.
+
+```bash
+kubectl delete -f my-crontab.yaml
+kubectl delete -f crontab-crd.yaml
+```
+
+## Part 2: CRD with a controller (sample-controller)
+
+This part is optional. It needs the Go toolchain, and nothing in the exam asks you to build a controller.
+
+### Prerequisites
+
+- A running Kubernetes cluster and `kubectl` configured to connect to it
+- Go installed. The sample-controller follows the newest Go release, so install the latest version from https://go.dev/dl/. The Go version that `apt` installs on Ubuntu is usually too old.
+
+> Note: The video downgrades the Go version in `go.mod` with `sed` so that the code builds with the Go package from `apt`. That workaround no longer works, because the Go version in `go.mod` changes with every release of the repository. Installing a current Go version is the reliable way.
 
 ### Step 1: Clone the sample-controller Repository
-
-First, clone the kubernetes/sample-controller repository to your local machine and navigate into its directory.
 
 ```bash
 git clone https://github.com/kubernetes/sample-controller
@@ -40,13 +149,7 @@ cd sample-controller
 Build the controller executable and then run it. The controller will watch for Foo custom resources and create Deployments based on them.
 
 ```bash
-# Ensure you have go client installed
-sudo apt-get update -y
-sudo apt install golang-go -y
-
-sed -i 's/go 1\.24\.0/go 1.18/' go.mod
-sed -i '/^godebug/d' go.mod
-go mod tidy
+go version
 
 # Build the sample-controller from the source code
 go build -o sample-controller .
@@ -56,20 +159,16 @@ go build -o sample-controller .
 ./sample-controller -kubeconfig=$HOME/.kube/config
 ```
 
-**Note:** Keep this process running in a separate terminal window or run it in the background, as it needs to continuously monitor for changes to Foo resources.
+The controller logs errors until the CRD from the next step exists. That is expected.
 
 ### Step 3: Create the CustomResourceDefinition (CRD)
 
-Now, create the CustomResourceDefinition for the Foo resource. This tells Kubernetes about the new Foo API type.
+In a second terminal, from the `sample-controller` directory, create the CustomResourceDefinition for the Foo resource. This tells Kubernetes about the new Foo API type.
 
 ```bash
 # Create a CustomResourceDefinition for Foo
 kubectl create -f artifacts/examples/crd-status-subresource.yaml
-```
 
-**Explanation:** This command registers the Foo resource with your Kubernetes API server. You can verify its creation:
-
-```bash
 # Check if the CRD has been created
 kubectl get crd | grep foo
 ```
@@ -93,7 +192,7 @@ kind: Foo
 metadata:
   name: example-foo
 spec:
-  deploymentName: example-foo-deployment # The controller will create a deployment with this name
+  deploymentName: example-foo # The controller will create a deployment with this name
   replicas: 1
 ```
 
@@ -103,33 +202,27 @@ After creating the Foo custom resource, the sample-controller should have automa
 
 ```bash
 # Check the custom resource instance
-kubectl get Foo
+kubectl get foo
 
 # Check deployments created through the custom resource
 kubectl get deployments
-```
 
-You should see both your `example-foo` custom resource and an `example-foo-deployment` (or similar name, depending on the controller's logic) listed.
-
-You can also get more details about the created deployment:
-
-```bash
 # Describe the deployment created by the controller
-kubectl describe deployment example-foo-deployment
+kubectl describe deployment example-foo
 ```
+
+Now change `replicas` to 3 with `kubectl edit foo example-foo` and watch the controller scale the Deployment. Then delete the Deployment and watch the controller create it again. This is the reconciliation loop.
 
 ### Step 6: Verify the CRD
 
-Check the fields of CRD
+Check the fields of the CRD
 
 ```bash
-kubectl explain Foo.spec.deploymentName
-kubectl explain Foo.spec.replicas
+kubectl explain foo.spec.deploymentName
+kubectl explain foo.spec.replicas
 ```
 
-### Step 7: Clean Up (Optional)
-
-To clean up the resources created during this demo:
+### Step 7: Clean Up
 
 ```bash
 # Delete the custom resource instance
@@ -139,70 +232,64 @@ kubectl delete -f artifacts/examples/example-foo.yaml
 kubectl delete -f artifacts/examples/crd-status-subresource.yaml
 ```
 
-### Exam questions - 1
+**Remember to stop the sample-controller process** that you started in Step 2 (e.g., by pressing `Ctrl+C` in its terminal).
+
+## Part 3: CRDs installed by other tools
+
+Most of the CRDs that you meet in a real cluster, and in the exam, come with a tool such as cert-manager, Calico or a Gateway API controller. The tasks are usually about finding the CRDs and reading their fields.
+
+### Practice task 1
 
 ```bash
-# List all the cert-manager CRD's
+# List all the cert-manager CRDs and write the list to a file
+kubectl get crd | grep cert-manager > /tmp/crds.txt
 
-kubectl describe crd | grep certificates
-
-# Extract the documentation of subject specification field
-kubectl explain certificates.spec.subject
+# Extract the documentation of the subject field of the Certificate resource and write it to a file
+kubectl explain certificate.spec.subject > /tmp/subject.txt
 ```
-### Exam questions - 2
 
-#### Install a tool such as cert-manager without CRDs
+### Practice task 2
+
+#### Install a tool such as cert-manager with Helm, with and without its CRDs
 
 ```bash
 helm repo add jetstack https://charts.jetstack.io --force-update
 
+# install the chart together with its CRDs
 helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.17.2 \
-  --set crds.enabled=false
+  --version v1.21.3 \
+  --set crds.enabled=true
 ```
 
-**Remember to stop the sample-controller process** that you started in Step 2 (e.g., by pressing `Ctrl+C` in its terminal).
-
-This completes the demonstration of creating and managing custom resources and custom resource definitions in Kubernetes.
-
-## Understanding the Components
-
-### What is a Custom Resource Definition (CRD)?
-
-A CRD is a Kubernetes API extension that allows you to define custom resource types. It tells Kubernetes:
-- What the new resource should be called
-- What fields it should have
-- How it should be validated
-- What versions are supported
-
-### What is a Custom Resource (CR)?
-
-A Custom Resource is an instance of a CRD. It's the actual object that contains your specific configuration data.
-
-### What does the sample-controller do?
-
-The sample-controller is a Kubernetes controller that:
-- Watches for changes to Foo custom resources
-- Creates and manages Deployments based on the Foo resource specifications
-- Updates the status of Foo resources to reflect the current state
-- Implements the controller pattern for custom resources
-
-
-### Useful Commands for Debugging
+To install the chart **without** the CRDs, set `crds.enabled=false`, which is also the default of this chart. In that case the CRDs must already be there, otherwise the cert-manager pods start but cannot do anything. You can install them on their own first:
 
 ```bash
-# Check controller logs (if running as a pod)
-kubectl logs -f <controller-pod-name>
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.21.3/cert-manager.crds.yaml
+```
 
-# Get detailed information about the CRD
+> Note: CRDs that a chart keeps in its `crds/` directory are installed once, and Helm never upgrades or deletes them along with the release. That is why many charts, cert-manager included, give you a value to switch the CRDs on or off, and why CRDs are often managed separately from the chart.
+
+## Useful Commands
+
+```bash
+# List all the CRDs in the cluster
+kubectl get crd
+
+# Get detailed information about a CRD
 kubectl describe crd foos.samplecontroller.k8s.io
 
-# Check the status of your Foo resource
-kubectl describe foo example-foo
+# See the full definition, including the schema
+kubectl get crd foos.samplecontroller.k8s.io -o yaml
 
-# List all custom resources in the cluster
-kubectl get crd
+# List every resource type of an API group
+kubectl api-resources --api-group=cert-manager.io
+
+# List all the custom resources of a type in all namespaces
+kubectl get certificates -A
+
+# Check the status of a custom resource
+kubectl describe foo example-foo
 ```

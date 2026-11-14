@@ -18,14 +18,25 @@
 ### Sample commands used in the video:
 
 ```bash
-kubectl autoscale deployment php-apache --cpu-percent=50 --min=1 --max=10
+# create the HPA: keep average CPU at 50% of the requested CPU, between 1 and 10 replicas
+kubectl autoscale deployment php-apache --cpu=50% --min=1 --max=10
 
+# generate load from a second terminal
 kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://php-apache; done"
 
+# watch the HPA scale the deployment up, and down again after you stop the load
 kubectl get hpa php-apache --watch
-
-kubectl autoscale deployment php-apache --cpu-percent=50 --min=1 --max=10
 ```
+
+> Note: The video uses `--cpu-percent=50`. That flag is deprecated in recent kubectl versions in favour of `--cpu=50%`. Both create the same HPA.
+
+### Things to remember
+
+- HPA needs the metrics server (see the [Day16](../Day16) folder) and it needs CPU **requests** on the containers. Without requests, the target shows `<unknown>` and nothing scales.
+- HPA changes the number of pods (horizontal). VPA changes the CPU and memory requests of the pods (vertical). VPA is not part of core Kubernetes and is installed as an add-on.
+- Since Kubernetes 1.35, the resources of a running pod can be changed in place without recreating the pod: `kubectl patch pod <pod> --subresource resize --patch '{"spec":{"containers":[{"name":"<container>","resources":{"requests":{"cpu":"500m"}}}]}}'`
+- Cluster Autoscaler and Karpenter add or remove nodes. Node auto-provisioning (NAP), mentioned in the video, is the GKE feature for the same job.
+- Scale down is slow on purpose. The HPA waits for 5 minutes by default (`behavior.scaleDown.stabilizationWindowSeconds`) before it removes pods.
 
 ### Sample YAML used in the video
 

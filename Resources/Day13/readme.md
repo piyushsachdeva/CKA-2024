@@ -2,7 +2,7 @@
 
 ## Check out the video below for Day13 👇
 
-[![Day12/40 - Kubernetes Daemonset Explained - Daemonsets, Job and Cronjob in Kubernetes](https://img.youtube.com/vi/6eGf7_VSbrQ/sddefault.jpg)](https://youtu.be/6eGf7_VSbrQ)
+[![Day 13/40 - static pods, manual scheduling, labels, and selectors in Kubernetes](https://img.youtube.com/vi/6eGf7_VSbrQ/sddefault.jpg)](https://youtu.be/6eGf7_VSbrQ)
 
 
 Welcome to the quick reference guide for our Kubernetes Labels, Selectors, and Static Pods video! This guide will be handy as you dive deeper into Kubernetes, especially if you're starting. Let's explore these concepts in detail:
@@ -24,7 +24,7 @@ Labels are key-value pairs attached to Kubernetes objects like pods, services, a
 Selectors filter Kubernetes objects based on their labels. This is incredibly useful for querying and managing a subset of objects that meet specific criteria.
 
 **Common Usage:**
-- **Pods**: `kubectl get pods --selector app=my-app`
+- **Pods**: `kubectl get pods --selector app=my-app` (short form: `-l app=my-app`). You can also use set-based selectors, for example `kubectl get pods -l 'env in (dev,prod)'`, and `kubectl get pods --show-labels` to list the labels
 - **Deployments**: Used to filter the pods managed by the deployment.
 - **Services**: Filter the pods to which the service routes traffic.
 
@@ -47,17 +47,20 @@ Static Pods are special types of pods managed directly by the `kubelet` on each 
 - **Some examples of static pods are:** ApiServer, Kube-scheduler, controller-manager, ETCD etc
   
 ### Managing Static Pods:
-1. **SSH into the Node**: You will gain access to the node where the static pod is defined.(Mostly the control plane node)
-2. **Modify the YAML File**: Edit or create the YAML configuration file for the static pod.
-3. **Remove the Scheduler YAML**: To stop the pod, you must remove or modify the corresponding file directly on the node.
-4. **Default location**": is usually `/etc/kubernetes/manifests/`; you can place the pod YAML in the directory, and Kubelet will pick it for scheduling.
+1. **SSH into the Node**: Log in to the node where the static pod is defined (the control plane node for the control plane components).
+2. **Find the manifest directory**: The default location is `/etc/kubernetes/manifests/`. It is set by the `staticPodPath` field in the kubelet config file `/var/lib/kubelet/config.yaml`.
+3. **Create or modify the YAML file**: When you place a pod YAML in this directory, the kubelet on that node starts the pod by itself. When you edit the file, the kubelet recreates the pod.
+4. **Stop the pod**: Move the file out of the directory. For example, when you move `kube-scheduler.yaml` out of the directory, the scheduler pod stops, and new pods stay in `Pending` until you move the file back.
+
+- The kubelet creates a read-only "mirror pod" on the API server for every static pod, so you can see it with `kubectl get pods`. Its name ends with the node name, for example `kube-apiserver-controlplane`. Deleting the mirror pod with `kubectl delete` does not stop the static pod.
+- Do not keep backup copies of a manifest inside `/etc/kubernetes/manifests/`. The kubelet reads every file in this directory and will try to run the backup as well.
 
 ## 🧭 Manual Pod Scheduling
 
 Manual scheduling in Kubernetes involves assigning a pod to a specific node rather than letting the scheduler decide.
 
 ### Key Points:
-- **`nodeName` Field**: Use this field in the pod specification to specify the node where the pod should run.
+- **`nodeName` Field**: Use this field in the pod specification to specify the node where the pod should run. You can only set it when you create the pod. It cannot be changed on a running pod.
 - **No Scheduler Involvement**: When `nodeName` is specified, the scheduler bypasses the pod, and it’s directly assigned to the given node.
 
 ### Example Configuration:

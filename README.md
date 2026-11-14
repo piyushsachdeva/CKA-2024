@@ -1,10 +1,10 @@
-# Certified Kubernetes Administrator(CKA) 2026 ( Latest curriculum)
+# Certified Kubernetes Administrator (CKA) 2026 (Latest curriculum)
 
 This is the GitHub repository to host all the notes, diagrams, assignments, and resources from the CKA course published on YouTube.
 
 Note: If you found the content helpful, consider giving the repository a star ⭐
 
-**Checkout this [file](https://github.com/piyushsachdeva/CKA-2024/blob/main/%2340daysofkubernetes.md) for the #40daysofkubernetes challenge details**
+> **Last verified: November 2026**, against Kubernetes v1.37, which is the version used in the CKA exam at that time. The videos of Day 1 to Day 40 were recorded in 2024 on Kubernetes 1.29 and 1.30. The concepts are the same, but where a command, a version or a tool has changed since then, the notes in this repository have the updated version along with a note about what is different from the video.
 
 ## 🔗 Join our community 👇
 
@@ -16,74 +16,75 @@ Note: If you found the content helpful, consider giving the repository a star �
 <a href="https://www.linkedin.com/company/thecloudopscomm/"><img src="https://img.icons8.com/fluency/2x/linkedin.png" height="60px"></img></a>
 <a href="https://www.instagram.com/techtutorialswithpiyush/"><img src="https://user-images.githubusercontent.com/91791257/235086447-47658b7b-71fa-4baf-830a-3ba9b3a76a47.png" height="60px"></img></a>
 
-## 🏆 #40daysofkubernetes Challenge - COMPLETED! 
+## How to use this repository
 
-**The #40daysofkubernetes challenge has been successfully completed!** 🎉
+- Every day has its own folder under [Resources](Resources). The `readme.md` file in the folder has the notes, the commands and the YAML used in the video, and the `task.md` file has the hands-on assignment for that day.
+- Watch the video, read the notes, and then do the task on your own cluster. For Day 6 to Day 26, a local [kind](Resources/Day06) cluster is enough. From Day 27 onwards, you need the [kubeadm cluster](Resources/Day27) on virtual machines.
+- The 40 days of the original series are followed by extra content (Day 43 onwards) that covers the topics added to the exam in the 2025 curriculum, such as Helm, Kustomize, Gateway API, CRDs and operators.
+- The #40daysofkubernetes challenge that ran along with the series is over. The details and the winners are in [this file](%2340daysofkubernetes.md).
 
-Congratulations to all the amazing participants who dedicated their time and effort to learn Kubernetes throughout this journey.
+## CKA exam curriculum
 
-### 🥇 Challenge Winners
+| Domain | Weight | Covered in |
+|---|---|---|
+| Troubleshooting | 30% | Day 36 to 39 |
+| Cluster Architecture, Installation & Configuration | 25% | Day 5, 21 to 25, 27, 34, 35, 43, 44, 49, 50, 53, 55 |
+| Services & Networking | 20% | Day 9, 26, 30 to 33, 47, 48 |
+| Workloads & Scheduling | 15% | Day 7, 8, 11 to 19, 46, 51 |
+| Storage | 10% | Day 29, 45, 52 |
 
-#### 🖊️ **Blogging Champions**
-1. **Shivam Gautam** 
-2. **Rahul Vadakkiniyil** 
-3. **Shriram Sahu** 
-4. **Teddy D** 
-5. **Pratik Shinde** 
-6. **Baivab Mukhopadhyay** 
+The exam details (format, environment, allowed documentation and tips) are in the [Day 41](Resources/Day41) notes. The official curriculum is published by the CNCF [here](https://github.com/cncf/curriculum).
 
-#### 👥 **Community Champions**
-1. **Baivab Mukhopadhyay** - Discord: itzmario7320
-2. **Priyanka** 
-3. **Vivek** 
-4. **Dheeman Das** 
-5. **Micheal Choudhary**
+## Course content
 
-A huge thanks to everyone who participated, shared their learning journey, and contributed to building this amazing community! 🙏
-
-### Day0: Intro to the series
+### Day 0: Intro to the series
 [![Course Introduction](https://img.youtube.com/vi/6_gMoe7Ik8k/sddefault.jpg)](https://youtu.be/6_gMoe7Ik8k)
 - Course Introduction
 - Discord community server for assistance
-- Live QnA sessions every weekend
-- #40daysofkubernetes challenge
 
 ### Day 1: Docker Fundamentals
-**Status**: Video is live, check out 👉 [Day1](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day01) 👈 folder for notes and useful links ✅
+📂 Notes, commands and tasks: [Day01](Resources/Day01)
 
 - What is Docker?
 - How is it different from Virtual Machines
--  Docker Architecture
--  Docker flow
--  Docker commands
-    
-### Day 2 Video: Dockerize an application
-**Status**: Video is live, check out 👉 [Day2](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day02) 👈 folder for notes and useful links ✅
-- What is Dockerfile, and how do you write it?
-- docker pull , push, tag etc
+- Docker Architecture
+- Docker flow
+- Docker commands
 
-## Day3 Video: Docker Multi-Stage Builds
-**Status**: Video is live, check out 👉 [Day3](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day03) 👈 folder for notes and useful links ✅
-- How to write a dockerfile for multistage build
+### Day 2: Dockerize an application
+📂 Notes, commands and tasks: [Day02](Resources/Day02)
+
+- What is a Dockerfile, and how do you write it?
+- docker build, tag, push, pull, run, exec and logs
+
+### Day 3: Docker Multi-Stage Builds
+📂 Notes, commands and tasks: [Day03](Resources/Day03)
+
+- How to write a Dockerfile for a multi-stage build
 - Benefits of multi-stage builds
-- Other docker best practices
+- Other Docker best practices
 
-## Day 4 Video: Why do We need Kubernetes?
-**Status**: Video is live, check out 👉 [Day4](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day04) 👈 folder for notes and useful links ✅
+### Day 4: Why do We need Kubernetes?
+📂 Notes, commands and tasks: [Day04](Resources/Day04)
 
-## Day 5 Video: Kubernetes Architecture
-**Status**: Video is live, check out 👉 [Day5](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day05) 👈 folder for notes and useful links ✅
+- Challenges of using standalone containers
+- How Kubernetes solves those challenges
+
+### Day 5: Kubernetes Architecture
+📂 Notes, commands and tasks: [Day05](Resources/Day05)
+
 - Control plane VS Worker Nodes
 - Overview of control plane components
 
-## Day 6 Video: Install Kubernetes Cluster locally
-**Status**: Video is live, check out 👉 [Day6](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day06) 👈 folder for notes and useful links ✅
+### Day 6: Install Kubernetes Cluster locally
+📂 Notes, commands and tasks: [Day06](Resources/Day06)
 
-- Install Kind cluster locally
+- Install a Kind cluster locally
 - How to access the cluster
 
-## Day7 Video: Pods in Kubernetes
-**Status**: Video is live, check out 👉 [Day7](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day07) 👈 folder for notes and useful links ✅
+### Day 7: Pods in Kubernetes
+📂 Notes, commands and tasks: [Day07](Resources/Day07)
+
 - What are pods in Kubernetes?
 - Containers VS Pods
 - Imperative VS Declarative way for creating Kubernetes resources
@@ -91,226 +92,330 @@ A huge thanks to everyone who participated, shared their learning journey, and c
 - Create a sample pod using the declarative way
 - Inspect the pods
 
-## Day8 Video: Replicasets and Deployments in Kubernetes:
-**Status**: Video is live, check out 👉 [Day8](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day08) 👈 folder for notes and useful links ✅
+### Day 8: Replicasets and Deployments in Kubernetes
+📂 Notes, commands and tasks: [Day08](Resources/Day08)
+
 - Replication Controller
 - ReplicaSet
 - Deployments
 - How to perform Rolling updates/rollback
 - Scale the deployment
 
-## Day9 Video: Services in Kubernetes:
-**Status**: Video is live, check out 👉 [Day9](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day09) 👈 folder for notes and useful links ✅
-- What are services in Kubernetes, and why do we need them?
-- Node port, ClusterIP, and LoadBalancer
+### Day 9: Services in Kubernetes
+📂 Notes, commands and tasks: [Day09](Resources/Day09)
 
-## Day 10 Video: Namespaces:
-**Status**: Video is live, check out 👉 [Day10](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day10) 👈 folder for notes and useful links ✅
-- NameSpaces
+- What are services in Kubernetes, and why do we need them?
+- ClusterIP, NodePort, LoadBalancer and ExternalName
+
+### Day 10: Namespaces
+📂 Notes, commands and tasks: [Day10](Resources/Day10)
+
+- Namespaces
 - Services and namespaces
 
+### Day 11: Multi-container Pods
+📂 Notes, commands and tasks: [Day11](Resources/Day11)
 
-## Day 11 Video: Multi-container Pods
-**Status**: Video is live, check out 👉 [Day11](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day11) 👈 folder for notes and useful links ✅
 - What are multi-container pods
-- Multi-container pods pattern - sidecar/init etc
+- Multi-container pod patterns - sidecar, init etc
 - Environment variables in Kubernetes
 
+### Day 12: Daemonset, Cronjob, and job
+📂 Notes, commands and tasks: [Day12](Resources/Day12)
 
-## Day 12 Video: Daemonset, Cronjob, and job
-**Status**: Video is live, check out 👉 [Day12](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day12) 👈 folder for notes and useful links ✅
-- What are Daemonset, cronjobs and Jobs
+- What are Daemonsets, Cronjobs and Jobs
 - Cron fundamentals with examples
 
+### Day 13: Static Pods
+📂 Notes, commands and tasks: [Day13](Resources/Day13)
 
-## Day13 Video: Static Pods
-**Status**: Video is live, check out 👉 [Day13](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day13) 👈 folder for notes and useful links ✅
 - What are static pods
 - Labels and selectors
 - Manual Scheduling
 
+### Day 14: Taints and Tolerations
+📂 Notes, commands and tasks: [Day14](Resources/Day14)
 
-## Day14 Video: Taints and Tolerations
-**Status**: Video is live, check out 👉 [Day14](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day14) 👈 folder for notes and useful links ✅
+- Taints, tolerations and taint effects
 
-## Day15 Video: Node Affinity
-**Status**: Video is live, check out 👉 [Day15](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day15) 👈 folder for notes and useful links ✅
+### Day 15: Node Affinity
+📂 Notes, commands and tasks: [Day15](Resources/Day15)
 
+- Node selector VS node affinity
+- Required and preferred rules
 
-## Day16 Video: Resource Requests and Limits
-**Status**: Video is live, check out 👉 [Day16](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day16) 👈 folder for notes and useful links ✅
+### Day 16: Resource Requests and Limits
+📂 Notes, commands and tasks: [Day16](Resources/Day16)
 
+- Requests VS limits
+- What happens when a container crosses its limit
+- Metrics server
 
-## Day17 Video: Autoscaling in Kubernetes
-**Status**: Video is live, check out 👉 [Day17](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day17) 👈 folder for notes and useful links ✅
+### Day 17: Autoscaling in Kubernetes
+📂 Notes, commands and tasks: [Day17](Resources/Day17)
 
 - Horizontal VS Vertical Autoscaling
 - HPA, VPA, Cluster autoscaling, NAP
 - Metrics server
 
+### Day 18: Probes in Kubernetes
+📂 Notes, commands and tasks: [Day18](Resources/Day18)
 
-## Day18 Video: Probes in Kubernetes
-**Status**: Video is live, check out 👉 [Day18](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day18) 👈 folder for notes and useful links ✅
-- Liveness VS Readiness Probes
+- Liveness VS Readiness VS Startup Probes
 - HTTP/TCP/Command-based health checks
 
+### Day 19: Config maps and Secrets
+📂 Notes, commands and tasks: [Day19](Resources/Day19)
 
-## Day19 Video: Config maps and Secrets
-**Status**: Video is live, check out 👉 [Day19](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day19) 👈 folder for notes and useful links ✅
-- concept and demo
-  
-## Day 20 Video: How SSL/TLS works
-**Status**: Video is live, check out 👉 [Day20](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day20) 👈 folder for notes and useful links ✅
+- Concept and demo
+
+### Day 20: How SSL/TLS works
+📂 Notes, commands and tasks: [Day20](Resources/Day20)
+
 - Symmetric VS Asymmetric encryption
 - SSL certificates and Certificate Authority
 
-## Day 21 Video: TLS in Kubernetes
-**Status**: Video is live, check out 👉 [Day21](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day21) 👈 folder for notes and useful links ✅
+### Day 21: TLS in Kubernetes
+📂 Notes, commands and tasks: [Day21](Resources/Day21)
+
 - How TLS works in Kubernetes
 - Why we need TLS in Kubernetes
 - Private key and public certificates
+- CertificateSigningRequest
 
+### Day 22: Authorization in Kubernetes
+📂 Notes, commands and tasks: [Day22](Resources/Day22)
 
-## Day 22 Video: Authorization in Kubernetes
-**Status**: Video is live, check out 👉 [Day22](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day22) 👈 folder for notes and useful links ✅
 - Authorization VS Authentication
 - Authorization types, ABAC, RBAC, Node, Webhook
 - Kubeconfig
 
-## Day 23 Video: Role-based access control (RBAC)
-**Status**: Video is live, check out 👉 [Day23](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day23) 👈 folder for notes and useful links ✅
+### Day 23: Role-based access control (RBAC)
+📂 Notes, commands and tasks: [Day23](Resources/Day23)
+
 - Role and role binding
 - Generate and approve the certificate
-- grant access to the user
+- Grant access to the user
 
+### Day 24: Cluster role and cluster role binding
+📂 Notes, commands and tasks: [Day24](Resources/Day24)
 
-## Day 24 Video: Cluster role and cluster role binding
-**Status**: Video is live, check out 👉 [Day24](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day24) 👈 folder for notes and useful links ✅
+- Concept and demo
 
-- concept and demo
-
-## Day 25 Video: Service Account
-**Status**: Video is live, check out 👉 [Day25](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day25) 👈 folder for notes and useful links ✅
+### Day 25: Service Account
+📂 Notes, commands and tasks: [Day25](Resources/Day25)
 
 - What are service accounts, and why do we use them?
 - Create a service account and grant access to it
 
-
-## Day26 Video: Network Policies
-**Status**: Video is live, check out 👉 [Day26](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day26) 👈 folder for notes and useful links ✅
+### Day 26: Network Policies
+📂 Notes, commands and tasks: [Day26](Resources/Day26)
 
 - Network policy concept
 - CNI installation
-- enforce network policy by creating the object
-  
-## Day27 Video: Use Kubeadm to install a Kubernetes cluster
-**Status**: Video is live, check out 👉 [Day27](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day27) 👈 folder for notes and useful links ✅
+- Enforce a network policy by creating the object
+
+### Day 27: Use Kubeadm to install a Kubernetes cluster
+📂 Notes, commands and tasks: [Day27](Resources/Day27)
 
 - Provision underlying infrastructure to deploy a Kubernetes cluster
-- Setup Master Node to deploy Kubernetes components
-- Setup multiple worker nodes and join the master node
+- Set up the control plane (master) node
+- Set up multiple worker nodes and join them to the cluster
 
-## Day28 Video: Docker storage fundamentals
-**Status**: Video is live, check out 👉 [Day28](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day28) 👈 folder for notes and useful links ✅
+### Day 28: Docker storage fundamentals
+📂 Notes, commands and tasks: [Day28](Resources/Day28)
 
 - Why do we need storage in docker containers
-- persistent docker storage
+- Persistent docker storage
 
-## Day29 Video: Storage in Kubernetes
+### Day 29: Storage in Kubernetes
+📂 Notes, commands and tasks: [Day29](Resources/Day29)
+
 - How storage works in Kubernetes
-- hostpath volumes in Kubernetes
+- hostPath volumes in Kubernetes
 - Persistent volumes and Persistent volume claims
 - Volume modes, Access modes, and reclaim policies for volumes
-- Storage classes and provisions
+- Storage classes and provisioners
 
-## Day30 Video: How does DNS work?
+### Day 30: How does DNS work?
+📂 Notes, commands and tasks: [Day30](Resources/Day30)
+
 - What happens when you type a website address in your browser
-- different components involved in DNS
+- Different components involved in DNS
 - End-to-end flow
 - Important files and resources
 
-## Day31 Video: DNS in kubernetes
+### Day 31: DNS in Kubernetes
+📂 Notes, commands and tasks: [Day31](Resources/Day31)
+
 - How DNS works in Kubernetes
-- Core-DNS
+- CoreDNS
 
-## Day32 Video: Kubernetes Networking
-- CNI , Network Add-on
-- Containerd vs runc , container runtime
+### Day 32: Kubernetes Networking
+📂 Notes, commands and tasks: [Day32](Resources/Day32)
 
-## Day 33 Video: Ingress controller and Ingress resources
+- CNI, network add-on
+- containerd VS runc, container runtime
 
-## Day 34 Video: Perform a version upgrade on a Kubernetes cluster using Kubeadm
+### Day 33: Ingress controller and Ingress resources
+📂 Notes, commands and tasks: [Day33](Resources/Day33)
 
-## Day 35 Video: Implement etcd backup and restore
+- Ingress, Ingress controller and IngressClass
+- Expose an application with an Ingress
 
-## Day 36 Video: Monitoring, Logging and Alerting
-- Monitor Cluster components, Evaluate cluster and node logging
-- Understand how to monitor applications, metric server
+### Day 34: Perform a version upgrade on a Kubernetes cluster using Kubeadm
+📂 Notes, commands and tasks: [Day34](Resources/Day34)
+
+- Upgrade the control plane node
+- Upgrade the worker nodes
+
+### Day 35: Implement etcd backup and restore
+📂 Notes, commands and tasks: [Day35](Resources/Day35)
+
+- Take an etcd snapshot with etcdctl
+- Restore it with etcdutl
+
+### Day 36: Monitoring, Logging and Alerting
+📂 Notes, commands and tasks: [Day36](Resources/Day36)
+
+- Monitor cluster components, evaluate cluster and node logging
+- Understand how to monitor applications, metrics server
 - Manage container stdout & stderr logs
 
-## Day 37 Video: Troubleshoot application failure
+### Day 37: Troubleshoot application failure
+📂 Notes, commands and tasks: [Day37](Resources/Day37)
 
-## Day 38 Video: Troubleshoot cluster component failure
+- Pod, Service and configuration issues
 
-## Day 39 Video: Network Troubleshooting
- - Worker node failure
- - cordon, uncordon and drain (maintenance)\
+### Day 38: Troubleshoot cluster component failure
+📂 Notes, commands and tasks: [Day38](Resources/Day38)
 
-## Day 40 Video: JSONPath, advance kubectl commands
+- API server, scheduler, controller manager and etcd issues
+
+### Day 39: Troubleshoot worker node failure and networking
+📂 Notes, commands and tasks: [Day39](Resources/Day39)
+
+- Worker node failure
+- cordon, uncordon and drain (maintenance)
+- Network troubleshooting
+
+### Day 40: JSONPath, advanced kubectl commands
+📂 Notes, commands and tasks: [Day40](Resources/Day40)
+
 - JSON for beginners
 - JSON v/s YAML
-- JSONPATH basics
-- Multiple JSONPATH queries to fetch details
+- JSONPath basics
+- Multiple JSONPath queries to fetch details
 
-## Day 41 Mission CKA
+### Day 41: Mission CKA
+📂 Notes, commands and tasks: [Day41](Resources/Day41)
 
-- Exam Pattern
+- Exam pattern
 - Pre-requisites
 - Last-minute preparation
 - Tips and Tricks
 - Sample questions
 
+### Day 42: Realtime project: Host your own container registry on Kubernetes
+📂 Notes, commands and tasks: [Day42](Resources/Day42)
 
-## Day 42 Video: Realtime project: Host your own container registry on Kubernetes
-- This project will include multiple Kubernetes topics with real-time implementation.
+- This project includes multiple Kubernetes topics with real-time implementation.
 
-## Day 43 Video: Helm
+### Day 43: Helm
+📂 Notes, commands and tasks: [Helm](Resources/Helm)
 
-## Day 44 Video - Kustomize
+- Charts, repositories and releases
+- Install, upgrade, roll back and uninstall
 
-## Day 45 Video - StatefulSets
+### Day 44: Kustomize
+📂 Notes, commands and tasks: [Kustomize](Resources/Kustomize)
 
-## Day 46 Video - Priority class and preemption 
+- kustomization.yaml
+- Bases, overlays and patches
 
+### Day 45: StatefulSets
+📂 Notes, commands and tasks: [Day45-StatefulSet](Resources/Day45-StatefulSet)
 
+- Headless service, volumeClaimTemplates, ordered scaling
+
+### Day 46: Priority class and preemption
+📂 Notes, commands and tasks: [Day46-PriorityClass](Resources/Day46-PriorityClass)
+
+- PriorityClass and how the scheduler preempts pods
+
+### Day 47: Gateway API
+📂 Notes, commands and tasks: [day47-GatewayAPI](Resources/day47-GatewayAPI)
+
+- GatewayClass, Gateway and HTTPRoute
+
+### Day 48: Migrate from Ingress to Gateway API
+📂 Notes, commands and tasks: [Day48-Migrate-Ingress-to-Gateway](Resources/Day48-Migrate-Ingress-to-Gateway)
+
+- Convert an existing Ingress with TLS into a Gateway and an HTTPRoute
+
+### Day 49: Custom Resources and CRDs
+📂 Notes, commands and tasks: [Day49-CustomResources](Resources/Day49-CustomResources)
+
+- Create a CRD and a custom resource
+- Work with the CRDs of installed tools
+
+### Day 50: Operators
+📂 Notes, commands and tasks: [Day-50-Operators](Resources/Day-50-Operators)
+
+- Operator pattern and reconciliation
+- Install an operator with OLM
+
+### Day 51: Admission controllers
+📂 Notes, commands and tasks: [Day51-AdmissionControllers](Resources/Day51-AdmissionControllers)
+
+- Built-in admission controllers, ResourceQuota and LimitRange
+- Admission webhooks and policies
+
+### Day 52: StorageClass and dynamic provisioning
+📂 Notes, commands and tasks: [Day52-StorageClass-DynamicProvisioning](Resources/Day52-StorageClass-DynamicProvisioning)
+
+- Static VS dynamic provisioning
+- Default StorageClass, reclaim policy and volume binding mode
+
+### Day 53: CRI-Dockerd setup
+📂 Notes, commands and tasks: [Day53-DockerD-Setup](Resources/Day53-DockerD-Setup)
+
+- Install and configure cri-dockerd as a container runtime
+
+### Day 54: Pod security
+📂 Notes, commands and tasks: [Day54-PodSecurity](Resources/Day54-PodSecurity)
+
+- Linux capabilities and security context
+- Pod Security Standards
+
+### Day 55: Highly available control plane
+📂 Notes, commands and tasks: [Day55-HA-Controlplane.md](Resources/Day55-HA-Controlplane.md)
+
+- HAProxy load balancer
+- Multiple control plane nodes with stacked etcd
 
 ## Frequently asked questions:
 
-I've been overwhelmed by the fantastic response to my new YouTube series on the Certified Kubernetes Administrator (CKA) exam! But with all the excitement came some questions, and I'm here to address them head-on.
-
-### 1) 𝐈 𝐜𝐚𝐧𝐧𝐨𝐭 𝐚𝐟𝐟𝐨𝐫𝐝 𝐭𝐡𝐞 𝐂𝐊𝐀 𝐞𝐱𝐚𝐦 𝐢𝐭'𝐬 𝐭𝐨𝐨 𝐞𝐱𝐩𝐞𝐧𝐬𝐢𝐯𝐞. 𝐒𝐡𝐨𝐮𝐥𝐝 𝐈 𝐬𝐭𝐢𝐥𝐥 𝐟𝐨𝐥𝐥𝐨𝐰 𝐚𝐥𝐨𝐧𝐠?
+### 1) I cannot afford the CKA exam, it's too expensive. Should I still follow along?
 
 The content of this playlist is based on the exam curriculum because it provides a well-organized learning path. You don't have to worry about the roadmap; you can focus on learning. Even if you are not taking the exam now, you are still gaining the hands-on knowledge that a Kubernetes administrator should have; that's good enough!
 
-### 𝟐) 𝐖𝐡𝐚𝐭 𝐚𝐫𝐞 𝐭𝐡𝐞 𝐩𝐫𝐞𝐫𝐞𝐪𝐮𝐢𝐬𝐢𝐭𝐞𝐬 𝐟𝐨𝐫 𝐭𝐡𝐢𝐬 𝐜𝐨𝐮𝐫𝐬𝐞?
+### 2) What are the prerequisites for this course?
 
-The only prerequisites are basic Linux understanding; all the other prerequisites are already covered in this series. Check out the GitHub repo below for the course content. Yes, it is absolutely free for anyone to join and follow along.
- 
+The only prerequisite is a basic understanding of Linux; all the other prerequisites, such as Docker, are already covered in this series. Yes, it is absolutely free for anyone to join and follow along.
 
-### 𝟑) 𝐖𝐡𝐢𝐜𝐡 𝐂𝐥𝐨𝐮𝐝 𝐩𝐫𝐨𝐯𝐢𝐝𝐞𝐫 𝐚𝐫𝐞 𝐰𝐞 𝐮𝐬𝐢𝐧𝐠 𝐟𝐨𝐫 𝐭𝐡𝐞 𝐝𝐞𝐦𝐨?
+### 3) Which Cloud provider are we using for the demo?
 
-We will not be using any Cloud as the focus is on Kubernetes. Using a cloud service would mean the cloud provider manages the control plane, limiting learning. We will use a local Kubernetes installation on a Kind cluster and a Kubeadm installation on virtual machines. 
+We will not be using any managed Kubernetes service of a cloud provider, as the focus is on Kubernetes itself. With a managed service, the cloud provider manages the control plane, which limits the learning. We will use a local Kubernetes installation on a Kind cluster and a Kubeadm installation on virtual machines. Those virtual machines can be on your laptop or on any cloud.
 
-### 𝟒) 𝐀𝐫𝐞 𝐰𝐞 𝐝𝐨𝐢𝐧𝐠 𝐚𝐧𝐲 𝐫𝐞𝐚𝐥-𝐭𝐢𝐦𝐞 𝐩𝐫𝐨𝐣𝐞𝐜𝐭𝐬 𝐢𝐧 𝐭𝐡𝐢𝐬 𝐬𝐞𝐫𝐢𝐞𝐬?
+### 4) Are we doing any real-time projects in this series?
 
-Yes, there will be a couple of real-time projects at the end of this series. We cannot do real-time full-fledged projects in Kubernetes without completing all the essential topics. That is why I added the projects at the end and hands-on tasks in almost every video.
+Yes, there is a real-time project at the end of this series ([Day 42](Resources/Day42)). We cannot do real-time full-fledged projects in Kubernetes without completing all the essential topics. That is why the project is at the end, with hands-on tasks in almost every video before it.
 
-### 5) 𝐇𝐨𝐰 𝐦𝐚𝐧𝐲 𝐯𝐢𝐝𝐞𝐨𝐬 𝐰𝐢𝐥𝐥 𝐛𝐞 𝐩𝐮𝐛𝐥𝐢𝐬𝐡𝐞𝐝 𝐞𝐯𝐞𝐫𝐲 𝐰𝐞𝐞𝐤?
+### 5) Is the series complete?
 
-I have finished recording the entire series and am editing the last few videos. I plan to publish 3 to 4 weekly videos every Monday through Thursday. I have chosen not to publish daily so that viewers following the series have time to understand the concepts, practice hands-on, document their learning, and not feel left behind.
+Yes. All the videos of the 40 days are published, and you can follow them at your own pace. The content from Day 43 onwards was added later to cover the topics of the 2025 exam curriculum.
 
-### 6) 𝐖𝐡𝐚𝐭 𝐢𝐟 𝐰𝐞 𝐚𝐫𝐞 𝐬𝐭𝐮𝐜𝐤 𝐬𝐨𝐦𝐞𝐰𝐡𝐞𝐫𝐞 𝐚𝐧𝐝 𝐧𝐞𝐞𝐝 𝐚𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐜𝐞?
+### 6) What if we are stuck somewhere and need assistance?
 
-You can comment on the video by providing complete details about the issue/query, or you can open a new thread in the discord channel of help-cka-2024, and someone will help you. I also plan to host a live Q&A session every weekend.
-
-
+You can comment on the video by providing complete details about the issue/query, or you can open a new thread in the Discord channel `help-cka-2024`, and someone will help you. If you find a mistake in these notes, please open an issue or a pull request in this repository.

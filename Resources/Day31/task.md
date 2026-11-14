@@ -4,17 +4,10 @@ In this exercise, you will explore coreDNS in Kubernetes.
 
 > [!NOTE]
 > Make sure you have a Kubernetes cluster created setup on virtual machines, you can follow [this video](https://youtu.be/WcdMC3Lj4tU) as a pre-requisites
-> If you don't know the DNS concepts, make sure to watch Day 31 video before this one.
+> If you don't know the DNS concepts, make sure to watch the Day 30 video before this one.
 
 ### Task details
-1. Document your learning and understanding of coreDNS from the video into a blog post.
-2. **Share your learnings**: Document your key takeaways and insights in a blog post and social media update
-3. **Make it public**: Share what you learn publicly on LinkedIn or Twitter.
-   - **Tag us and use the hashtag**: Include the following in your post:
-     - Tag [@PiyushSachdeva](https://www.linkedin.com/in/piyush-sachdeva) and [@CloudOps Community](https://www.linkedin.com/company/thecloudopscomm) (on both platforms)
-     - Use the hashtag **#40daysofkubernetes**
-     - **Embed the video**: Enhance your blog post by embedding the video lesson from the Kubernetes series. This will give you visual context and reinforce your written explanations.
-
-## Blog Post Focus 📝
-
-- **Clarity is essential**: Write your blog post clearly and concisely, making it easy for anyone to grasp the concepts, regardless of their prior Kubernetes experience.
+1. Document your learning and understanding of coreDNS from the video.
+2. Find the IP address of the cluster DNS service and confirm that the same IP is in `/etc/resolv.conf` of a pod.
+3. Create a deployment and a service in a new namespace and resolve the service from a pod in the `default` namespace using its short name, `<service>.<namespace>` and the FQDN. Note which of these work and why.
+4. Scale the coredns deployment to 0, try the lookup again, and then scale it back to 2.

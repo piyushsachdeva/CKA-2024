@@ -1,4 +1,4 @@
-# Kubernetes Operator 
+# Day 50 - Kubernetes Operators
 
 ## 1. Understanding Kubernetes Operators
 
@@ -25,7 +25,7 @@ Operator: Deploy operator → Declare desired state → Operator handles everyth
 
 The cert-manager Operator is a prime example. Instead of manually obtaining, renewing, and managing TLS certificates for your applications, you simply define Issuer and Certificate Custom Resources. The cert-manager Operator then watches these CRs and automatically handles the entire certificate lifecycle for you, including issuance from various sources (like Let's Encrypt), renewal, and even injecting them into Kubernetes Secrets.
 
-### The Power of Reconciliation: The Operator's Core Feature
+### Reconciliation: how an operator works
 
 The fundamental mechanism by which a Kubernetes Operator works is called reconciliation. It refers to the continuous process where the Operator (specifically, its controller component) observes the actual state of resources in the Kubernetes cluster and constantly compares it to the desired state as defined in its Custom Resources.
 
@@ -47,13 +47,14 @@ Here's a breakdown of the reconciliation loop:
 While Operators can be installed manually (e.g., using kubectl apply or Helm), the Operator Lifecycle Manager (OLM) simplifies the process of installing, upgrading, and managing Operators and their associated Custom Resource Definitions (CRDs) and Custom Resources (CRs). OLM acts as a "meta-operator" that manages other Operators, providing a consistent way to discover and deploy them in your cluster.
 
 
-## 3. Prerequisites
+## 2. Prerequisites
 
 Before you begin, please ensure you have the following installed and configured:
 
 **A local Kubernetes cluster:**
-- **Minikube:** Recommended for simplicity. Install it from minikube.sigs.k8s.io/docs/start/.
-- **Kind:** Another excellent option for local clusters. Install it from kind.sigs.k8s.io/docs/user/quick-start/.
+- **Minikube:** Install it from https://minikube.sigs.k8s.io/docs/start/
+- **Kind:** Install it from https://kind.sigs.k8s.io/docs/user/quick-start/
+- The kubeadm cluster from Day 27 works as well
 
 **kubectl:** The Kubernetes command-line tool. Ensure it's configured to connect to your local cluster.
 
@@ -63,20 +64,17 @@ Before you begin, please ensure you have the following installed and configured:
 - Familiarity with kubectl commands (e.g., get pods, get svc, describe).
 - Understanding of basic Kubernetes resources like Pods, Deployments, Services, and Namespaces.
 
-## 4. Steps to setup cert-manager operator
+## 3. Steps to set up the cert-manager operator
 
 
-### Step 4.1: Install Operator Lifecycle Manager (OLM)
+### Step 3.1: Install Operator Lifecycle Manager (OLM)
 
 We will install OLM in your cluster. This will create a new namespace `olm` and deploy the OLM components.
 [source](https://operatorhub.io/operator/cert-manager)
 
 ```bash
 # Install OLM
-curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.32.0/install.sh | bash -s v0.32.0
-
-# Install the operator
-kubectl create -f https://operatorhub.io/install/cert-manager.yaml
+curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.46.0/install.sh | bash -s v0.46.0
 ```
 
 Wait for OLM to be ready. You can check the pods in the `olm` namespace:
@@ -85,17 +83,28 @@ Wait for OLM to be ready. You can check the pods in the `olm` namespace:
 kubectl get pods -n olm
 ```
 
-Wait for the cert-manager operator to be in `Succeeded` state
-```bash
-kubectl get csv -n operators
+Ensure all OLM-related pods (e.g., `olm-operator`, `catalog-operator`, `packageserver`) are in a `Running` state. The install also creates a namespace called `operators` with an OperatorGroup named `global-operators`, which is where we install the operator next.
 
+```bash
+# Install the operator. This creates a Subscription named my-cert-manager in the operators namespace
+kubectl create -f https://operatorhub.io/install/cert-manager.yaml
 ```
 
-Ensure all OLM-related pods (e.g., `olm-operator`, `catalog-operator`, `package-server`) are in a `Running` state.
+A **Subscription** tells OLM which operator you want and from which catalog and channel. OLM then installs the operator and keeps it up to date. The installed version of an operator is represented by an object called a **ClusterServiceVersion (CSV)**.
 
-### Step 4.2: Verify the Installation and Observe Operator Components
+Wait for the cert-manager operator to be in the `Succeeded` state. This can take a couple of minutes.
+```bash
+kubectl get subscription -n operators
+kubectl get csv -n operators -w
+```
+
+> Note: The video uses OLM v0.32.0. The command above uses v0.46.0, the latest release of OLM v0 at the time of this update. Check the [releases page](https://github.com/operator-framework/operator-lifecycle-manager/releases) for the current one.
+
+### Step 3.2: Verify the Installation and Observe Operator Components
 
 After the Subscription is created, OLM will automatically deploy the cert-manager Operator and its associated resources.
+
+> Note: An earlier version of these notes also created a second OperatorGroup in the `operators` namespace. Do not do that. OLM allows only one OperatorGroup per namespace, and with two of them the CSV fails with the reason `TooManyOperatorGroups`. The `global-operators` OperatorGroup that OLM created is all that is needed.
 
 **Check Operator Pods:**
 You should see the cert-manager-operator pod (deployed by OLM) and then the actual cert-manager, cert-manager-cainjector, and cert-manager-webhook pods (deployed by the cert-manager operator itself).
@@ -115,28 +124,6 @@ kubectl get crds | grep cert-manager
 
 You should see CRDs like `certificates.cert-manager.io`, `issuers.cert-manager.io`, `clusterissuers.cert-manager.io`, and `certificaterequests.cert-manager.io`.
 
-### Step 4.3: Prepare for cert-manager Operator configuration
-
-**Create an OperatorGroup:** An OperatorGroup defines a set of namespaces that an Operator will watch. For cert-manager, we'll create an OperatorGroup in its own namespace.
-
-```yaml
-# cert-manager-operatorgroup.yaml
-apiVersion: operators.coreos.com/v1
-kind: OperatorGroup
-metadata:
-  name: cert-manager-operatorgroup
-  namespace: operators
-spec:
-  targetNamespaces:
-  - operators
-```
-
-Apply this manifest:
-```bash
-kubectl apply -f cert-manager-operatorgroup.yaml
-```
-
-
 **Inspect Custom Resources (CRs) (Initial State):**
 At this point, you won't see any Issuer or Certificate CRs yet, as we haven't created any.
 
@@ -147,7 +134,7 @@ kubectl get certificate -n default
 
 (You should see "No resources found" or similar, which is expected.)
 
-### Step 4.4: Create an Issuer and a Certificate
+### Step 3.3: Create an Issuer and a Certificate
 
 Now, let's create some cert-manager Custom Resources and see the Operator in action. We'll create a simple self-signed Issuer and then a Certificate that uses it.
 
@@ -201,7 +188,7 @@ Apply this manifest:
 kubectl apply -f my-app-certificate.yaml
 ```
 
-### Step 4.5: Observe Operator Reconciliation and Secret Creation
+### Step 3.4: Observe Operator Reconciliation and Secret Creation
 
 Now, let's see the cert-manager Operator in action.
 
@@ -251,11 +238,11 @@ kubectl delete pod <cert-manager-controller-pod-name> -n operators
 
 Replace `<cert-manager-controller-pod-name>` with the actual name you found in the previous command (e.g., `cert-manager-7c8d9f-abcde`).
 
-After the new pod starts, you can again view its logs (as in step 3) to observe it re-processing existing Issuer and Certificate resources. This demonstrates the resilience and self-healing nature of Kubernetes Deployments combined with the Operator's reconciliation loop.
+After the new pod starts, you can again view its logs (as shown above) to observe it re-processing existing Issuer and Certificate resources. This demonstrates the resilience and self-healing nature of Kubernetes Deployments combined with the Operator's reconciliation loop.
 
-### Step 4.6: Clean Up
+### Step 3.5: Clean Up
 
-It's crucial to clean up your cluster after completing the assignment.
+Clean up your cluster after completing the assignment.
 
 **Delete the Custom Resources:**
 Always delete your custom resources before uninstalling the operator.
@@ -265,18 +252,28 @@ kubectl delete -f my-app-certificate.yaml
 kubectl delete -f selfsigned-issuer.yaml
 ```
 
-**Delete the cert-manager Subscription and OperatorGroup:**
+**Delete the cert-manager Subscription and the installed operator (CSV):**
 ```bash
-kubectl delete -f cert-manager-subscription.yaml
-kubectl delete -f cert-manager-operatorgroup.yaml
+kubectl delete -f https://operatorhub.io/install/cert-manager.yaml
+kubectl delete csv --all -n operators
 ```
 
-**Delete the operators namespace:**
+**Uninstall OLM:**
 ```bash
-kubectl delete namespace operators
+kubectl delete -f https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.46.0/olm.yaml
+kubectl delete -f https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.46.0/crds.yaml
 ```
 
-**Delete the OLM namespace**
+This removes the `olm` and `operators` namespaces as well.
+
+## 4. Other ways to install an operator
+
+OLM is one way to install operators, and it is the default on OpenShift. On plain Kubernetes clusters, most operators are installed with a Helm chart or with a manifest that contains the CRDs, the RBAC rules and the controller Deployment. For example, the Calico install in Day 27 uses the Tigera operator: you apply the operator manifest, then create an `Installation` custom resource, and the operator installs Calico for you. Whichever way an operator is installed, you work with it in the same way:
+
 ```bash
-kubectl delete namespace olm
+kubectl get crd                                  # which new resource types did it add?
+kubectl api-resources --api-group=<group>        # what are they called?
+kubectl explain <kind>.spec                      # which fields can I set?
+kubectl get <kind> -A                            # which custom resources exist?
+kubectl logs -n <namespace> deploy/<operator>    # what is the controller doing?
 ```

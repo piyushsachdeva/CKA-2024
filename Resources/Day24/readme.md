@@ -2,7 +2,7 @@
 
 ## Check out the video below for Day24 👇
 
-[![Day Day 23/40 - Kubernetes RBAC Continued - Clusterrole and Clusterrole Binding ](https://img.youtube.com/vi/DswQe7shSa4/sddefault.jpg)](https://youtu.be/DswQe7shSa4)
+[![Day 24/40 - Kubernetes RBAC Continued - Clusterrole and Clusterrole Binding](https://img.youtube.com/vi/DswQe7shSa4/sddefault.jpg)](https://youtu.be/DswQe7shSa4)
 
 ![image](https://github.com/user-attachments/assets/50076dc7-1168-4480-88c4-2d923aaa60f3)
 
@@ -20,7 +20,7 @@ Think of roles as job descriptions defining user or group actions. Role bindings
 
 Cluster roles are like superpowered roles that can access resources across all namespaces. This includes powerful stuff like managing nodes, persistent volumes (PVs), certificate signing requests (CSRs), and even namespaces. 
 
-* **Check Available Resources:** Use `kubectl api-resources namespaced=false` to see cluster-scoped resources. Replace `false` with `true` to check the namespace-scoped resources.
+* **Check Available Resources:** Use `kubectl api-resources --namespaced=false` to see cluster-scoped resources. Replace `false` with `true` to check the namespace-scoped resources.
 
 **Cluster Role Bindings: Linking Users to Cluster Roles**
 
@@ -37,6 +37,20 @@ kubectl create clusterrole node-reader --verb=get,list,watch --resource=nodes
 ```
 kubectl create clusterrolebinding node-reader-binding --clusterrole=node-reader --user=adam
 ```
+
+```
+kubectl auth can-i list nodes --as adam
+```
+
+**Which binding to use with which role**
+
+| Role type | Binding type | Result |
+|---|---|---|
+| Role | RoleBinding | Access to the resources in that one namespace |
+| ClusterRole | ClusterRoleBinding | Access in all namespaces, and to cluster-scoped resources such as nodes and PVs |
+| ClusterRole | RoleBinding | The permissions of the ClusterRole, but only inside the namespace of the RoleBinding. Useful to define a set of permissions once and reuse it in many namespaces |
+
+A Role can never be used with a ClusterRoleBinding.
 
 **Key Points:**
 
